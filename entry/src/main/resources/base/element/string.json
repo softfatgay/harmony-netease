@@ -1,0 +1,36 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "module description"
+    },
+    {
+      "name": "EntryAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "EntryAbility_label",
+      "value": "label"
+    },
+    {
+      "name": "home",
+      "value": "Home"
+    },
+    {
+      "name": "group",
+      "value": "Group"
+    },
+    {
+      "name": "subject",
+      "value": "Subject"
+    },
+    {
+      "name": "cart",
+      "value": "Cart"
+    },
+    {
+      "name": "profile",
+      "value": "Profile"
+    }
+  ]
+}

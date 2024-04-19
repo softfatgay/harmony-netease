@@ -1,0 +1,1 @@
+export const margin_screen = $r('app.float.margin_screen')

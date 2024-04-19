@@ -1,0 +1,36 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "模块描述"
+    },
+    {
+      "name": "EntryAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "EntryAbility_label",
+      "value": "label"
+    },
+    {
+      "name": "home",
+      "value": "首页"
+    },
+    {
+      "name": "group",
+      "value": "分类"
+    },
+    {
+      "name": "subject",
+      "value": "推荐"
+    },
+    {
+      "name": "cart",
+      "value": "购物车"
+    },
+    {
+      "name": "profile",
+      "value": "我的"
+    }
+  ]
+}

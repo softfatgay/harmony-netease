@@ -1,0 +1,15 @@
+import List from '@ohos.util.List'
+
+export class KingKongModule {
+  norColor: String
+  background: String
+  selectedColor: String
+  kingKongList: Array<KingKongItem>
+}
+
+export class KingKongItem {
+  picUrl: string
+  schemeUrl: String
+  text: string
+  textColor: String
+}

@@ -6,8 +6,8 @@ export class FinalPriceInfoVO {
 
 export class BannerVO {
   logo: String
-  title: String
-  content: String
+  title: string
+  content: string
   price: String
 }
 
@@ -18,7 +18,7 @@ export class PriceInfo {
 }
 
 export class FinalPrice {
-  prefix: String
-  price: String
+  prefix: string
+  price: string
   suffix: String
 }

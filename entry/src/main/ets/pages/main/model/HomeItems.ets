@@ -2,7 +2,7 @@ import { ItemListItem } from './ItemListItem'
 
 export class HomeItems {
   itemList: Array<ItemListItem> = []
-  itemIdsStr: String
+  itemIdsStr: string
   rcmdVer: String
   hasMore: boolean
 }

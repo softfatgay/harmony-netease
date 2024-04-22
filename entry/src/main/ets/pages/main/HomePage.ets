@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from '@ohos/axios'
 import { URL_HOME_NEW, URL_ITEM } from '../../base/Api'
 import { ResponseData } from '../../base/BaseModel'
-import { textBlack, textLightGray, textRed } from '../../base/color'
+import { appRed, textBlack, textLightGray, textRed, textWhite } from '../../base/color'
 import { margin_screen } from '../../base/dimens'
 import { redPackageUrl } from '../../base/Url'
 import { Category } from './model/Category'
@@ -16,6 +16,9 @@ import { ItemListItem } from './model/ItemListItem'
 import { KingKongItem } from './model/KingKongModule'
 import { PolicyDescItem } from './model/PolicyDescItem'
 import { TopLogo } from './model/TopLogo'
+import { Loading } from '../../component/Loading'
+import { GoodItem } from '../../component/GoodItem'
+import { LoadingMore } from '../../component/LoadingMore'
 
 @Entry
 @Component
@@ -26,6 +29,7 @@ export struct Homepage {
   @State itemIdsStr: string = ''
   @State haseMore: boolean = false
   @State items: Array<ItemListItem> = []
+  scroller = new Scroller()
 
   aboutToAppear() {
     axios.get<ResponseData<HomeModel>>(URL_HOME_NEW, {
@@ -47,36 +51,50 @@ export struct Homepage {
 
   recommend() {
     const body = {
-      "itemIdsStr": "",
+      "itemIdsStr": this.itemIdsStr,
       "size": "20"
     }
     axios.defaults.headers.post['Content-Type'] = 'application/json';
     axios.post<ResponseData<HomeItems>>(URL_ITEM, JSON.stringify(body)).then(res => {
-      let newItems = this.items.concat(res.data.data.itemList)
+      let homeItems = res.data.data
+      let newItems = this.items.concat(homeItems.itemList)
       this.items = newItems
+      this.itemIdsStr = homeItems.itemIdsStr
+      this.haseMore = homeItems.hasMore
       console.log('this.items.length = ' + this.items.length)
     }).catch(err => {
     })
   }
 
   build() {
-    if (this.homeData == null) LoadingProgress().color(Color.Blue).size({ width: 80, height: 80 })
+    if (this.homeData == null) Loading()
     else Column() {
       this.searView()
-      Scroll() {
-        Column() {
-          this._banner()
-          this._topTags()
-          this.kingKong()
-          this.bigPromotion()
-          this.label('新人专享')
-          this.newAccount()
-          this.labelTile('类目热销榜')
-          this.categoryHotSell()
-          this.labelTile('为您推荐')
-          this.itemsRecommend()
-        }.padding({ bottom: 50 })
-      }
+      Stack() {
+        Scroll(this.scroller) {
+          Column() {
+            this._banner()
+            this._topTags()
+            this.kingKong()
+            this.bigPromotion()
+            this.label('新人专享')
+            this.newAccount()
+            this.labelTile('类目热销榜')
+            this.categoryHotSell()
+            this.labelTile('为您推荐')
+            this.itemsRecommend()
+          }
+        }
+        .onScrollEdge((side: Edge) => {
+          if (side.valueOf() == Edge.Bottom && this.haseMore) {
+            this.recommend()
+          }
+        })
+
+        Image($r('app.media.up_top')).onClick(e => {
+          this.scroller.scrollTo({ xOffset: 0, yOffset: 0, animation: { duration: 2000, curve: Curve.Linear } })
+        }).size({ height: 40, width: 40 }).margin(20)
+      }.alignContent(Alignment.BottomEnd).layoutWeight(1)
     }
   }
 
@@ -85,32 +103,12 @@ export struct Homepage {
     GridRow({ columns: 2, gutter: 12 }) {
       ForEach(this.items, (item: ItemListItem) => {
         GridCol() {
-          Column() {
-            Image(item.listPicUrl).width('100%').aspectRatio(1).borderRadius(4)
-            Row() {
-              if (item.preLogo != null)
-              Row() {
-                ForEach(item.preLogo, (preLogoItem: TopLogo) => {
-                  Image(preLogoItem.logoUrl).height(12).borderRadius(4)
-                })
-              }
-              Text(item.name).fontSize(12).fontColor(textBlack)
-            }.alignItems(VerticalAlign.Top)
-            .margin({ right: 12, top: 10 })
-
-            Row() {
-              Text('¥' + this.getPrice(item))
-                .fontColor(textRed)
-                .fontSize(16)
-              if(item.finalPriceInfoVO.priceInfo.counterPrice == null)
-              Text('¥' + item.finalPriceInfoVO.priceInfo.counterPrice??'')
-                .fontColor(textLightGray)
-                .fontSize(12)
-            }.width('100%').alignItems(VerticalAlign.Bottom).align(Alignment.Start)
-          }
-          .justifyContent(FlexAlign.Start)
+          GoodItem(item)
         }
       })
+      GridCol({ span: 2 }) {
+        LoadingMore(this.haseMore)
+      }
     }.margin({ left: 12, right: 24 })
   }
 
@@ -148,10 +146,12 @@ export struct Homepage {
   @Builder
   categoryHotSellTopCell(item: Category, index: number) {
     Row() {
-      Column() {
-        Text(item.categoryName).fontSize(12).fontColor(textBlack).fontWeight(600)
-        Rect().width(12).height(2).fill(textBlack)
-      }.layoutWeight(1).alignItems(HorizontalAlign.Center)
+      Stack(){
+        Column() {
+          Text(item.categoryName).fontSize(12).fontColor(textBlack).fontWeight(600)
+          Rect().width(24).height(2).fill(textBlack).margin({top:2})
+        }.layoutWeight(1).align(Alignment.Start).alignItems(HorizontalAlign.Start)
+      }.layoutWeight(1)
 
       Image(item.picUrl).relativeCenter().id('image').layoutWeight(1)
     }.layoutWeight(1).backgroundColor(index == 0 ? 0xFFF7F1DD : 0xFFE4E8F0).height('100%')
@@ -235,7 +235,7 @@ export struct Homepage {
       ForEach(this.homeData.kingKongModule.kingKongList, (item: KingKongItem) => {
         GridCol() {
           Column() {
-            Image(item.picUrl).size({ width: 45 })
+            Image(item.picUrl).size({ width: 45, height: 45 })
             Divider().color(Color.Transparent).height(4)
             Text(item.text).fontColor($r('app.color.text_black')).fontSize(12)
           }.margin({ top: 10 })
@@ -275,7 +275,7 @@ export struct Homepage {
   @Builder
   searView() {
     Row() {
-      Image($r('app.media.logo_and_text')).height(20)
+      Text('网易严选').fontSize(18).fontColor(textBlack).fontWeight(600)
       Row() {
         Image($r('app.media.search_icon'))
           .size({ width: 15, height: 15 })
@@ -327,11 +327,22 @@ const searchSwiper: string[] = [
   )
 }
 
-@Styles function relativeTopCenter() {
+@Styles function relativeFull() {
   .alignRules(
     {
       top: { anchor: '__container__', align: VerticalAlign.Top },
-      middle: { anchor: '__container__', align: HorizontalAlign.Center }
+      bottom: { anchor: '__container__', align: VerticalAlign.Bottom },
+      left: { anchor: '__container__', align: HorizontalAlign.Start },
+      right: { anchor: '__container__', align: HorizontalAlign.End }
+    }
+  )
+}
+
+@Styles function relativeBottomEnd() {
+  .alignRules(
+    {
+      bottom: { anchor: '__container__', align: VerticalAlign.Bottom },
+      right: { anchor: '__container__', align: HorizontalAlign.End }
     }
   )
 }

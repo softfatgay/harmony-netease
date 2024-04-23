@@ -7,14 +7,21 @@ import { TopLogo } from '../pages/main/model/TopLogo';
   Column() {
     Image(item.listPicUrl).width('100%').aspectRatio(1).borderRadius(4)
     Row() {
-      if (item.preLogo != null)
-      Row() {
-        ForEach(item.preLogo, (preLogoItem: TopLogo) => {
-          Image(preLogoItem.logoUrl).height(12).borderRadius(4)
+      Flex({ wrap: FlexWrap.Wrap, alignItems: ItemAlign.Center }) {
+        if (item.preLogo != null)
+        Row() {
+          ForEach(item.preLogo, (preLogoItem: TopLogo) => {
+            Image(preLogoItem.logoUrl).height(16).borderRadius(4).margin({right:4})
+          })
+        }
+        ForEach(item.name.split(""), (item: string) => {
+          Text(item)
         })
-      }
-      Text(item.name).fontSize(12).fontColor(textBlack)
-    }.alignItems(VerticalAlign.Top)
+      }.layoutWeight(1)
+      // Text(item.name).fontSize(12).fontColor(textBlack)
+    }
+    .width('100%')
+    .alignItems(VerticalAlign.Top)
     .margin({ right: 12, top: 10 })
 
     Row() {
@@ -23,6 +30,7 @@ import { TopLogo } from '../pages/main/model/TopLogo';
         .fontSize(12)
       Text(getPrice(item))
         .fontColor(textRed)
+        .fontWeight(600)
         .fontSize(16)
       if (getCounterPrice(item) != null)
         Text('¥' + getCounterPrice(item))
@@ -73,7 +81,7 @@ import { TopLogo } from '../pages/main/model/TopLogo';
     Text(banner.content??'')
       .backgroundColor(appRed)
       .height(24)
-      .margin({top:4})
+      .margin({ top: 4 })
       .padding({ left: 10, right: 10 })
       .borderRadius(12)
       .fontSize(10)

@@ -4,5 +4,8 @@ export const baseUrl = "https://m.you.163.com/";
 export const URL_HOME_NEW = baseUrl + 'xhr/index.json';
 
 /// 首页推荐列表
-
 export const URL_ITEM = 'https://m.you.163.com/xhr/index/items.json'
+
+/// 分类
+export const SORT_DATA = baseUrl + '/item/cateList.json'
+

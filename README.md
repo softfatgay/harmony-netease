@@ -3,6 +3,8 @@
 
 
 ## Screenshots:
-![img_1.jpg](screenshot%2Fimg_1.jpg)
+![img1.jpeg](screenshot%2Fimg1.jpeg)
 
-![img_2.jpg](screenshot%2Fimg_2.jpg)
+![img2.jpeg](screenshot%2Fimg2.jpeg)
+
+![img3.jpeg](screenshot%2Fimg3.jpeg)

@@ -9,8 +9,8 @@ export class Category {
   categoryName: string
   targetUrl: String
   showPicUrl: String
-  wapBannerUrl: String
-  name: String
+  wapBannerUrl: string
+  name: string
   frontName: String
   test: String
   itemPicBeanList: List<ItemPicBeanList>

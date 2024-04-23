@@ -23,6 +23,10 @@
     {
       "name": "text_light_gray",
       "value": "#999999"
+    },
+    {
+      "name": "app_dark_red",
+      "value": "#ab2b2b"
     }
   ]
 }

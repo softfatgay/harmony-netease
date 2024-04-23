@@ -146,10 +146,10 @@ export struct Homepage {
   @Builder
   categoryHotSellTopCell(item: Category, index: number) {
     Row() {
-      Stack(){
+      Stack() {
         Column() {
           Text(item.categoryName).fontSize(12).fontColor(textBlack).fontWeight(600)
-          Rect().width(24).height(2).fill(textBlack).margin({top:2})
+          Rect().width(24).height(2).fill(textBlack).margin({ top: 2 })
         }.layoutWeight(1).align(Alignment.Start).alignItems(HorizontalAlign.Start)
       }.layoutWeight(1)
 
@@ -211,20 +211,30 @@ export struct Homepage {
     Column() {
       ForEach(this.floorList, (item: FloorItem) => {
         Row() {
-          ForEach(item.cells, (cell: Cells) => {
-            Row() {
-              Flex() {
-                Image(cell.picUrl)
-                if (item.layout == 2) Image(item.cells[0].itemList[0].picUrl)
-                else Row() {
-                  ForEach(cell.itemList, (cellItem: Cells) => {
-                    Image(cellItem.picUrl).height(30).width(30)
-                  })
-                }
-              }.width('100%')
-            }.width((98 / (item.columnNum)) + '%')
-          })
-        }.justifyContent(FlexAlign.SpaceBetween).height(120).width('100%')
+          GridRow({ columns: item.columnNum }) {
+            ForEach(item.cells, (cell: Cells) => {
+              GridCol() {
+                Image(cell.picUrl).objectFit(ImageFit.Fill).height(item.height / 3 + 10)
+              }
+            })
+          }.margin({ left: item.columnNum > 1 ? 6 : 0, right: item.columnNum > 1 ? 12 : 6, top: 6 })
+
+          // ForEach(item.cells, (cell: Cells) => {
+          //   Image(cell.picUrl)
+          //
+          //   // Row() {
+          //   //   Flex() {
+          //   //     // Image(cell.picUrl)
+          //   //     if (item.layout == 2 || item.layout == 1) Image(item.cells[0].picUrl)
+          //   //     else Row() {
+          //   //       ForEach(cell.itemList, (cellItem: Cells) => {
+          //   //         Image(cellItem.picUrl).height(30).width(30)
+          //   //       })
+          //   //     }
+          //   //   }.width('100%')
+          //   // }.width((98 / (item.columnNum)) + '%')
+          // })
+        }.justifyContent(FlexAlign.SpaceBetween).height((item.height / 3)).width('100%')
       })
     }.width('100%').margin({ top: 10 })
   }

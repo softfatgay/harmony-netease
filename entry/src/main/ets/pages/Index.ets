@@ -1,6 +1,6 @@
 import { tabBarList, TabBarModel } from '../model/TabBarModel'
 import { CartPage } from './main/CartPage';
-import { GroupPage } from './main/GroupPage';
+import { SortPage } from './main/SortPage';
 import { Homepage } from './main/HomePage'
 import { ProfilePage } from './main/ProfilePage';
 import { SubjectPage } from './main/SubjectPage';
@@ -18,7 +18,7 @@ struct Index {
             if (index == 0) {
               Homepage()
             } else if (index == 1) {
-              GroupPage()
+              SortPage()
             } else if (index == 2) {
               SubjectPage()
             }else if (index == 3) {

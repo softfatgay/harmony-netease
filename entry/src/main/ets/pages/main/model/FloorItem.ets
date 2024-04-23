@@ -7,5 +7,5 @@ export class FloorItem {
   cells: Array<Cells> = []
   style: Number
   taskId: Number
-  height: Number
+  height: number
 }

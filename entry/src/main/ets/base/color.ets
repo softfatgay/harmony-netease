@@ -8,3 +8,4 @@ export const textWhite = Color.White
 export const textGray = $r('app.color.text_gray')
 export const lineColor = $r('app.color.text_light_gray')
 export const textLightGray = $r('app.color.text_light_gray')
+export const backgroundColor = $r('app.color.back_ground_color')

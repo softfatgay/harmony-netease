@@ -27,6 +27,10 @@
     {
       "name": "app_dark_red",
       "value": "#ab2b2b"
+    },
+    {
+      "name": "back_ground_color",
+      "value": "#eeeeee"
     }
   ]
 }

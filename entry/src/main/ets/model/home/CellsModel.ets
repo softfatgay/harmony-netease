@@ -1,4 +1,3 @@
-import List from '@ohos.util.List'
 export class Cells {
   subTitleColor: String
   rcmdItem: Boolean

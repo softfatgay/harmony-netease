@@ -1,4 +1,4 @@
-import { ItemListItem } from './ItemListItem'
+import { ItemListItem } from '../ItemListItem'
 
 export class HomeItems {
   itemList: Array<ItemListItem> = []

@@ -4,18 +4,17 @@ import { ResponseData } from '../../base/BaseModel'
 import { appRed, textBlack, textLightGray, textRed, textWhite } from '../../base/color'
 import { margin_screen } from '../../base/dimens'
 import { redPackageUrl } from '../../base/Url'
-import { Category } from './model/Category'
-import { CategoryHotSellModule } from './model/CategoryHotSellModule'
+import { Category } from '../../model/Category'
+import { CategoryHotSellModule } from '../../model/home/CategoryHotSellModule'
 
-import { Cells } from './model/CellsModel'
-import { FloorItem } from './model/FloorItem'
-import { FocusItem } from './model/FocusItem'
-import { HomeItems } from './model/HomeItems'
-import { HomeDataModel, HomeModel } from './model/HomeModel'
-import { ItemListItem } from './model/ItemListItem'
-import { KingKongItem } from './model/KingKongModule'
-import { PolicyDescItem } from './model/PolicyDescItem'
-import { TopLogo } from './model/TopLogo'
+import { Cells } from '../../model/home/CellsModel'
+import { FloorItem } from '../../model/home/FloorItem'
+import { FocusItem } from '../../model/home/FocusItem'
+import { HomeItems } from '../../model/home/HomeItems'
+import { HomeDataModel, HomeModel } from '../../model/home/HomeModel'
+import { ItemListItem } from '../../model/ItemListItem'
+import { KingKongItem } from '../../model/home/KingKongModule'
+import { PolicyDescItem } from '../../model/home/PolicyDescItem'
 import { Loading } from '../../component/Loading'
 import { GoodItem } from '../../component/GoodItem'
 import { LoadingMore } from '../../component/LoadingMore'
@@ -23,13 +22,13 @@ import { LoadingMore } from '../../component/LoadingMore'
 @Entry
 @Component
 export struct Homepage {
-  @State homeData: HomeDataModel = null
-  @State floorList: Array<FloorItem> = []
-  @State categoryHotSellModule: CategoryHotSellModule = null
-  @State itemIdsStr: string = ''
-  @State haseMore: boolean = false
-  @State items: Array<ItemListItem> = []
-  scroller = new Scroller()
+  @State private homeData: HomeDataModel = null
+  @State private floorList: Array<FloorItem> = []
+  @State private categoryHotSellModule: CategoryHotSellModule = null
+  @State private itemIdsStr: string = ''
+  @State private haseMore: boolean = false
+  @State private items: Array<ItemListItem> = []
+  private scroller = new Scroller()
 
   aboutToAppear() {
     axios.get<ResponseData<HomeModel>>(URL_HOME_NEW, {
@@ -109,7 +108,7 @@ export struct Homepage {
       GridCol({ span: 2 }) {
         LoadingMore(this.haseMore)
       }
-    }.margin({ left: 12, right: 24 })
+    }.margin({ left: 12, right: 16 })
   }
 
   getPrice(item: ItemListItem) {

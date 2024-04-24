@@ -1,5 +1,4 @@
-import List from '@ohos.util.List'
-import { Category } from './Category'
+import { Category } from '../Category'
 export class CategoryHotSellModule {
   titleTargetUrl: String
   title: String

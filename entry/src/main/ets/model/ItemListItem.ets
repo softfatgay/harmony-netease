@@ -1,10 +1,10 @@
 import List from '@ohos.util.List'
-import { FinalPriceInfoVO } from './FinalPriceInfoVO'
-import { HotSaleListBottomInfo } from './HotSaleListBottomInfo'
+import { FinalPriceInfoVO } from './home/FinalPriceInfoVO'
+import { HotSaleListBottomInfo } from './home/HotSaleListBottomInfo'
 import { ItemTagListItem } from './ItemTagListItem'
 import { ListPromBanner } from './ListPromBanner'
 import { SkuSpecListItem } from './SkuSpecListItem'
-import { TopLogo } from './TopLogo'
+import { Logo } from './Logo'
 
 export class ItemListItem {
   id: Number
@@ -39,8 +39,8 @@ export class ItemListItem {
   itemTagList: List<ItemTagListItem>
   listPromBanner: ListPromBanner
   skuSpecList: List<SkuSpecListItem>
-  topLogo: TopLogo
-  preLogo: Array<TopLogo>
+  topLogo: Logo
+  preLogo: Array<Logo>
   ///新品首发中使用
   sortOriginPrice: Number
 }

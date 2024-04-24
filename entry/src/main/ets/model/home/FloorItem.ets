@@ -1,5 +1,5 @@
-import List from '@ohos.util.List'
 import { Cells } from './CellsModel'
+
 export class FloorItem {
   layout: Number
   columnNum: number

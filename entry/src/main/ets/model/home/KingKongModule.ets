@@ -1,5 +1,3 @@
-import List from '@ohos.util.List'
-
 export class KingKongModule {
   norColor: String
   background: String

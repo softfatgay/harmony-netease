@@ -3,7 +3,7 @@ import { CartPage } from './main/CartPage';
 import { SortPage } from './main/SortPage';
 import { Homepage } from './main/HomePage'
 import { ProfilePage } from './main/ProfilePage';
-import { SubjectPage } from './main/SubjectPage';
+import { TopicPage } from './main/TopicPage';
 
 @Entry
 @Component
@@ -20,7 +20,7 @@ struct Index {
             } else if (index == 1) {
               SortPage()
             } else if (index == 2) {
-              SubjectPage()
+              TopicPage()
             }else if (index == 3) {
               CartPage()
             } else {

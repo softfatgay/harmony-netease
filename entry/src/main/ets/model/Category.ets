@@ -1,6 +1,6 @@
 import List from '@ohos.util.List'
 import { BannerItem } from './BannerItem'
-import { ItemPicBeanList } from './ItemPicBeanList'
+import { ItemPicBeanList } from './home/ItemPicBeanList'
 export class Category {
   id: Number
   superCategoryId: Number

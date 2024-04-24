@@ -1,7 +1,7 @@
 import { appRed, textBlack, textLightGray, textRed, textWhite } from '../base/color';
-import { BannerVO } from '../pages/main/model/FinalPriceInfoVO';
-import { ItemListItem } from '../pages/main/model/ItemListItem';
-import { TopLogo } from '../pages/main/model/TopLogo';
+import { BannerVO } from '../model/home/FinalPriceInfoVO';
+import { ItemListItem } from '../model/ItemListItem';
+import { Logo } from '../model/Logo';
 
 @Builder function GoodItem(item: ItemListItem) {
   Column() {
@@ -10,8 +10,8 @@ import { TopLogo } from '../pages/main/model/TopLogo';
       Flex({ wrap: FlexWrap.Wrap, alignItems: ItemAlign.Center }) {
         if (item.preLogo != null)
         Row() {
-          ForEach(item.preLogo, (preLogoItem: TopLogo) => {
-            Image(preLogoItem.logoUrl).height(16).borderRadius(4).margin({right:4})
+          ForEach(item.preLogo, (preLogoItem: Logo) => {
+            Image(preLogoItem.logoUrl).height(16).borderRadius(4).margin({ right: 4 })
           })
         }
         ForEach(item.name.split(""), (item: string) => {

@@ -3,23 +3,25 @@ import List from '@ohos.util.List'
 import { SORT_DATA } from '../../base/Api'
 import { ResponseData } from '../../base/BaseModel'
 import { appRed, darkRed, lineColor, textBlack, textGray, textRed } from '../../base/color'
-import { SortData } from './model/sort/SortData'
-import { CategoryL1Item } from './model/sort/CategoryL1Item'
+import { SortData } from '../../model/sort/SortData'
+import { CategoryL1Item } from '../../model/sort/CategoryL1Item'
 import { Loading } from '../../component/Loading'
-import { CategoryGroupItem } from './model/sort/CategoryGroupItem'
-import { BannerItem } from './model/BannerItem'
-import { Category } from './model/Category'
+import { CategoryGroupItem } from '../../model/sort/CategoryGroupItem'
+import { BannerItem } from '../../model/BannerItem'
+import { Category } from '../../model/Category'
 import { PageState } from '../../base/PageState'
+import HashMap from '@ohos.util.HashMap'
 
 @Entry
 @Component
 export struct SortPage {
-  @State categoryId: string = ''
-  @State sortData: SortData = null
-  @State index: number = 0
-  @State dataContent: SortModel = null
-  categoryL1List: Array<CategoryL1Item> = null
-  @State loadingState: PageState = PageState.Loading
+  @State private categoryId: string = ''
+  @State private sortData: SortData = null
+  @State private index: number = 0
+  @State private dataContent: SortModel = null
+  private categoryL1List: Array<CategoryL1Item> = null
+  @State private loadingState: PageState = PageState.Loading
+  private allData: HashMap<number, SortModel> = new HashMap()
 
   aboutToAppear() {
     this.getData()
@@ -35,10 +37,9 @@ export struct SortPage {
       }
       if (this.sortData.categoryGroupList != null) {
         this.dataContent = new SortModel(this.sortData.categoryGroupList, this.sortData.currentCategory.bannerList)
+        this.allData.set(this.sortData.currentCategory.id, this.dataContent)
       }
       this.loadingState = PageState.Success
-      console.log('================SortPage')
-      console.log(this.sortData.categoryL1List.length + "")
     }
     ).catch(err => {
       this.loadingState = PageState.Error
@@ -90,6 +91,9 @@ export struct SortPage {
               .backgroundColor(0xeeeeee)
           })
         }
+        .indicator(this.needIndicator())
+        .disableSwipe(!this.needIndicator())
+        .autoPlay(this.needIndicator())
 
         ForEach(this.dataContent.dataList, (item: CategoryGroupItem) => {
           Column() {
@@ -111,7 +115,11 @@ export struct SortPage {
           }.alignItems(HorizontalAlign.Start).margin({ top: 20 })
         })
       }
-    }.layoutWeight(1).height('100%').padding(10).align(Alignment.Top)
+    }
+    .layoutWeight(1)
+    .height('100%')
+    .padding(10)
+    .align(Alignment.Top)
   }
 
   getTabs() {
@@ -135,13 +143,20 @@ export struct SortPage {
             Text(item.name)
               .layoutWeight(1)
               .textAlign(TextAlign.Center)
+              .fontSize(14)
+              .fontWeight(600)
               .fontColor(this.index == index ? textRed : textBlack)
               .height('100%')
           }.height(50).width('100%').onClick(event => {
-            this.loadingState = PageState.Loading
             this.categoryId = item.id + ''
             this.index = index
-            this.getData()
+            let content = this.allData.get(item.id)
+            if (content == null) {
+              this.loadingState = PageState.Loading
+              this.getData()
+            } else {
+              this.dataContent = content
+            }
           })
         })
       }.alignItems(HorizontalAlign.Center)
@@ -169,6 +184,10 @@ export struct SortPage {
     .width('100%')
     .height(40)
     .padding({ left: 6, right: 12 })
+  }
+
+  needIndicator(): boolean {
+    return this.dataContent.bannerList != null && this.dataContent.bannerList.length > 1
   }
 }
 

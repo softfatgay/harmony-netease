@@ -1,4 +1,4 @@
-export class TopLogo {
+export class Logo {
   logoUrl: string
   width: number
   height: number

@@ -7,7 +7,7 @@ export class KingKongModule {
 
 export class KingKongItem {
   picUrl: string
-  schemeUrl: String
+  schemeUrl: string
   text: string
   textColor: String
 }

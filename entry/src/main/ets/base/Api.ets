@@ -1,4 +1,4 @@
-export const baseUrl = "https://m.you.163.com";
+export const baseUrl = 'https://m.you.163.com';
 
 ///首页
 export const URL_HOME_NEW = baseUrl + '/xhr/index.json';
@@ -14,6 +14,15 @@ export const TOPIC_NAVWAP = baseUrl + '/topic/v1/know/navWap.json'
 
 /// 值得买头部数据
 export const TOPIC_LIST = baseUrl + '/topic/v1/find/recAuto.json'
+
+///热销榜/标题
+export const HOT_LIST_CAT = baseUrl + '/item/saleRank.json';
+
+///热销榜/条目
+export const HOT_LIST_LIST = baseUrl + '/xhr/item/saleRankItems.json';
+
+///热销榜名单
+export const SUBMIT_ORDER_INFO = baseUrl + '/xhr/item/getSubmitOrderInfo.json';
 
 
 

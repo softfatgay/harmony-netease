@@ -18,6 +18,10 @@ import { PolicyDescItem } from '../../model/home/PolicyDescItem'
 import { Loading } from '../../component/Loading'
 import { GoodItem } from '../../component/GoodItem'
 import { LoadingMore } from '../../component/LoadingMore'
+import router from '@ohos.router'
+import HashMap from '@ohos.util.HashMap'
+import uri from '@ohos.uri'
+import Url from '@ohos.url'
 
 @Entry
 @Component
@@ -135,11 +139,30 @@ export struct Homepage {
             Column() {
               Text(item.categoryName).fontSize(10).fontColor(textBlack).margin({ top: 10 })
               Image(item.picUrl).height(50).margin({ top: 10, bottom: 10 })
-            }.backgroundColor(0xFFF2F2F2).width('100%')
+            }
+            .backgroundColor(0xFFF2F2F2)
+            .width('100%')
+            .onClick(e => this.go2HotListPage(item))
           }
         })
       }.margin({ top: 6 })
     }.margin({ left: 6, right: margin_screen })
+  }
+
+  go2HotListPage(item: Category) {
+    let url = item.targetUrl
+    if (url != null && url.includes('categoryId')) {
+      let urlObject = Url.URL.parseURL(url)
+      let params = new Url.URLParams(urlObject.search)
+      let categoryId = params.get('categoryId')
+      router.pushUrl({
+        url: 'pages/HotPage',
+        params: {
+          'categoryId': categoryId,
+          'name': item.name,
+        }
+      })
+    }
   }
 
   @Builder
@@ -150,10 +173,14 @@ export struct Homepage {
           Text(item.categoryName).fontSize(12).fontColor(textBlack).fontWeight(600)
           Rect().width(24).height(2).fill(textBlack).margin({ top: 2 })
         }.layoutWeight(1).align(Alignment.Start).alignItems(HorizontalAlign.Start)
-      }.layoutWeight(1)
+      }
+      .layoutWeight(1)
 
       Image(item.picUrl).relativeCenter().id('image').layoutWeight(1)
-    }.layoutWeight(1).backgroundColor(index == 0 ? 0xFFF7F1DD : 0xFFE4E8F0).height('100%')
+    }
+    .layoutWeight(1)
+    .backgroundColor(index == 0 ? 0xFFF7F1DD : 0xFFE4E8F0).height('100%')
+    .onClick(e => this.go2HotListPage(item))
   }
 
   @Builder
@@ -247,7 +274,15 @@ export struct Homepage {
             Image(item.picUrl).size({ width: 45, height: 45 })
             Divider().color(Color.Transparent).height(4)
             Text(item.text).fontColor($r('app.color.text_black')).fontSize(12)
-          }.margin({ top: 10 })
+          }
+          .margin({ top: 10 })
+          .onClick(event => {
+            let param = new HashMap<string, string>()
+            param.set("schemeUrl", item.schemeUrl)
+            router.pushUrl(
+              { url: 'pages/WebView', params: { "schemeUrl": item.schemeUrl } }
+            )
+          })
         }
       })
     }

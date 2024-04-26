@@ -7,7 +7,7 @@ export class Category {
   showIndex: Number
   picUrl: string
   categoryName: string
-  targetUrl: String
+  targetUrl: string
   showPicUrl: String
   wapBannerUrl: string
   name: string

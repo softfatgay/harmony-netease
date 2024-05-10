@@ -24,5 +24,8 @@ export const HOT_LIST_LIST = baseUrl + '/xhr/item/saleRankItems.json';
 ///热销榜名单
 export const SUBMIT_ORDER_INFO = baseUrl + '/xhr/item/getSubmitOrderInfo.json';
 
+/// kingkong
+export const URL_KING_KONG = baseUrl + '/item/list.json';
+
 
 

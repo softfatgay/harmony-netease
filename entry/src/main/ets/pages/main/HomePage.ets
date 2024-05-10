@@ -277,15 +277,38 @@ export struct Homepage {
           }
           .margin({ top: 10 })
           .onClick(event => {
-            let param = new HashMap<string, string>()
-            param.set("schemeUrl", item.schemeUrl)
-            router.pushUrl(
-              { url: 'pages/WebView', params: { "schemeUrl": item.schemeUrl } }
-            )
+            // let param = new HashMap<string, string>()
+            // param.set("schemeUrl", item.schemeUrl)
+            // router.pushUrl(
+            //   { url: 'pages/WebView', params: { "schemeUrl": item.schemeUrl } }
+            // )
+            this._goKingKong(item.schemeUrl);
+
           })
         }
       })
     }
+  }
+
+  _goKingKong(schemeUrl: string) {
+    let url = decodeURI(schemeUrl)
+    if (url.includes('item/list')) {
+      let split = url.split('categoryId=')
+      let splitincludeId = split[1]
+      let splitId = splitincludeId.split('&')
+      let categoryId = splitId[0]
+      router.pushUrl({ url: 'pages/KingKongListPage', params: { 'categoryId': categoryId } })
+    } else if (url.includes('item/newItem')) {
+
+    } else {
+      this._goWebView(schemeUrl)
+    }
+  }
+
+  _goWebView(url: string) {
+    router.pushUrl(
+      { url: 'pages/WebView', params: { "schemeUrl": url } }
+    )
   }
 
   @Builder

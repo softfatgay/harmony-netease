@@ -1,6 +1,5 @@
 import webview from '@ohos.web.webview';
 import router from '@ohos.router';
-import HashMap from '@ohos.util.HashMap';
 
 @Entry
 @Component

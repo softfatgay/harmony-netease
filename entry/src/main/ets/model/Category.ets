@@ -1,7 +1,9 @@
 import List from '@ohos.util.List'
 import { BannerItem } from './BannerItem'
 import { ItemPicBeanList } from './home/ItemPicBeanList'
-export class Category {
+import { KingKongType } from './kinfkong/KingKongType'
+
+export class Category extends KingKongType {
   id: Number
   superCategoryId: Number
   showIndex: Number
@@ -12,7 +14,9 @@ export class Category {
   wapBannerUrl: string
   name: string
   frontName: String
+  frontDesc: string
   test: String
   itemPicBeanList: List<ItemPicBeanList>
-  bannerList: List<BannerItem>
+  bannerList: Array<BannerItem>
+  type: number = 0
 }

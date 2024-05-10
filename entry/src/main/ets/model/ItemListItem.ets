@@ -5,8 +5,9 @@ import { ItemTagListItem } from './ItemTagListItem'
 import { ListPromBanner } from './ListPromBanner'
 import { SkuSpecListItem } from './SkuSpecListItem'
 import { Logo } from './Logo'
+import { KingKongType } from './kinfkong/KingKongType'
 
-export class ItemListItem {
+export class ItemListItem extends KingKongType{
   id: Number
   listPicUrl: string
   name: string

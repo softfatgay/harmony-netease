@@ -1,7 +1,7 @@
 {
   "src": [
     "pages/Index",
-    "pages/KingkongListPage",
+    "pages/KingKongListPage",
     "pages/WebView",
     "pages/HotPage"
   ]

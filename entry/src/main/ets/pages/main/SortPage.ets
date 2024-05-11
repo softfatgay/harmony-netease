@@ -5,7 +5,7 @@ import { ResponseData } from '../../base/BaseModel'
 import { appRed, darkRed, lineColor, textBlack, textGray, textRed } from '../../base/color'
 import { SortData } from '../../model/sort/SortData'
 import { CategoryL1Item } from '../../model/sort/CategoryL1Item'
-import { Loading } from '../../component/Loading'
+import { PageLoading } from '../../component/PageLoading'
 import { CategoryGroupItem } from '../../model/sort/CategoryGroupItem'
 import { BannerItem } from '../../model/BannerItem'
 import { Category } from '../../model/Category'
@@ -48,7 +48,7 @@ export struct SortPage {
   }
 
   build() {
-    if (this.dataContent == null) Loading()
+    if (this.dataContent == null) PageLoading()
     else Column() {
       this.searchBar()
       this.content()
@@ -78,7 +78,7 @@ export struct SortPage {
   @Builder
   tabContent() {
     if (this.loadingState == PageState.Loading) Stack() {
-      Loading(40)
+      PageLoading()
     }.layoutWeight(1)
     else Scroll() {
       Column() {

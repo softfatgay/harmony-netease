@@ -1,7 +1,5 @@
-import { Loading } from './Loading'
-
 @Builder function LoadingMore(hasMore: boolean = true) {
-  if (hasMore) Loading(40)
+  if (hasMore) LoadingProgress().color(Color.Blue).size({ width: 40, height: 40 })
   else Text('没有更多了')
 }
 

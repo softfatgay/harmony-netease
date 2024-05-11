@@ -15,12 +15,10 @@ import { HomeDataModel, HomeModel } from '../../model/home/HomeModel'
 import { ItemListItem } from '../../model/ItemListItem'
 import { KingKongItem } from '../../model/home/KingKongModule'
 import { PolicyDescItem } from '../../model/home/PolicyDescItem'
-import { Loading } from '../../component/Loading'
+import { PageLoading } from '../../component/PageLoading'
 import { GoodItem } from '../../component/GoodItem'
 import { LoadingMore } from '../../component/LoadingMore'
 import router from '@ohos.router'
-import HashMap from '@ohos.util.HashMap'
-import uri from '@ohos.uri'
 import Url from '@ohos.url'
 
 @Entry
@@ -70,7 +68,7 @@ export struct Homepage {
   }
 
   build() {
-    if (this.homeData == null) Loading()
+    if (this.homeData == null) PageLoading()
     else Column() {
       this.searView()
       Stack() {
@@ -299,7 +297,7 @@ export struct Homepage {
       let categoryId = splitId[0]
       router.pushUrl({ url: 'pages/KingKongListPage', params: { 'categoryId': categoryId } })
     } else if (url.includes('item/newItem')) {
-
+      this._goWebView(schemeUrl)
     } else {
       this._goWebView(schemeUrl)
     }

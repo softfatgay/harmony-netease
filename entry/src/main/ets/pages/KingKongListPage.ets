@@ -12,7 +12,9 @@ import { KingKongType } from '../model/kinfkong/KingKongType'
 import { GoodItem } from '../component/GoodItem'
 import { backgroundColor, textBlack, textGray } from '../base/color'
 import { TitleBar } from '../component/TitleBar'
-
+import { TopBar } from '../component/TopBar'
+import { PageState } from '../base/PageState'
+import { PageLoading } from '../component/PageLoading'
 
 @Entry
 @Component
@@ -22,6 +24,7 @@ struct KingKongListPage {
   @State _categoryItemList: Array<CategoryItemListItem> = []
   @State _bannerList: Array<BannerItem> = []
   @State _viewData: Array<any> = []
+  @State _pageState: PageState = PageState.Loading
 
   aboutToAppear() {
     let id = router.getParams()['categoryId'] as string
@@ -43,22 +46,32 @@ struct KingKongListPage {
       this._title = kingkong.currentCategory.name
       this._categoryItemList = kingkong.categoryItemList ?? []
       this._getViewItem()
+      this._pageState = PageState.Success
     }).catch(err => {
+      this._pageState = PageState.Error
     })
+  }
+
+  onChangeHandler(title) {
+    this._title = title;
   }
 
   build() {
     Column() {
-      TitleBar(this._title)
+      TopBar({ title: this._title })
       Scroll() {
-        GridRow({ columns: 2, gutter: 8 }) {
+        if (this._pageState == PageState.Loading) PageLoading()
+        else GridRow({ columns: 2, gutter: 8 }) {
           ForEach(this._viewData, (item: any) => {
             if (item.type == 0) {
               GridCol({ span: 2 }) {
                 Column() {
                   Text(item.name).fontSize(14).fontColor(textBlack)
                   Text(item.frontDesc).fontSize(12).fontColor(textGray).margin({ top: 2 })
-                }.padding({ top: 12, bottom: 12 }).margin({top:10})
+                }
+                .padding({ top: 12, bottom: 12 })
+                .margin({ top: 10 })
+
               }
             } else {
               GridCol() {
@@ -66,8 +79,8 @@ struct KingKongListPage {
               }
             }
           })
-        }.padding({left:12,right:12})
-      }.layoutWeight(1)
+        }.padding({ left: 8, right: 16 })
+      }.layoutWeight(1).align(Alignment.Center)
     }.height('100%').width('100%').backgroundColor(backgroundColor)
   }
 

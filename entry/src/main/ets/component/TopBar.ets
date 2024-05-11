@@ -1,21 +1,26 @@
 import router from '@ohos.router'
 import { textBlack } from '../base/color'
 
-@Builder
-export function TitleBar($$: { title: string }) {
-  RelativeContainer() {
-    Image($r('app.media.back'))
-      .onClick(e => {
-        router.back()
-      })
-      .height(46)
-      .padding(8)
-      .id('image')
-      .relativeStartCenter()
-    Text(`${$$.title}`).fontSize(18).fontColor(textBlack).id('tv').relativeCenter()
-  }.height(46).width('100%')
+@Component
+export struct TopBar {
+  @Prop title: string;
+  build() {
+    RelativeContainer() {
+      Image($r('app.media.back'))
+        .onClick(e => {
+          router.back()
+        })
+        .height(46)
+        .padding(8)
+        .id('image')
+        .relativeStartCenter()
+      Text(`${this.title}`).fontSize(18).fontColor(textBlack).id('tv').relativeCenter()
+    }
+    .height(46)
+    .width('100%')
+    .backgroundColor(Color.White)
+  }
 }
-
 
 @Styles function relativeCenter() {
   .alignRules(

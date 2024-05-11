@@ -7,7 +7,7 @@ import { ItemListItem } from '../model/ItemListItem'
 import { HotListData } from '../model/hotlist/HotListData'
 import { appRed, backgroundColor, textBlack, textRed } from '../base/color'
 import { CurrentCategory } from '../model/sort/CurrentCategory'
-import { Loading } from '../component/Loading'
+import { PageLoading } from '../component/PageLoading'
 import { GoodItem } from '../component/GoodItem'
 
 @Entry
@@ -89,7 +89,7 @@ struct HotPage {
   }
 
   build() {
-    if (this.hotListNav == null) Loading()
+    if (this.hotListNav == null) PageLoading()
     else Column() {
       Stack() {
         this.header()

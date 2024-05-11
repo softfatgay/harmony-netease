@@ -3,7 +3,7 @@ export class ItemTagListItem {
   subType: number
   tagId: number
   itemId: number
-  name: String
+  name: string
   forbidJump: boolean
   freshmanExclusive: boolean
 }

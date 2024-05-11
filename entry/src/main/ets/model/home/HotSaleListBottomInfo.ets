@@ -1,4 +1,4 @@
 export class HotSaleListBottomInfo {
-  iconUrl: String
-  content: String
+  iconUrl: string
+  content: string
 }

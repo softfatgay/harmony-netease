@@ -24,7 +24,7 @@ export class HomeDataModel {
   focusList: Array<FocusItem>
   sceneLightShoppingGuideModule: List<SceneLightShoppingGuideModule>
   kingKongModule: KingKongModule
-  indexActivityModule: List<IndexActivityModule>
+  indexActivityModule: Array<IndexActivityModule>
   newItemList: List<NewItemModel>
   flashSaleModule: FlashSaleModule
   freshmanUrl: String

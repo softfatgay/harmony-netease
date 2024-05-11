@@ -5,10 +5,12 @@ import { ResponseData } from '../base/BaseModel'
 import { HotListNav } from '../model/hotlist/NavCat'
 import { ItemListItem } from '../model/ItemListItem'
 import { HotListData } from '../model/hotlist/HotListData'
-import { appRed, backgroundColor, textBlack, textRed } from '../base/color'
+import { appRed, appWhite, backgroundColor, backRedLight, textBlack, textGray, textRed, textWhite } from '../base/color'
 import { CurrentCategory } from '../model/sort/CurrentCategory'
 import { PageLoading } from '../component/PageLoading'
-import { GoodItem } from '../component/GoodItem'
+import { GoodItem, GoodTagName } from '../component/GoodItem'
+import { ItemTagListItem } from '../model/ItemTagListItem'
+import { dftAvatarIcon } from '../base/Url'
 
 @Entry
 @Component
@@ -107,20 +109,142 @@ struct HotPage {
             .autoPlay(true)
             .indicator(false)
             .height(20)
-            .margin({ top: 100 })
+            .margin({ top: 120, bottom: 30 })
           }.width('100%')
 
           ListItemGroup({ header: this.stick() }) {
-            ForEach(this.dataList, (item: ItemListItem) => {
+            ForEach(this.dataList, (item: ItemListItem, index: number) => {
               ListItem() {
-                GoodItem(item)
+                this.itemView(item, index)
               }
             })
           }
         }
+        .padding({ left: 12, right: 12 })
         .sticky(StickyStyle.Header)
       }.align(Alignment.Top)
-    }.width('100%')
+    }
+    .width('100%')
+    .backgroundColor(backgroundColor)
+  }
+
+  @Builder
+  itemView(item: ItemListItem, index: number) {
+    Column() {
+      Row() {
+        Stack() {
+          Image(item.listPicUrl)
+            .width('100%')
+            .height('100%')
+            .borderRadius(6)
+          this._sortIcon(index)
+        }
+        .height(120)
+        .width(120)
+        .alignContent(Alignment.TopStart)
+
+        Column() {
+          GoodTagName(item)
+          /// 好评率
+          Row() {
+            if (item.goodCmtRate != null) Row() {
+              Image($r('app.media.zan'))
+                .size({ width: 12, height: 12 })
+                .backgroundColor(Color.White)
+                .borderRadius(6)
+                .padding(2)
+              Text(`${item.goodCmtRate}好评率`).fontSize(10).fontColor(textWhite)
+            }.linearGradient({
+              direction: GradientDirection.Right, // 渐变方向
+              repeating: false, // 渐变颜色是否重复
+              colors: [[0xFFCF2524, 0.0], [0xFFFFA77E, 1.0]] // 数组末尾元素占比小于1时满足重复着色效果
+            })
+            .height(14)
+            .padding({ left: 1, right: 6, top: 1, bottom: 1 })
+            .borderRadius(6)
+
+            ForEach(item.itemTagList??[], (item: ItemTagListItem) => {
+              Text(item.name)
+                .fontSize(10)
+                .fontColor(textWhite)
+                .backgroundColor(backRedLight)
+                .padding(2)
+                .borderRadius(6)
+            })
+          }
+          .width('100%')
+          .align(Alignment.Start)
+          .margin({ top: 10 })
+
+          Row() {
+            Text(`$${item.retailPrice}`)
+              .fontSize(20)
+              .fontColor(textRed)
+              .fontWeight(600)
+            Text(`$${item.counterPrice}`)
+              .fontSize(12)
+              .fontColor(textGray)
+              .decoration({ type: TextDecorationType.LineThrough })
+          }
+          .width('100%')
+          .alignItems(VerticalAlign.Bottom)
+          .margin({ top: 20 })
+        }
+        .layoutWeight(1)
+        .padding(10)
+      }
+      .align(Alignment.TopStart)
+      .alignItems(VerticalAlign.Top)
+      .width('100%')
+
+      if (item.hotSaleListBottomInfo != null)
+      Row() {
+        Image(item.hotSaleListBottomInfo.iconUrl ?? dftAvatarIcon)
+          .height('100%')
+          .borderRadius(10)
+        Text(item.hotSaleListBottomInfo.content ?? '')
+          .layoutWeight(1)
+          .fontSize(12)
+          .fontColor(textGray)
+          .maxLines(1)
+          .textOverflow({
+            overflow: TextOverflow.Ellipsis
+          })
+          .textAlign(TextAlign.Start)
+          .padding({ left: 6, right: 6 })
+      }
+      .width('100%')
+      .backgroundColor(0xFFF6F6F6)
+      .borderRadius(10)
+      .height(20)
+      .margin({ top: 12 })
+    }
+    .padding(6)
+    .width('100%')
+    .backgroundColor(appWhite)
+    .borderRadius(8)
+    .margin({ top: 12 })
+  }
+
+  @Builder
+  _sortIcon(index: number) {
+    if (index == 0)
+      Image('https://yanxuan.nosdn.127.net/f1566323de5e538cfd1c1845685285f2.png')
+        .size({ width: 25, height: 25 })
+        .borderRadius(6)
+    else if (index == 1)
+      Image('https://yanxuan.nosdn.127.net/5d91018eda410767b27ec57b8bf9b929.png')
+        .size({ width: 25, height: 25 })
+        .borderRadius(6)
+    else if (index == 1)
+      Image('https://yanxuan.nosdn.127.net/89748e835b8ffb8a328d945bc2b9de93.png')
+        .size({ width: 25, height: 25 })
+        .borderRadius(6)
+    else Text(`${index + 1}`)
+      .size({ width: 20, height: 20 })
+      .textAlign(TextAlign.Center)
+      .backgroundColor(0xFFD2D3D2)
+      .borderRadius(10)
   }
 
   @Builder
@@ -129,15 +253,20 @@ struct HotPage {
       Row() {
         Tabs() {
           ForEach(this.subCateList, (item: CurrentCategory, index: number) => {
-            TabContent().visibility(Visibility.Hidden).size({ height: 0, width: 0 }).tabBar(this.TabBuilder(item, index))
+            TabContent()
+              .visibility(Visibility.Hidden)
+              .size({ height: 0, width: 0 })
+              .tabBar(this.TabBuilder(item, index))
           })
         }.scrollable(true)
       }
       .backgroundColor(Color.White)
-      .borderRadius(20)
+      .borderRadius(6)
       .height(40)
       .alignItems(VerticalAlign.Center)
-    }.scrollable(ScrollDirection.Vertical).width('100%')
+    }
+    .scrollable(ScrollDirection.Vertical)
+    .width('100%')
   }
 
   @Builder TabBuilder(item: CurrentCategory, index: number) {

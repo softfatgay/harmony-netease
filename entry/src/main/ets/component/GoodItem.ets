@@ -6,24 +6,7 @@ import { Logo } from '../model/Logo';
 @Builder function GoodItem(item: ItemListItem) {
   Column() {
     Image(item.listPicUrl).width('100%').aspectRatio(1).borderRadius(4)
-    Row() {
-      Flex({ wrap: FlexWrap.Wrap, alignItems: ItemAlign.Center }) {
-        if (item.preLogo != null)
-        Row() {
-          ForEach(item.preLogo, (preLogoItem: Logo) => {
-            Image(preLogoItem.logoUrl).height(16).borderRadius(4).margin({ right: 4 })
-          })
-        }
-        ForEach(item.name.split(""), (item: string) => {
-          Text(item).fontSize(12).fontColor(textBlack).fontWeight(500)
-        })
-      }.layoutWeight(1)
-      // Text(item.name).fontSize(12).fontColor(textBlack)
-    }
-    .width('100%')
-    .alignItems(VerticalAlign.Top)
-    .margin({ right: 12, top: 10 })
-    .padding({left:6,right:6})
+    GoodTagName(item)
     Row() {
       Text(getPricePrefix(item))
         .fontColor(textRed)
@@ -38,18 +21,40 @@ import { Logo } from '../model/Logo';
           .fontSize(12)
           .margin({ left: 4 })
           .decoration({ type: TextDecorationType.LineThrough })
-    }.width('100%')
+    }
+    .width('100%')
     .alignItems(VerticalAlign.Bottom)
     .align(Alignment.Start)
     .margin({ top: 6 })
-    .padding({left:6,right:6})
+    .padding({ left: 6, right: 6 })
+
     GoodItemTag(item.finalPriceInfoVO.banner)
   }
   .width('100%')
   .backgroundColor(Color.White)
   .borderRadius(6)
   .alignItems(HorizontalAlign.Start)
-  .padding({bottom:12})
+  .padding({ bottom: 12 })
+}
+
+@Builder function GoodTagName(item: ItemListItem) {
+  Row() {
+    Flex({ wrap: FlexWrap.Wrap, alignItems: ItemAlign.Center }) {
+      if (item.preLogo != null)
+      Row() {
+        ForEach(item.preLogo, (preLogoItem: Logo) => {
+          Image(preLogoItem.logoUrl).height(16).borderRadius(4).margin({ right: 4 })
+        })
+      }
+      ForEach(item.name.split(""), (item: string) => {
+        Text(item).fontSize(13).fontColor(textBlack).fontWeight(600)
+      })
+    }.layoutWeight(1)
+  }
+  .width('100%')
+  .alignItems(VerticalAlign.Top)
+  .margin({ right: 12, top: 6 })
+  .padding({ left: 6, right: 6 })
 }
 
 @Builder function GoodItemTag(banner: BannerVO) {
@@ -79,7 +84,7 @@ import { Logo } from '../model/Logo';
   .alignItems(VerticalAlign.Center)
   .backgroundColor('#ffe9eb')
   .borderRadius(12)
-  .margin({left:6,right:6,top:4})
+  .margin({ left: 6, right: 6, top: 4 })
 
   if (banner != null && banner.title == null && banner.content != null)
     Text(banner.content??'')
@@ -91,7 +96,7 @@ import { Logo } from '../model/Logo';
       .fontSize(10)
       .fontColor(textWhite)
       .fontWeight(600)
-      .margin({left:6,right:6,top:4})
+      .margin({ left: 6, right: 6, top: 4 })
 }
 
 function getPricePrefix(item: ItemListItem): string {
@@ -119,4 +124,4 @@ function getCounterPrice(item: ItemListItem) {
   return null
 }
 
-export { GoodItem }
+export { GoodItem, GoodTagName }

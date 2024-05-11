@@ -31,6 +31,14 @@
     {
       "name": "back_ground_color",
       "value": "#eeeeee"
+    },
+    {
+      "name": "back_red_light",
+      "value": "#FFFBE7E8"
+    },
+    {
+      "name": "app_white",
+      "value": "#FFFFFFFF"
     }
   ]
 }

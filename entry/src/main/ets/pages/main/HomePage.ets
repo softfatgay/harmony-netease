@@ -20,6 +20,8 @@ import { GoodItem } from '../../component/GoodItem'
 import { LoadingMore } from '../../component/LoadingMore'
 import router from '@ohos.router'
 import Url from '@ohos.url'
+import { goWebView, pageIndex } from '../../utils/Routers'
+import { IndexActivityModule } from '../../model/home/IndexActivityModule'
 
 @Entry
 @Component
@@ -27,6 +29,7 @@ export struct Homepage {
   @State private homeData: HomeDataModel = null
   @State private floorList: Array<FloorItem> = []
   @State private categoryHotSellModule: CategoryHotSellModule = null
+  @State private indexActivityModule: Array<IndexActivityModule> = []
   @State private itemIdsStr: string = ''
   @State private haseMore: boolean = false
   @State private items: Array<ItemListItem> = []
@@ -42,6 +45,7 @@ export struct Homepage {
       var data = res.data.data.data
       this.homeData = data
       this.floorList = data.bigPromotionModule.floorList
+      this.indexActivityModule = data.indexActivityModule
       this.categoryHotSellModule = data.categoryHotSellModule
     }
     ).catch(err => {
@@ -76,10 +80,10 @@ export struct Homepage {
           Column() {
             this._banner()
             this._topTags()
-            this.kingKong()
-            this.bigPromotion()
-            this.label('新人专享')
-            this.newAccount()
+            this._kingKong()
+            this._bigPromotion()
+            this._label('新人专享')
+            this._newAccount()
             this.labelTile('类目热销榜')
             this.categoryHotSell()
             this.labelTile('为您推荐')
@@ -154,7 +158,7 @@ export struct Homepage {
       let params = new Url.URLParams(urlObject.search)
       let categoryId = params.get('categoryId')
       router.pushUrl({
-        url: 'pages/HotPage',
+        url: pageIndex.hotPage,
         params: {
           'categoryId': categoryId,
           'name': item.name,
@@ -182,7 +186,7 @@ export struct Homepage {
   }
 
   @Builder
-  newAccount() {
+  _newAccount() {
     Row() {
       RelativeContainer() {
         Image(redPackageUrl).height('50%').id('image').relativeCenter()
@@ -198,26 +202,50 @@ export struct Homepage {
           )
           .id('tv')
       }
-      .backgroundColor(0xFFF6E5C4)
+      .backgroundColor(0xFFF9E9CF)
       .layoutWeight(1)
       .height('100%')
       .margin({ right: 5 })
+      .onClick(e => {
+        this._goWebView('https://act.you.163.com/act/pub/qAU4P437asfF.html')
+      })
 
       Column() {
+        ForEach(this.indexActivityModule, (item: IndexActivityModule, index: number) => {
+          Row() {
+            Column() {
+              Text(item.title).fontSize(14).fontColor(textBlack)
+              Text(item.title).fontSize(12).fontColor(0xFF7F7F7F)
+            }
+            .height('100%')
+            .alignItems(HorizontalAlign.Start)
+            .align(Alignment.Start)
+            .layoutWeight(1)
 
+            Stack() {
+              Image(item.showPicUrl)
+            }.layoutWeight(1)
+          }
+          .margin({ top: index % 2 == 0 ? 0 : 5 })
+          .padding({ left: 10, top: 12, right: 12, bottom: 10 })
+          .layoutWeight(1)
+          .width('100%')
+          .backgroundColor(index % 2 == 0 ? 0xFFF9DCC9 : 0xFFFFECC2)
+          .onClick(e => {
+            this._goWebView(item.targetUrl)
+          })
+        })
       }
       .layoutWeight(1)
-      .backgroundColor(0xFFF6E5C4)
-      .layoutWeight(1)
-      .margin({ right: 5 })
+      .width('100%')
     }
     .width('100%')
-    .aspectRatio(1.5)
-    .margin({ right: margin_screen })
+    .aspectRatio(1.6)
+    .padding({ left: 6, right: margin_screen })
   }
 
   @Builder
-  label(tile: string) {
+  _label(tile: string) {
     Row() {
       Rect().width(15).height(1).fill(textBlack)
       Text(tile).fontSize(14).fontColor(textBlack)
@@ -231,7 +259,7 @@ export struct Homepage {
   }
 
   @Builder
-  bigPromotion() {
+  _bigPromotion() {
     Column() {
       ForEach(this.floorList, (item: FloorItem) => {
         Row() {
@@ -239,7 +267,9 @@ export struct Homepage {
             ForEach(item.cells, (cell: Cells) => {
               GridCol() {
                 Image(cell.picUrl).objectFit(ImageFit.Fill).height(item.height / 3 + 10)
-              }
+              }.onClick(e => {
+                this._goWebView(cell.schemeUrl)
+              })
             })
           }.margin({ left: item.columnNum > 1 ? 6 : 0, right: item.columnNum > 1 ? 12 : 6, top: 6 })
 
@@ -258,13 +288,13 @@ export struct Homepage {
           //   //   }.width('100%')
           //   // }.width((98 / (item.columnNum)) + '%')
           // })
-        }.justifyContent(FlexAlign.SpaceBetween).height((item.height / 3)).width('100%')
+        }.justifyContent(FlexAlign.SpaceBetween).height((item.height / 3 + 10)).width('100%')
       })
     }.width('100%').margin({ top: 10 })
   }
 
   @Builder
-  kingKong() {
+  _kingKong() {
     GridRow({ columns: 5 }) {
       ForEach(this.homeData.kingKongModule.kingKongList, (item: KingKongItem) => {
         GridCol() {
@@ -274,14 +304,8 @@ export struct Homepage {
             Text(item.text).fontColor($r('app.color.text_black')).fontSize(12)
           }
           .margin({ top: 10 })
-          .onClick(event => {
-            // let param = new HashMap<string, string>()
-            // param.set("schemeUrl", item.schemeUrl)
-            // router.pushUrl(
-            //   { url: 'pages/WebView', params: { "schemeUrl": item.schemeUrl } }
-            // )
+          .onClick(e => {
             this._goKingKong(item.schemeUrl);
-
           })
         }
       })
@@ -295,7 +319,7 @@ export struct Homepage {
       let splitincludeId = split[1]
       let splitId = splitincludeId.split('&')
       let categoryId = splitId[0]
-      router.pushUrl({ url: 'pages/KingKongListPage', params: { 'categoryId': categoryId } })
+      router.pushUrl({ url: pageIndex.itemPage, params: { 'categoryId': categoryId } })
     } else if (url.includes('item/newItem')) {
       this._goWebView(schemeUrl)
     } else {
@@ -304,9 +328,7 @@ export struct Homepage {
   }
 
   _goWebView(url: string) {
-    router.pushUrl(
-      { url: 'pages/WebView', params: { "schemeUrl": url } }
-    )
+    goWebView(url)
   }
 
   @Builder
@@ -332,7 +354,9 @@ export struct Homepage {
   _banner() {
     Swiper() {
       ForEach(this.homeData.focusList, (item: FocusItem) => {
-        Image(item.picUrl).width('100%')
+        Image(item.picUrl).width('100%').onClick(e => {
+          this._goWebView(item.targetUrl)
+        })
       })
     }.height(200).indicator(true).autoPlay(true)
   }

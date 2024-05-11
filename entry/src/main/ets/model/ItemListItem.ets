@@ -35,9 +35,9 @@ export class ItemListItem extends KingKongType{
   productPlace: String
   promDesc: string
   promTag: String
-  goodCmtRate: String
+  goodCmtRate: string
   hotSaleListBottomInfo: HotSaleListBottomInfo
-  itemTagList: List<ItemTagListItem>
+  itemTagList: Array<ItemTagListItem>
   listPromBanner: ListPromBanner
   skuSpecList: List<SkuSpecListItem>
   topLogo: Logo

@@ -1,11 +1,11 @@
 export class IndexActivityModule {
-  backgroundUrl: String
-  picUrl: String
-  activityPrice: String
-  subTitle: String
-  originPrice: String
-  tag: String
-  title: String
-  targetUrl: String
-  showPicUrl: String
+  backgroundUrl: string
+  picUrl: string
+  activityPrice: string
+  subTitle: string
+  originPrice: string
+  tag: string
+  title: string
+  targetUrl: string
+  showPicUrl: string
 }

@@ -1,7 +1,7 @@
 export class Cells {
   subTitleColor: String
   rcmdItem: Boolean
-  schemeUrl: String
+  schemeUrl: string
   title: string
   picUrl: string = ''
   rcmdSort: Boolean

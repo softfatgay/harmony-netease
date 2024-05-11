@@ -10,5 +10,7 @@
 
 ![img4.jpeg](screenshot%2Fimg4.jpeg)
 
+![img5.jpg](screenshot%2Fimg5.jpg)
+
 ### attention: 
 1:webview 在模拟器上无法滑动

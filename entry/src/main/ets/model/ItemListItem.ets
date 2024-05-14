@@ -8,7 +8,7 @@ import { Logo } from './Logo'
 import { KingKongType } from './kinfkong/KingKongType'
 
 export class ItemListItem extends KingKongType{
-  id: Number
+  id: number
   listPicUrl: string
   name: string
   seoTitle: String

@@ -27,5 +27,8 @@ export const SUBMIT_ORDER_INFO = baseUrl + '/xhr/item/getSubmitOrderInfo.json';
 /// kingkong
 export const URL_KING_KONG = baseUrl + '/item/list.json';
 
+/// kingkong
+export const GOOD_DETAIL = baseUrl + '/item/detail.json';
+
 
 

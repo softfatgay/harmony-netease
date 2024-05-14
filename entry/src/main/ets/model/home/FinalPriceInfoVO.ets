@@ -5,20 +5,20 @@ export class FinalPriceInfoVO {
 }
 
 export class BannerVO {
-  logo: String
+  logo: string
   title: string
   content: string
-  price: String
+  price: string
 }
 
 export class PriceInfo {
   finalPrice: FinalPrice
-  counterPrice: String
+  counterPrice: string
   basicPrice: string
 }
 
 export class FinalPrice {
   prefix: string
   price: string
-  suffix: String
+  suffix: string
 }

@@ -3,6 +3,7 @@
     "pages/Index",
     "pages/KingKongListPage",
     "pages/WebView",
-    "pages/HotPage"
+    "pages/HotPage",
+    "pages/detail/DetailPage"
   ]
 }

@@ -15,6 +15,9 @@
     {
       "name": "text_red",
       "value": "#DD1A21"
+    },{
+      "name": "text_yellow",
+      "value": "#FFDEBB75"
     },
     {
       "name": "text_gray",
@@ -33,6 +36,9 @@
       "value": "#eeeeee"
     },
     {
+      "name": "back_red",
+      "value": "#FFE02020"
+    },{
       "name": "back_red_light",
       "value": "#FFFBE7E8"
     },

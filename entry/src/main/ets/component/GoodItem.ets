@@ -1,7 +1,9 @@
+import router from '@ohos.router';
 import { appRed, textBlack, textLightGray, textRed, textWhite } from '../base/color';
 import { BannerVO } from '../model/home/FinalPriceInfoVO';
 import { ItemListItem } from '../model/ItemListItem';
 import { Logo } from '../model/Logo';
+import { pageIndex } from '../utils/Routers';
 
 @Builder function GoodItem(item: ItemListItem) {
   Column() {
@@ -35,6 +37,16 @@ import { Logo } from '../model/Logo';
   .borderRadius(6)
   .alignItems(HorizontalAlign.Start)
   .padding({ bottom: 12 })
+  .onClick(e => {
+    router.pushUrl(
+      {
+        url: pageIndex.detailPage,
+        params: {
+          'id': `${item.id}`
+        }
+      }
+    )
+  })
 }
 
 @Builder function GoodTagName(item: ItemListItem) {

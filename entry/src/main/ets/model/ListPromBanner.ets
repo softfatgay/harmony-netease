@@ -1,10 +1,11 @@
 export class ListPromBanner {
   valid: boolean
-  promoTitle: String
-  promoSubTitle: String
-  content: String
-  bannerTitleUrl: String
-  bannerContentUrl: String
+  promoTitle: string
+  promoSubTitle: string
+  content: string
+  bannerTitleUrl: string
+  bannerContentUrl: string
   styleType: number
   timeType: number
+  iconUrl: string
 }

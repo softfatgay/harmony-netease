@@ -30,5 +30,11 @@ export const URL_KING_KONG = baseUrl + '/item/list.json';
 /// kingkong
 export const GOOD_DETAIL = baseUrl + '/item/detail.json';
 
+/// 配送信息
+export const WAPITEM_DELIVERY = baseUrl + '/xhr/wapitem/delivery.json';
+
+/// 商品详情推荐
+export const WAPITEM_RCMD = baseUrl + '/xhr/wapitem/rcmd.json';
+
 
 

@@ -1,15 +1,24 @@
 import axios from '@ohos/axios';
 import router from '@ohos.router';
-import { baseUrl, GOOD_DETAIL } from '../../base/Api';
+import { baseUrl, GOOD_DETAIL, WAPITEM_DELIVERY, WAPITEM_RCMD } from '../../base/Api';
 import { ResponseData } from '../../base/BaseModel';
 import { GoodDetailPre } from '../../model/detail/GoodDetailPre';
 import { HotListData } from '../../model/hotlist/HotListData';
-import { FeaturedSeries, GoodDetail, SimpleBrandInfo, SpmcBanner } from '../../model/detail/GoodDetail';
+import {
+  AdBannersItem,
+  AttrListItem,
+  BrandInfo,
+  FeaturedSeries,
+  GoodDetail,
+  SimpleBrandInfo,
+  SpmcBanner
+} from '../../model/detail/GoodDetail';
 import { PageState } from '../../base/PageState';
 import { PageLoading } from '../../component/PageLoading'
 import { BannerModel, ProcessBanner } from '../../model/BannerModel';
 import {
   appWhite,
+  backgroundColor,
   backRed,
   textBlack,
   textGray,
@@ -21,15 +30,27 @@ import {
 import resourceManager from '@ohos.resourceManager';
 import image from '@ohos.multimedia.image';
 import { goWebView } from '../../utils/Routers';
+import { WapitemDeliveryModel } from '../../model/detail/WapitemDeliveryModel';
+import { PolicyListItem } from '../../model/SkuMapValue';
+import { CommentItem } from '../../component/CommentItem';
+import { IssueListItem } from '../../model/IssueListItem';
+import { ItemListItem } from '../../model/ItemListItem';
+import { GoodItem } from '../../component/GoodItem';
+import { RecommendModel } from '../../model/detail/RecommendModel';
 
 @Entry
 @Component
 struct DetailPage {
   @State _id: string = ''
+  @State _policyList: Array<PolicyListItem> = []
   @State _goodDetail: GoodDetail = null
   @State _banner: Array<string> = []
   @State _pageState: PageState = PageState.Loading
   brandIcon = 'https://yanxuan.nosdn.127.net/9f91c012a7a42c776d785c09f6ed85b4.png'
+  backColor = 0xFFF2F4F9
+  @State _deliveryModel: WapitemDeliveryModel = null
+  @State _detailImages: Array<string> = []
+  @State _rcmdData: Array<ItemListItem> = []
 
   /// 头部活动
   @State _activity: BannerModel = null
@@ -38,6 +59,7 @@ struct DetailPage {
     let id = router.getParams()['id'] as string
     this._id = id
     this._getDetailData()
+    this._recommend()
   }
 
   _getDetailData() {
@@ -46,16 +68,59 @@ struct DetailPage {
         "id": this._id,
       }
     }).then(res => {
-
       let item = res.data.item
       console.log('==============size', `${item.id}`);
+      this._policyList = res.data.policyList
       this._goodDetail = item
+      this.getAllPic(item)
       this.bannerData(item)
       this._activity = item.banner
       this._pageState = PageState.Success
-
+      this._wapitemDelivery(item.primarySkuId)
     }
     ).catch(err => {
+      console.log(err)
+      this._pageState = PageState.Error
+    })
+  }
+
+  _recommend() {
+    axios.get<ResponseData<RecommendModel>>(WAPITEM_RCMD, {
+      params: {
+        "id": this._id,
+      }
+    }).then(res => {
+      this._rcmdData = res.data.data.items
+    }
+    ).catch(err => {
+      console.log(err)
+      this._pageState = PageState.Error
+    })
+  }
+
+  _wapitemDelivery(skuId: number) {
+    console.log('==============配送', '配送信息');
+    axios.get<ResponseData<WapitemDeliveryModel>>(WAPITEM_DELIVERY, {
+      params: {
+        'type': 2,
+        'provinceId': 110000,
+        'cityId': 110100,
+        'districtId': 110101,
+        'townId': 110101001000,
+        'provinceName': '北京市',
+        'cityName': '北京市',
+        'districtName': '东城区',
+        'townName': '东华门街道',
+        'address': '',
+        'skuId': skuId
+      }
+    }).then(res => {
+      this._deliveryModel = res.data.data
+      console.log('==============配送', 'success');
+      console.log('==============配送', JSON.stringify(res.data.data));
+    }
+    ).catch(err => {
+      console.log('==============配送', 'error');
       console.log(err)
       this._pageState = PageState.Error
     })
@@ -65,16 +130,6 @@ struct DetailPage {
     let banner = new Array<string>()
     let itemDetail = item.itemDetail
     console.log('==============success', '1111');
-    console.log('==============success', `${JSON.stringify(item.itemDetail)}`);
-    console.log('==============success', '22222');
-    // for (let key in keys) {
-    //   if (key.startsWith('picUrl')) {
-    //     console.log('==============success','3333');
-    //     banner.push('https://yanxuan-item.nosdn.127.net/0aebf2f204251913a109f83e8a811875.png')
-    //     console.log('==============success','4444');
-    //     // banner.push(itemDetail[key])
-    //   }
-    // }
     banner.push(itemDetail.picUrl1)
     banner.push(itemDetail.picUrl2)
     banner.push(itemDetail.picUrl3)
@@ -134,6 +189,302 @@ struct DetailPage {
         ///活动卡
         Image(this._goodDetail.welfareCardVO.picUrl ?? '').width('100%')
       }
+
+      ///规则
+      ListItem() {
+        if (this._goodDetail.fullRefundPolicy != null
+        && this._goodDetail.fullRefundPolicy.titles != null
+        && this._goodDetail.fullRefundPolicy.titles.length > 0)
+          this.fullRefundPolicy()
+      }
+
+      ListItem() {
+        this.selectProperty()
+      }
+
+      ListItem() {
+        if (this._goodDetail.adBanners != null)
+        Swiper() {
+          ForEach(this._goodDetail.adBanners, (item: AdBannersItem) => {
+            Image(item.picUrl)
+          })
+        }.height(100).width('100%').autoPlay(true)
+      }
+
+      ///用户评价
+      ListItem() {
+        this.detailComment()
+      }
+
+      ///_brandInfo
+      if (this._goodDetail.brandInfo != null)
+      ListItem() {
+        this.brandInfo(this._goodDetail.brandInfo)
+      }
+
+      ///商品详情
+      ListItem() {
+        this.detail()
+      }
+
+      ///常见问题
+      ListItem() {
+        this.issueList()
+      }
+
+      ///推荐
+      ListItem() {
+        this.recommend()
+      }
+
+    }.backgroundColor(appWhite)
+  }
+
+  @Builder
+  recommend() {
+    Column() {
+      Text('你还可能喜欢').fontSize(16).fontColor(textBlack).margin({ top: 20, bottom: 12 })
+      GridRow({ columns: 2, gutter: 8 }) {
+        ForEach(this._rcmdData, (item: ItemListItem) => {
+          GridCol() {
+            GoodItem(item)
+          }
+        })
+      }
+    }.padding({ left: 12, right: 12 })
+  }
+
+  @Builder
+  issueList() {
+    Column() {
+      Text('常见问题').fontSize(16).fontColor(textBlack).margin({ top: 20, bottom: 12 })
+      ForEach(this._goodDetail.issueList??[], (item: IssueListItem) => {
+        Column() {
+          Row() {
+            Rect().size({ width: 4, height: 4 }).borderRadius(2).fill(backRed)
+            Text(item.question).fontSize(14).fontColor(textBlack).margin({ left: 3 })
+          }
+
+          Text(item.answer).fontColor(textGray).fontSize(12).margin({ top: 8 })
+        }.alignItems(HorizontalAlign.Start).margin({ top: 8 })
+      })
+    }
+    .width('100%')
+    .padding({ left: 12, right: 12 })
+  }
+
+  @Builder
+  detail() {
+    Column() {
+      this.split()
+      Text('商品参数').fontSize(14).fontColor(textBlack).margin({ left: 12, top: 10 })
+      /// 成分
+      Column() {
+        ForEach(this._goodDetail.attrList ?? [], (item: AttrListItem) => {
+          Row() {
+            Text(item.attrName).layoutWeight(1).fontColor(textLightGray).fontSize(12)
+            Text(item.attrValue).layoutWeight(2).fontColor(textBlack).fontSize(14)
+          }.border({ width: { top: 1 }, color: { top: textGray }, style: BorderStyle.Dashed })
+          .padding({ top: 6, bottom: 6 })
+        })
+      }.border({ width: 1, color: { bottom: textGray, left: textGray, right: textGray }, style: BorderStyle.Dashed })
+      .margin({ left: 12, right: 12, top: 10 })
+
+      Column() {
+        ForEach(this._detailImages, (item: string) => {
+          Image(item).width('100%')
+        })
+      }.margin({ top: 12 })
+    }
+    .alignItems(HorizontalAlign.Start)
+  }
+
+  getHtml() {
+    let html = this._goodDetail.itemDetail.detailHtml.replace(/p>/g, "span>");
+    return html
+  }
+
+  getAllPic(goodDetail: GoodDetail) {
+    let html = goodDetail.itemDetail.detailHtml
+    let strs = html.split('"')
+
+    let detailImages: Array<string> = []
+    strs.forEach(item => {
+      if (item.concat('http')) {
+        detailImages.push(item)
+      }
+    })
+    this._detailImages = detailImages
+  }
+
+  @Builder
+  brandInfo(brandInfo: BrandInfo) {
+    Column() {
+      this.split()
+      Row() {
+        Column() {
+          Rect().height(16)
+          Image(brandInfo.picUrl).size({ width: 35, height: 35 })
+          if (brandInfo.ownType == 2)
+            Image('https://yanxuan.nosdn.127.net/9f91c012a7a42c776d785c09f6ed85b4.png').size({ width: 12, height: 12 })
+          else Rect().height(16)
+        }
+
+        Column() {
+          Row() {
+            Text(brandInfo.title??'').fontSize(16).fontColor(textBlack).fontWeight(600)
+            ArrowIcon()
+          }.width('100%').justifyContent(FlexAlign.SpaceBetween)
+
+          Text(brandInfo.desc).fontSize(12).fontColor(textBlack).margin({ top: 12 })
+        }.layoutWeight(1).margin({ left: 12 })
+      }.padding(12)
+    }
+  }
+
+  @Builder
+  detailComment() {
+    Column() {
+      this.split()
+      Row() {
+        Text(`用户评价${this._goodDetail.commentCount}`).fontSize(14).fontColor(textBlack)
+        Row() {
+          Text(`${this._goodDetail.goodCmtRate ?? ''}`).fontColor(textRed).fontSize(16)
+          Text(`${this._goodDetail.goodCmtRate == null ? '查看全部' : '好评率'}`).fontSize(14).fontColor(textBlack)
+          ArrowIcon()
+        }
+      }.width('100%')
+      .alignItems(VerticalAlign.Center)
+      .justifyContent(FlexAlign.SpaceBetween)
+      .propertyStyle()
+
+      if (this._goodDetail.comments != null && this._goodDetail.comments.length > 0)
+        CommentItem(this._goodDetail.comments[0])
+    }
+  }
+
+  @Builder
+  selectProperty() {
+    Column() {
+      this.split()
+      ///领券
+      if (this._goodDetail.couponShortNameList != null && this._goodDetail.couponShortNameList.length > 0)
+      Row() {
+        Text('领券：').fontSize(14).fontColor(textBlack)
+        Row() {
+          ForEach(this._goodDetail.couponShortNameList, (item: string) => {
+            Text(item??'')
+              .fontSize(12)
+              .fontColor(textYellow)
+              .padding({ left: 5, right: 5 })
+              .borderRadius(2)
+              .border({ width: 0.5, color: 0xFFF48F18 })
+          })
+        }.layoutWeight(1)
+
+        ArrowIcon()
+      }
+      .alignItems(VerticalAlign.Center)
+      .propertyStyle()
+
+
+      /// 邮费
+      if (this._goodDetail.skuFreight != null)
+      Row() {
+        Text(`${this._goodDetail.skuFreight.title ?? ''}：`).fontSize(14).fontColor(textBlack)
+        Text(this._goodDetail.skuFreight.freightInfo ?? '').fontSize(14).fontColor(textBlack).layoutWeight(1)
+        ArrowIcon()
+      }
+      .alignItems(VerticalAlign.Center)
+      .propertyStyle()
+
+      /// 购物反
+      if (this._goodDetail.shoppingReward != null)
+      Row() {
+        Text(`${this._goodDetail.shoppingReward.name ?? ''}：`).fontSize(14).fontColor(textBlack)
+        Text(`${this._goodDetail.shoppingReward.rewardDesc ?? ''}：`).fontSize(14).fontColor(textBlack)
+        Text(this._goodDetail.shoppingReward.rewardValue ?? '').fontSize(14).fontColor(textBlack).layoutWeight(1)
+        ArrowIcon()
+      }
+      .alignItems(VerticalAlign.Center)
+      .propertyStyle()
+
+      this.split()
+      ///选择属性
+      Row() {
+        Text('请选择规格参数').fontSize(14).fontColor(textBlack)
+        ArrowIcon()
+      }
+      .alignItems(VerticalAlign.Center)
+      .propertyStyle()
+
+      /// 限制
+      if (this._goodDetail.itemLimit != null && this._goodDetail.itemLimit != '')
+      Row() {
+        Text('限制：').fontSize(14).fontColor(textBlack)
+        Text(this._goodDetail.itemLimit ?? '').fontSize(14).fontColor(textBlack).layoutWeight(1)
+        ArrowIcon()
+      }
+      .alignItems(VerticalAlign.Center)
+      .propertyStyle()
+
+      ///配送
+      if (this._deliveryModel != null)
+      Row() {
+        Text('配送：').fontSize(14).fontColor(textBlack)
+        Column() {
+          Text(this._deliveryModel.addressName)
+            .fontColor(textBlack)
+            .fontSize(14)
+            .maxLines(1)
+            .textOverflow({ overflow: TextOverflow.Ellipsis })
+          if (this._deliveryModel.deliveryTime != null)
+            Text(this._deliveryModel.deliveryTime).fontColor(textGray).fontSize(14)
+        }
+        .alignItems(HorizontalAlign.Start)
+        .layoutWeight(1)
+
+        ArrowIcon()
+      }
+      .alignItems(VerticalAlign.Center)
+      .propertyStyle()
+
+      ///服务
+      if (this._policyList != null && this._policyList.length > 0)
+      Row() {
+        Text('服务：').fontSize(14).fontColor(textBlack)
+        Flex({ wrap: FlexWrap.Wrap }) {
+          ForEach(this._policyList, (item: PolicyListItem) => {
+            Row() {
+              Rect().size({ width: 4, height: 4 }).borderRadius(2).fill(backRed)
+              Text(item.title).fontSize(14).fontColor(textGray).margin({ left: 2 })
+            }.margin({ right: 12 })
+          })
+        }
+        .layoutWeight(1)
+
+        ArrowIcon()
+      }
+      .alignItems(VerticalAlign.Center)
+      .propertyStyle()
+
+    }
+    .alignItems(HorizontalAlign.Start)
+    .margin({ top: 10, bottom: 10 })
+  }
+
+  @Builder
+  fullRefundPolicy() {
+    Row() {
+      Text('规则').fontSize(14).fontColor(textBlack)
+      Column() {
+        ForEach(this._goodDetail.fullRefundPolicy.titles??[], (item: string) => {
+          Row() {
+            Rect().size({ width: 4, height: 4 }).borderRadius(2).fill(backRed)
+            Text(item).fontSize(14).fontColor(textBlack).textOverflow({ overflow: TextOverflow.Ellipsis }).maxLines(1)
+          }
+        })
+      }.alignItems(HorizontalAlign.Start)
     }
   }
 
@@ -334,6 +685,22 @@ struct DetailPage {
       })
     }.width('100%').aspectRatio(1).autoPlay(true)
   }
+
+  @Builder
+  split() {
+    Rect().width('100%').fill(this.backColor).height(10)
+  }
+}
+
+@Builder function ArrowIcon() {
+  Image($r('app.media.arrow_right')).size({ height: 12, width: 12 })
+}
+
+@Styles function propertyStyle() {
+  .width('100%')
+  .padding({ top: 12, right: 24, bottom: 12 })
+  .margin({ left: 12 })
+  .border({ width: { bottom: 1 }, color: { bottom: 0xFFF2F4F9 } })
 }
 
 class ActivityData {

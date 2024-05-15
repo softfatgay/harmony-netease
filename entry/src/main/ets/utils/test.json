@@ -1,195 +1,828 @@
 {
   "data": {
-    "campaignPromotions": [],
-    "featureToggles": [
+    "items": [
       {
-        "__typename": "FeatureToggle",
-        "name": "CP-5306",
-        "enabled": true
-      },
-      {
-        "__typename": "FeatureToggle",
-        "name": "suppressHonorsMeter",
-        "enabled": false
-      },
-      {
-        "__typename": "FeatureToggle",
-        "name": "milestoneBonusMeter",
-        "enabled": false
-      },
-      {
-        "__typename": "FeatureToggle",
-        "name": "suppressDigitalKeyShareAndroid",
-        "enabled": true
-      },
-      {
-        "__typename": "FeatureToggle",
-        "name": "suppressRatingToggleAndroid",
-        "enabled": false
-      },
-      {
-        "__typename": "FeatureToggle",
-        "name": "suppressEligibleCampaign",
-        "enabled": false
-      },
-      {
-        "__typename": "FeatureToggle",
-        "name": "enableCaptchaAndroid",
-        "enabled": true
-      },
-      {
-        "__typename": "FeatureToggle",
-        "name": "enableHotelListPageCache",
-        "enabled": true
-      },
-      {
-        "__typename": "FeatureToggle",
-        "name": "Experience-site",
-        "enabled": true
-      },
-      {
-        "__typename": "FeatureToggle",
-        "name": "Update_PersonalInfo_Phone_Android",
-        "enabled": false
-      }
-    ],
-    "marketingActivities": [
-      {
-        "__typename": "MarketingActivity",
-        "id": "149",
-        "name": "2024_HH2(Android)",
-        "activityType": {
-          "__typename": "MarketingActivityType",
-          "code": "LOYALTY_CAMPAIGN"
-        },
-        "data": {
-          "code": "Q224RG",
-          "campaignFaq": "<p><strong>希尔顿荣誉客会“积分倍加”促销 2024——常见问题</strong></p>\n<br/>\n\n<p><strong>此次促销活动的名称是什么？</strong></p>\n<p>2024 积分倍加</p>\n<br/>\n\n<p><strong>此次促销的内容是什么？</strong></p>\n<p>注册此促销的希尔顿荣誉客会会员，在促销期内每完成一次住宿，将赚取双倍积分，即：除了通过住宿赚取的基本积分之外，会员还将获得与所赚取的基本积分等额的奖励积分。</p>\n<br/>\n\n<p><strong>希尔顿荣誉客会“积分倍加”活动的促销期是什么时间？</strong></p>\n<p>2024 年 5 月 2 日至 9 月 2 日 (“促销期”)。</p>\n<br/>\n\n<p><strong>怎样才能获得奖励积分？ </strong></p>\n<p>会员在促销期内完成住宿，将获得与住宿期间所赚取的基本积分等额的奖励积分。</p>\n<p><strong>示例 A：</strong>某位会员以每晚 100 美元的价格住宿 2 晚，赚取了 2,000 基本积分，同时将获得 2,000 奖励积分，即总共获得 4,000 积分。</p>\n<ul>\n<li>每支付 1 美元获得 10 积分 x 100 美元 x 2 晚 = 2,000 基本积分</li>\n<li>每支付 1 美元获得 10 积分 x 100 美元 x 2 晚 = 2,000 奖励积分</li>\n</ul>\n<br/>\n\n<p><strong>示例 B：</strong>某位会员以每晚 100 美元的价格住宿 4 晚，赚取了 4,000 基本积分，同时将获得 4,000 奖励积分，即总共获得 8,000 积分。</p>\n<ul>\n<li>每支付 1 美元获得 10 积分 x 100 美元 x 4 晚 = 4,000 基本积分</li>\n<li>每支付 1 美元获得 10 积分 x 100 美元 x 4 晚 = 4,000 奖励积分</li>\n</ul>\n<br/>\n\n<p>*此处示例计算结果并未包含尊贵会籍的积分奖励和使用希尔顿荣誉客会信用卡付费所获得的奖励积分。垂询会籍等级和积分累积的更多信息，请查看希尔顿荣誉客会适用条款。</p>\n<br/>\n\n<p><strong>什么是“认可住宿”？</strong></p>\n<p>一次“住宿”指在同一家酒店入住一晚或连续数晚，不论期间是否退房后又重新登记入住。如需了解更多信息，请查看希尔顿荣誉客会适用条款。</p>\n<br/>\n\n<p><strong>此促销是否适用于所有房价？</strong></p>\n<p>不是。您可在希尔顿荣誉客会适用条款积分累积第 3 条中查看哪些是不受认可的房价。</p>\n<br/>\n\n<p><strong>是否必须注册此促销，才能享受优惠？</strong></p>\n<p>是的。希尔顿荣誉客会会员必须通过 <u>HiltonHonors.com/DoublePoints/cn</u> 注册，方可参加此次促销。</p>\n<br/>\n\n<p><strong>我不是希尔顿荣誉客会会员，可以参加此次促销活动吗？</strong></p>\n<p>只有会员可以参加此次促销。您可以免费加入希尔顿荣誉客会，然后注册此促销活动，立即就能获得参加此活动的资格。</p>\n<p>您只需访问 <u>HiltonHonors.com/DoublePoints/cn</u>，然后按照步骤，加入希尔顿荣誉客会，并注册此项促销活动即可。</p>\n<br/>\n\n<p><strong>哪些希尔顿荣誉客会品牌参加此项促销活动？</strong></p>\n<p>希尔顿集团旗下所有品牌均参加此项促销活动。</p>\n<br/>\n\n<p><strong>如果我事先已预订了房间，是否也可以享受此次促销？</strong></p>\n<p>可以，会员只要在退房之前注册此促销，并且预订的是合资格的住宿即可。不论何时预订，任何注册了此促销的宾客在促销期内完成住宿，均可就对应房晚赚取促销奖励。</p>\n<br/>\n\n<p><strong>如果我在 2024 年 5 月 2 日之前入住，或在 2024 年 9 月 2 日之后退房，是否仍可就该次住宿赚取额外积分？</strong></p>\n<p>已注册此促销的会员若在 2024 年 5 月 2 日前入住，只要在 2024 年 5 月 2 日至 9 月 2 日期间 (含首尾日期) 完成住宿，即可获得额外积分。若会员在促销期内入住并于 2024 年 9 月 2 日之后才退房，则无法就该次住宿获得奖励积分。</p>\n<br/>\n\n<p><strong>如果我在此次“积分倍加”促销活动的促销期内完成了住宿，但未事先注册，是否也能就这些住宿赚取奖励积分？</strong></p>\n<p>不能。会员必须先注册<strong>“积分倍加”</strong>促销，然后退房，才能就促销期内完成的房晚赚取奖励积分。</p>\n<br/>\n\n<p><strong>奖励积分将于何时计入我的希尔顿荣誉客会账户？</strong></p>\n<p>奖励积分将于您完成住宿后的 6-8 周内计入您的希尔顿荣誉客会账户。</p>\n<br/>\n\n<p><strong>参加“积分倍加”促销活动，会员的奖励住宿可否赚取奖励积分？</strong></p>\n<p>是的。只要会员通过奖励住宿赚取了基本积分，即可根据所赚取的基本积分获得对应的奖励积分。</p>\n<br/>\n\n<p><strong>在注册参加此次促销活动的同时，是否还可注册参加其他促销活动？</strong></p>\n<p>可以。如果其他指定促销活动的适用条款中未另作说明，会员可以注册参加多项促销活动。</p>\n<br/>\n\n<p><strong>如果我还有其他问题，应该与谁联系？</strong></p>\n<p>如果您对于<strong>“积分倍加”</strong>促销活动还有其他疑问，请随时致电 400 820 8165  联系我们。</p>",
-          "campaignTac": "<p><strong>条款与细则 (大中华区及蒙古版本)</strong></p>\n<p>此优惠适用于 2024 年 5 月 2 日至 9 月 2 日 (“促销期”) 期间在希尔顿集团旗下的任意酒店或度假酒店完成的住宿。希尔顿荣誉客会会员先要通过 <u>HiltonHonors.com/DoublePoints/CN</u> 注册，然后于“促销期”内完成住宿，才能获得促销奖励。</p>\n<br/>\n\n<p>注册了此促销的希尔顿荣誉客会会员若在 2024 年 5 月 2 日前入住，只要在 2024 年 5 月 2 日至 2024 年 9 月 2 日期间 (含首尾日期) 完成住宿，即可获得奖励积分。</p>\n<br/>\n\n<p>注册此促销的希尔顿荣誉客会会员，在促销期内每完成一次住宿，将赚取 2 倍积分。“双倍积分”意味着，会员将获得与住宿期间所赚取的基本积分相等的奖励积分。</p>\n<br/>\n\n<p>促销期内可赚取的奖励积分总额无上限。但是在特定品牌的酒店，每次住宿可赚取的基本积分数量有限制。</p>\n<br/>\n\n<p>如需查看示例，或了解更多详情，请查看“常见问题”页面 [<u>https://www.hiltonhonors.com/zh_CN/2024-hh2-double-points/faq/</u>]。</p>\n<br/>\n\n<p>奖励积分不可用于累积尊贵会籍等级。奖励积分将于住宿完成后的六至八周计入会员账户。一次“住宿”指在同一家酒店入住一晚或连续数晚，不论期间是否退房后又重新登记入住。此促销不适用于团体住宿，也不可与其他指定优惠同享。对于收取度假附加费的酒店，客房内上网、健身中心与健身俱乐部的使用、瓶装水等礼遇可能需要支付费用。有供应情况下的房型升级礼遇仅适用于指定品牌。尊贵会籍礼遇需视供应情况而定，且各个品牌有所不同。垂询更多信息，请访问 <u>HiltonHonors.com/cn</u>。</p>\n<br/>\n\n<p>注册和使用希尔顿荣誉客会™会籍，包括赚取和兑换积分，需遵循《希尔顿荣誉客会适用条款》的规定。</p>",
-          "displayName": "2024 积分倍加",
-          "heroBannerUrl": {
-            "asset": "https://imgp.hilton.com.cn/cp/x5e4ext7za.jpeg"
-          },
-          "bookingBannerUrl": {
-            "asset": "https://imgp.hilton.com.cn/cp/vf7uzmdqfm.jpeg"
-          },
-          "eligibleCampaignBannerUrl": {
-            "asset": "https://imgp.hilton.com.cn/cp/xrdhja4887.jpeg"
+        "sortOriginPrice": 199,
+        "promId": 0,
+        "showPoints": false,
+        "primarySkuPreSellPrice": 0,
+        "preLimitFlag": 0,
+        "itemPromValid": true,
+        "source": 0,
+        "points": 0,
+        "promotionStatus": 0,
+        "itemTagList": [
+          {
+            "itemId": 4104110,
+            "tagId": 0,
+            "freshmanExclusive": false,
+            "name": "可用红包",
+            "subType": 0,
+            "forbidJump": false,
+            "type": 15
           }
-        },
-        "startDate": "2024-04-29T16:00:00.000Z",
-        "endDate": "2024-09-01T16:00:00.000Z",
-        "channel": "HCN_Android",
-        "published": true,
-        "campaignName": "2024_HH2(Android)",
-        "campaignInternalTrackingCode": ""
-      },
-      {
-        "__typename": "MarketingActivity",
-        "id": "145",
-        "name": "Splash Ads_Android_02",
-        "activityType": {
-          "__typename": "MarketingActivityType",
-          "code": "SPLASH_AD"
-        },
-        "data": {
-          "assetUrl": "https://imgp.hilton.com.cn/cp/cg15pk6hmy.jpeg",
-          "clickUrl": "type=launchMP&keyword=pages%2FSearchEntryFormPage%2Findex%3Ftype%3DnewHotel%26keyword%3DFamilyTravelWithParents_2024",
-          "countDown": 3,
-          "viewCapRule": {
-            "viewCapTimeCourse": [
-              {
-                "name": "cap",
-                "endTime": "2024-04-18T16:00:00.000Z",
-                "viewCap": 3,
-                "startTime": "2024-04-15T16:00:00.000Z"
-              }
-            ],
-            "displayToEngagedUsers": false
+        ],
+        "primarySkuPreSellStatus": 0,
+        "extraServiceFlag": 0,
+        "flashPageLink": "",
+        "rank": 0,
+        "id": 4104110,
+        "preLogo": [
+          {
+            "width": 48,
+            "type": 0,
+            "logoUrl": "https://yanxuan.nosdn.127.net/static-union/1699326785df5cf0.png",
+            "height": 30
           }
+        ],
+        "autoOnsaleTimeLeft": 0,
+        "innerData": {
+          "orderBackValid": false,
+          "selectSku": 0
         },
-        "startDate": "2024-05-13T16:00:00.000Z",
-        "endDate": "2024-05-19T16:00:00.000Z",
-        "channel": "HCN_Android",
-        "published": true,
-        "campaignName": "FamilyCampaign2024",
-        "campaignInternalTrackingCode": "OH,MB,FamilyCampaign2024,MULTIPR,SplashAd,LaunchHome,SplashAd"
+        "saleCenterSkuId": 0,
+        "sellVolume": 20397,
+        "freeTryId": 0,
+        "pointsStatus": 0,
+        "extraPrice": "",
+        "colorNum": 0,
+        "primaryPicUrl": "https://yanxuan-item.nosdn.127.net/6806165af187daed0e1ef8a77ed1d3c0.png",
+        "showTime": 0,
+        "autoOnsaleTime": 0,
+        "zc": false,
+        "soldOut": false,
+        "sortFlag": 0,
+        "preemptionStatus": 1,
+        "commentCount": 0,
+        "isPreemption": 0,
+        "zcSearchFlag": false,
+        "onSaleTime": 0,
+        "picMode": 1,
+        "cpsUser": false,
+        "name": "【24新款】无痕冰川牛奶丝凉席",
+        "commentWithPicCount": 0,
+        "underShelf": false,
+        "appExclusiveFlag": false,
+        "status": 2,
+        "couponConflict": true,
+        "finalPriceInfoVO": {
+          "priceInfo": {
+            "finalPrice": {
+              "prefix": "到手",
+              "price": "79"
+            },
+            "counterPrice": "199"
+          },
+          "banner": {
+            "style": 0,
+            "content": "满99减30元"
+          },
+          "type": 0
+        },
+        "itemType": 1,
+        "listPicUrl": "https://yanxuan-item.nosdn.127.net/1f0dc1530410b979e0a61bbdcca70ea6.png",
+        "pointsPrice": 0,
+        "forbiddenBuy": false,
+        "shieldSpecialChannel": false,
+        "simpleDesc": "凉感升级,Q-MAX3.0沁凉入睡；工艺升级,循环透气加倍凉爽；材质升级 ,裸睡无痕与肌肤和平相处；双重冷感面料 ,触感冰冰凉凉",
+        "limitedFlag": 204,
+        "newItemFlag": false,
+        "buttonType": 0,
+        "pieceNum": 0,
+        "extra": {
+          "crmType": 0,
+          "recommend": {
+            "itemId": "4104110"
+          },
+          "modelType": 2
+        },
+        "itemSizeTableDetailFlag": false,
+        "primarySkuId": 0,
+        "forbidExclusiveCal": false,
+        "rewardShareFlag": false,
+        "updateTime": 0,
+        "displaySkuId": 301143472,
+        "showCommentEntrance": true,
+        "pieceUnitDesc": "件",
+        "specialPromTag": "",
+        "showPrice": false,
+        "productPlace": "",
+        "counterPrice": 199,
+        "categoryL2Id": 0,
+        "zoomTransPicV2Url": "https://yanxuan-item.nosdn.127.net/0b709367876d8f6115f85448b059ce67.png",
+        "retailPrice": 109,
+        "itemSizeTableFlag": false
       },
       {
-        "__typename": "MarketingActivity",
-        "id": "108",
-        "name": "TMH24(Android)",
-        "activityType": {
-          "__typename": "MarketingActivityType",
-          "code": "LOYALTY_CAMPAIGN"
-        },
-        "data": {
-          "code": "TMH24",
-          "description": "2024年 1 月 1 日至 2024 年 12 月 31 日的日历年内，团队成员希尔顿荣誉客会会员住满 5 次，或 10 晚，或累计满 18,750 基本积分，快速升级至金会籍。",
-          "displayName": "2024 团队成员快速升金优惠",
-          "heroBannerUrl": {
-            "asset": "https://imgp.hilton.com.cn/cp/v2ccc6xsa0.jpeg"
-          },
-          "eligibleCampaignBannerUrl": {
-            "asset": "https://imgp.hilton.com.cn/cp/k3sz0k4ptb.jpeg"
+        "sortOriginPrice": 1499.00,
+        "promId": 0,
+        "showPoints": false,
+        "primarySkuPreSellPrice": 0,
+        "preLimitFlag": 0,
+        "itemPromValid": true,
+        "source": 0,
+        "points": 0,
+        "promotionStatus": 0,
+        "primarySkuPreSellStatus": 0,
+        "extraServiceFlag": 0,
+        "flashPageLink": "",
+        "rank": 0,
+        "id": 3995885,
+        "preLogo": [
+          {
+            "width": 48,
+            "type": 0,
+            "logoUrl": "https://yanxuan.nosdn.127.net/static-union/1699326785df5cf0.png",
+            "height": 30
           }
+        ],
+        "autoOnsaleTimeLeft": 0,
+        "innerData": {
+          "orderBackValid": false,
+          "selectSku": 0
         },
-        "startDate": "2023-12-31T16:00:00.000Z",
-        "endDate": "2024-12-31T15:59:00.000Z",
-        "channel": "HCN_Android",
-        "published": true,
-        "campaignName": "2024 团队成员快速升金优惠",
-        "campaignInternalTrackingCode": ""
+        "saleCenterSkuId": 0,
+        "sellVolume": 5562,
+        "freeTryId": 0,
+        "pointsStatus": 0,
+        "extraPrice": "",
+        "colorNum": 0,
+        "primaryPicUrl": "https://yanxuan-item.nosdn.127.net/de056cfe8800250dd20623bc3241610d.png",
+        "showTime": 0,
+        "autoOnsaleTime": 0,
+        "zc": false,
+        "soldOut": false,
+        "sortFlag": 0,
+        "preemptionStatus": 1,
+        "commentCount": 0,
+        "isPreemption": 0,
+        "zcSearchFlag": false,
+        "onSaleTime": 0,
+        "picMode": 1,
+        "cpsUser": false,
+        "name": "飞天53%vol 500ml贵州茅台酒（带杯）",
+        "commentWithPicCount": 0,
+        "underShelf": false,
+        "appExclusiveFlag": false,
+        "status": 2,
+        "couponConflict": true,
+        "finalPriceInfoVO": {
+          "priceInfo": {
+            "basicPrice": "1499"
+          },
+          "type": 0
+        },
+        "itemType": 1,
+        "listPicUrl": "https://yanxuan-item.nosdn.127.net/e1dabbad13cceb50e26735a8c06eedb6.png",
+        "pointsPrice": 0,
+        "forbiddenBuy": false,
+        "shieldSpecialChannel": false,
+        "simpleDesc": "茅台飘香，正品溯源",
+        "limitedFlag": 0,
+        "newItemFlag": false,
+        "buttonType": 0,
+        "pieceNum": 0,
+        "extra": {
+          "crmType": 0,
+          "recommend": {
+            "itemId": "3995885"
+          },
+          "modelType": 2
+        },
+        "itemSizeTableDetailFlag": false,
+        "primarySkuId": 0,
+        "forbidExclusiveCal": false,
+        "rewardShareFlag": false,
+        "updateTime": 0,
+        "displaySkuId": 300247710,
+        "showCommentEntrance": true,
+        "pieceUnitDesc": "件",
+        "specialPromTag": "",
+        "showPrice": false,
+        "productPlace": "",
+        "categoryL2Id": 0,
+        "zoomTransPicV2Url": "https://yanxuan-item.nosdn.127.net/4bd888372bb0b6b3443c9371e4325053.png",
+        "retailPrice": 1499,
+        "itemSizeTableFlag": false
       },
       {
-        "__typename": "MarketingActivity",
-        "id": "101",
-        "name": "Android QE_WELCOME2024",
-        "activityType": {
-          "__typename": "MarketingActivityType",
-          "code": "RETAIL_BANNER_QUICKENROLL"
-        },
-        "data": {
-          "assetUrl": "https://imgp.hilton.com.cn/cp/cf4whwbvzw.jpeg",
-          "clickUrl": ""
-        },
-        "startDate": "2023-12-31T16:00:00.000Z",
-        "endDate": "2024-12-31T15:59:00.000Z",
-        "channel": "HCN_Android",
-        "published": true,
-        "campaignName": "WELCOME2024",
-        "campaignInternalTrackingCode": ""
-      },
-      {
-        "__typename": "MarketingActivity",
-        "id": "92",
-        "name": "WELCOME2024(Android)",
-        "activityType": {
-          "__typename": "MarketingActivityType",
-          "code": "LOYALTY_CAMPAIGN"
-        },
-        "data": {
-          "code": "WELCOM",
-          "campaignFaq": "<p><strong>新会员奖励积分常见问题</strong></p>\n<br/>\n\n<p><strong>1. 希尔顿荣誉客会“新会员奖励积分”优惠的促销期为何时？</strong></p>\n<p>新会员加入希尔顿荣誉客会后六个月内 (促销期) 完成有效住宿，即可获得“新会员奖励积分”。加入希尔顿荣誉客会的日期须在 2024 年 1 月 1 日至 2024 年 12 月 31 日期间 (含首尾日期)。</p>\n<br/>\n\n<p><strong>2. 优惠活动规则是什么？</strong></p>\n<p>符合资格的希尔顿荣誉客会会员最多将赚取 3,000 希尔顿荣誉客会奖励积分。促销期内完成首次合资格住宿后，会员将赚取 1,000 奖励积分。促销期内完成第二次合资格住宿后，会员还将赚取 2,000 奖励积分。若会员只完成了一次合资格住宿，只能赚取 1,000 希尔顿荣誉客会奖励积分。若退房日期晚于促销期的结束日期，会员不可通过该次住宿赚取此优惠提供的奖励积分。</p>\n<br/>\n\n<p><strong>3. 是否必须注册此促销，才能享受优惠？</strong></p>\n<p>不需要注册。在 2024 年 1 月 1 日至 2024 年 12 月 31 日期间 (含首尾日期) 加入希尔顿荣誉客会的会员，将自动获得享受此优惠的资格。</p>\n<br/>\n\n<p><strong>4. 若在 2024 年 1 月 1 日之前加入希尔顿荣誉客会，是否有资格享受此优惠？</strong></p>\n<p>不能享受。此优惠仅对 2024 年 1 月 1 日至 2024 年 12 月 31 日期间 (含首尾日期) 加入希尔顿荣誉客会的会员有效。</p>",
-          "campaignTac": "<p><strong>活动条款与细则</strong></p>\n<br/>\n\n<p>此优惠仅对 2024 年 1 月 1 日至 2024 年 12 月 31 日期间 (含首尾日期) 加入希尔顿荣誉客会的会员有效。</p>\n<br/>\n\n<p>本活动仅适用于通过希尔顿批准的预订渠道直接向希尔顿预订且在会员加入希尔顿荣誉客会之日起六个月内 (促销期) 于希尔顿集团旗下任意酒店或度假酒店完成的合资格住宿。住宿须在会员加入希尔顿荣誉客会后六个月内完成，会员方可赚取此优惠提供的奖励积分。</p>\n<br/>\n\n<p>促销期内，希尔顿荣誉客会会员须完成合资格的付费住宿，方可通过此优惠赚取奖励积分，且可享受此优惠的住宿不超过两次。促销期内完成首次住宿，会员将赚取 1,000 奖励积分。促销期内完成第二次住宿，会员将赚取 2,000 奖励积分。若会员只完成一次合资格住宿，只能赚取 1,000 希尔顿荣誉客会奖励积分。若退房日期晚于促销期的结束日期，会员不可通过该次住宿赚取此优惠提供的奖励积分。</p>\n<br/>\n\n<p>希尔顿荣誉客会会员编号须在退房前附到预订记录中。希尔顿保留随时以任何理由拒绝任何积分申请的权利。希尔顿可自行决定要求验证住宿的有效性。此流程可能需要额外的 5-7 个工作日。</p>\n<br/>\n\n<p>此优惠可能会终止，恕不另行通知。奖励积分不可用于累积尊贵会籍等级。奖励积分将于您住宿完成后的六至八周时间内，计入您的希尔顿荣誉客会账户。一次“住宿”指在同一家酒店入住一晚或连续数晚，不论期间是否退房后又重新登记入住。此优惠不适用于团体预订。对于收取度假附加费的酒店，客房内上网、健身中心与健身俱乐部的使用、瓶装水等礼遇可能需要支付费用。有供应情况下的房型升级礼遇仅适用于指定品牌。尊贵会籍礼遇需视供应情况而定，且因品牌而异。垂询更多信息，请访问 <u>www.hilton.com/zh-hans/hilton-honors/</u>。</p>\n<br/>\n\n<p>注册和使用希尔顿荣誉客会™会籍，包括赚取和兑换积分，需遵循《希尔顿荣誉客会适用条款》的规定。</p>",
-          "displayName": "2024 新会员专享，额外赚享3,000奖励积分",
-          "heroBannerUrl": {
-            "asset": "https://imgp.hilton.com.cn/cp/uc7s5iroj1.jpeg"
-          },
-          "horizontalBannerUrl": {
-            "asset": ""
-          },
-          "eligibleCampaignBannerUrl": {
-            "asset": "https://imgp.hilton.com.cn/cp/crs40bhaos.jpeg"
+        "sortOriginPrice": 199,
+        "promId": 0,
+        "showPoints": false,
+        "primarySkuPreSellPrice": 0,
+        "preLimitFlag": 0,
+        "itemPromValid": true,
+        "source": 0,
+        "points": 0,
+        "promotionStatus": 0,
+        "itemTagList": [
+          {
+            "itemId": 4097642,
+            "tagId": 0,
+            "freshmanExclusive": false,
+            "name": "可用红包",
+            "subType": 0,
+            "forbidJump": false,
+            "type": 15
           }
+        ],
+        "primarySkuPreSellStatus": 0,
+        "extraServiceFlag": 0,
+        "flashPageLink": "",
+        "rank": 0,
+        "id": 4097642,
+        "preLogo": [
+          {
+            "width": 48,
+            "type": 0,
+            "logoUrl": "https://yanxuan.nosdn.127.net/static-union/1699326785df5cf0.png",
+            "height": 30
+          }
+        ],
+        "autoOnsaleTimeLeft": 0,
+        "innerData": {
+          "orderBackValid": false,
+          "selectSku": 0
         },
-        "startDate": "2023-12-31T16:00:00.000Z",
-        "endDate": "2024-12-31T15:59:00.000Z",
-        "channel": "HCN_Android",
-        "published": true,
-        "campaignName": "WELCOME2024",
-        "campaignInternalTrackingCode": ""
+        "saleCenterSkuId": 0,
+        "sellVolume": 24228,
+        "freeTryId": 0,
+        "pointsStatus": 0,
+        "extraPrice": "",
+        "colorNum": 0,
+        "primaryPicUrl": "https://yanxuan-item.nosdn.127.net/9fe67d43db9bd53c897ad77ec10eff74.png",
+        "showTime": 0,
+        "autoOnsaleTime": 0,
+        "zc": false,
+        "soldOut": false,
+        "sortFlag": 0,
+        "preemptionStatus": 1,
+        "commentCount": 0,
+        "isPreemption": 0,
+        "zcSearchFlag": false,
+        "onSaleTime": 0,
+        "picMode": 1,
+        "cpsUser": false,
+        "name": "24新品仙茶果冻®果冻被凉感夏被",
+        "commentWithPicCount": 0,
+        "underShelf": false,
+        "appExclusiveFlag": false,
+        "status": 2,
+        "couponConflict": true,
+        "finalPriceInfoVO": {
+          "priceInfo": {
+            "finalPrice": {
+              "prefix": "到手",
+              "price": "79"
+            },
+            "counterPrice": "199"
+          },
+          "banner": {
+            "style": 0,
+            "content": "满99减30元"
+          },
+          "type": 0
+        },
+        "itemType": 1,
+        "listPicUrl": "https://yanxuan-item.nosdn.127.net/c76b20d498580bcacc4c725b0a010251.png",
+        "pointsPrice": 0,
+        "forbiddenBuy": false,
+        "shieldSpecialChannel": false,
+        "simpleDesc": "7A级凉感夏被，持续凉感，内衣级柔软，带来清凉干爽的睡眠体验。",
+        "limitedFlag": 204,
+        "newItemFlag": false,
+        "buttonType": 0,
+        "pieceNum": 0,
+        "extra": {
+          "crmType": 0,
+          "recommend": {
+            "itemId": "4097642"
+          },
+          "modelType": 2
+        },
+        "itemSizeTableDetailFlag": false,
+        "primarySkuId": 0,
+        "forbidExclusiveCal": false,
+        "rewardShareFlag": false,
+        "updateTime": 0,
+        "displaySkuId": 301133035,
+        "showCommentEntrance": true,
+        "pieceUnitDesc": "件",
+        "specialPromTag": "",
+        "showPrice": false,
+        "productPlace": "",
+        "counterPrice": 199,
+        "categoryL2Id": 0,
+        "zoomTransPicV2Url": "https://yanxuan-item.nosdn.127.net/fbe60c7721fb3ad6051ff22cd2e16f73.png",
+        "retailPrice": 109,
+        "itemSizeTableFlag": false
+      },
+      {
+        "sortOriginPrice": 209,
+        "promId": 0,
+        "showPoints": false,
+        "primarySkuPreSellPrice": 0,
+        "preLimitFlag": 0,
+        "itemPromValid": true,
+        "source": 0,
+        "points": 0,
+        "promotionStatus": 0,
+        "primarySkuPreSellStatus": 0,
+        "extraServiceFlag": 0,
+        "flashPageLink": "",
+        "rank": 0,
+        "id": 4075565,
+        "preLogo": [
+          {
+            "width": 48,
+            "type": 0,
+            "logoUrl": "https://yanxuan.nosdn.127.net/static-union/1699326785df5cf0.png",
+            "height": 30
+          }
+        ],
+        "autoOnsaleTimeLeft": 0,
+        "innerData": {
+          "orderBackValid": false,
+          "selectSku": 0
+        },
+        "saleCenterSkuId": 0,
+        "sellVolume": 9626,
+        "freeTryId": 0,
+        "pointsStatus": 0,
+        "extraPrice": "",
+        "colorNum": 0,
+        "primaryPicUrl": "https://yanxuan-item.nosdn.127.net/807cf44132f149f0178d52174a668914.png",
+        "showTime": 0,
+        "autoOnsaleTime": 0,
+        "zc": false,
+        "soldOut": false,
+        "sortFlag": 0,
+        "preemptionStatus": 1,
+        "commentCount": 0,
+        "isPreemption": 0,
+        "zcSearchFlag": false,
+        "onSaleTime": 0,
+        "picMode": 1,
+        "cpsUser": false,
+        "name": "A类负离子抗菌提花大豆被夏被四季被",
+        "commentWithPicCount": 0,
+        "underShelf": false,
+        "appExclusiveFlag": false,
+        "status": 2,
+        "couponConflict": true,
+        "finalPriceInfoVO": {
+          "priceInfo": {
+            "finalPrice": {
+              "price": "89"
+            },
+            "counterPrice": "209"
+          },
+          "banner": {
+            "style": 0,
+            "title": "省心价",
+            "content": "仅剩3天"
+          },
+          "type": 0
+        },
+        "itemType": 1,
+        "listPicUrl": "https://yanxuan-item.nosdn.127.net/664ec8380254f32b251b696934cc1f6c.png",
+        "pointsPrice": 0,
+        "forbiddenBuy": false,
+        "shieldSpecialChannel": false,
+        "simpleDesc": "A类母婴级负离子抗菌大豆被",
+        "limitedFlag": 204,
+        "newItemFlag": false,
+        "buttonType": 0,
+        "pieceNum": 0,
+        "extra": {
+          "crmType": 0,
+          "recommend": {
+            "itemId": "4075565"
+          },
+          "modelType": 2
+        },
+        "itemSizeTableDetailFlag": false,
+        "primarySkuId": 0,
+        "forbidExclusiveCal": false,
+        "rewardShareFlag": false,
+        "updateTime": 0,
+        "displaySkuId": 300901120,
+        "showCommentEntrance": true,
+        "pieceUnitDesc": "件",
+        "specialPromTag": "",
+        "showPrice": false,
+        "productPlace": "",
+        "counterPrice": 209,
+        "categoryL2Id": 0,
+        "zoomTransPicV2Url": "https://yanxuan-item.nosdn.127.net/a638656ab9c82e645214a51798cb88f5.png",
+        "retailPrice": 89,
+        "itemSizeTableFlag": false
+      },
+      {
+        "sortOriginPrice": 9.9,
+        "promId": 0,
+        "showPoints": false,
+        "primarySkuPreSellPrice": 0,
+        "preLimitFlag": 0,
+        "itemPromValid": true,
+        "source": 0,
+        "points": 0,
+        "promotionStatus": 0,
+        "primarySkuPreSellStatus": 0,
+        "extraServiceFlag": 0,
+        "flashPageLink": "",
+        "rank": 0,
+        "id": 1318002,
+        "preLogo": [
+          {
+            "width": 48,
+            "type": 0,
+            "logoUrl": "https://yanxuan.nosdn.127.net/static-union/1699326785df5cf0.png",
+            "height": 30
+          }
+        ],
+        "autoOnsaleTimeLeft": 0,
+        "innerData": {
+          "orderBackValid": false,
+          "selectSku": 0
+        },
+        "saleCenterSkuId": 0,
+        "sellVolume": 74222,
+        "freeTryId": 0,
+        "pointsStatus": 0,
+        "extraPrice": "",
+        "colorNum": 0,
+        "primaryPicUrl": "https://yanxuan-item.nosdn.127.net/7d5ea424cd88d230a16df02f5d4be634.png",
+        "showTime": 0,
+        "autoOnsaleTime": 0,
+        "zc": false,
+        "soldOut": false,
+        "sortFlag": 0,
+        "preemptionStatus": 1,
+        "commentCount": 0,
+        "isPreemption": 0,
+        "zcSearchFlag": false,
+        "onSaleTime": 0,
+        "picMode": 1,
+        "cpsUser": false,
+        "name": "每一口都有九种肉，全价猫粮",
+        "commentWithPicCount": 0,
+        "underShelf": false,
+        "appExclusiveFlag": false,
+        "status": 2,
+        "couponConflict": false,
+        "finalPriceInfoVO": {
+          "priceInfo": {
+            "finalPrice": {
+              "price": "9"
+            },
+            "counterPrice": "9.9"
+          },
+          "banner": {
+            "style": 0,
+            "title": "省心价",
+            "content": "仅剩3天"
+          },
+          "type": 0
+        },
+        "itemType": 1,
+        "listPicUrl": "https://yanxuan-item.nosdn.127.net/bb04395b4fad70adf01c9f757774aa6a.jpg",
+        "pointsPrice": 0,
+        "forbiddenBuy": false,
+        "shieldSpecialChannel": false,
+        "simpleDesc": "全新鲜肉升级，新增鲣鱼干喷涂，征服挑嘴猫",
+        "limitedFlag": 204,
+        "newItemFlag": false,
+        "buttonType": 0,
+        "pieceNum": 0,
+        "extra": {
+          "crmType": 0,
+          "recommend": {
+            "itemId": "1318002"
+          },
+          "modelType": 2
+        },
+        "itemSizeTableDetailFlag": false,
+        "primarySkuId": 0,
+        "forbidExclusiveCal": false,
+        "rewardShareFlag": false,
+        "updateTime": 0,
+        "displaySkuId": 301140261,
+        "showCommentEntrance": true,
+        "pieceUnitDesc": "件",
+        "specialPromTag": "",
+        "showPrice": false,
+        "productPlace": "",
+        "counterPrice": 9.9,
+        "categoryL2Id": 0,
+        "zoomTransPicV2Url": "https://yanxuan-item.nosdn.127.net/d41d5338ce1882a59781b5b430133267.png",
+        "retailPrice": 9,
+        "itemSizeTableFlag": false
+      },
+      {
+        "sortOriginPrice": 69,
+        "promId": 0,
+        "showPoints": false,
+        "primarySkuPreSellPrice": 0,
+        "preLimitFlag": 0,
+        "itemPromValid": true,
+        "source": 0,
+        "points": 0,
+        "promotionStatus": 0,
+        "primarySkuPreSellStatus": 0,
+        "extraServiceFlag": 0,
+        "flashPageLink": "",
+        "rank": 0,
+        "id": 4102285,
+        "preLogo": [
+          {
+            "width": 48,
+            "type": 0,
+            "logoUrl": "https://yanxuan.nosdn.127.net/static-union/1699326785df5cf0.png",
+            "height": 30
+          }
+        ],
+        "autoOnsaleTimeLeft": 0,
+        "innerData": {
+          "orderBackValid": false,
+          "selectSku": 0
+        },
+        "saleCenterSkuId": 0,
+        "sellVolume": 111512,
+        "freeTryId": 0,
+        "pointsStatus": 0,
+        "extraPrice": "",
+        "colorNum": 0,
+        "primaryPicUrl": "https://yanxuan-item.nosdn.127.net/6a858a28f1c4a2acf6031ee95e86668c.png",
+        "showTime": 0,
+        "autoOnsaleTime": 0,
+        "zc": false,
+        "soldOut": false,
+        "sortFlag": 0,
+        "preemptionStatus": 1,
+        "commentCount": 0,
+        "isPreemption": 0,
+        "zcSearchFlag": false,
+        "onSaleTime": 0,
+        "picMode": 1,
+        "cpsUser": false,
+        "name": "超值！5A级抗菌100%纯棉T恤男女同款",
+        "commentWithPicCount": 0,
+        "underShelf": false,
+        "appExclusiveFlag": false,
+        "status": 2,
+        "couponConflict": true,
+        "finalPriceInfoVO": {
+          "priceInfo": {
+            "finalPrice": {
+              "price": "39.9"
+            },
+            "counterPrice": "69"
+          },
+          "banner": {
+            "style": 0,
+            "title": "省心价",
+            "content": "仅剩3天"
+          },
+          "type": 0
+        },
+        "itemType": 1,
+        "listPicUrl": "https://yanxuan-item.nosdn.127.net/4536f298f3434acc56511888a1117986.jpg",
+        "pointsPrice": 0,
+        "forbiddenBuy": false,
+        "shieldSpecialChannel": false,
+        "simpleDesc": "100%纯棉材质，200G重磅，吸湿透气，5A级抗菌",
+        "limitedFlag": 204,
+        "newItemFlag": false,
+        "buttonType": 0,
+        "pieceNum": 0,
+        "extra": {
+          "crmType": 0,
+          "recommend": {
+            "itemId": "4102285"
+          },
+          "modelType": 2
+        },
+        "itemSizeTableDetailFlag": false,
+        "primarySkuId": 0,
+        "forbidExclusiveCal": false,
+        "rewardShareFlag": false,
+        "updateTime": 0,
+        "displaySkuId": 301136566,
+        "showCommentEntrance": true,
+        "pieceUnitDesc": "件",
+        "specialPromTag": "",
+        "showPrice": false,
+        "productPlace": "",
+        "counterPrice": 69,
+        "categoryL2Id": 0,
+        "zoomTransPicV2Url": "https://yanxuan-item.nosdn.127.net/77355fe3a7db902fff036252544e6609.png",
+        "retailPrice": 39.9,
+        "itemSizeTableFlag": false
+      },
+      {
+        "sortOriginPrice": 89,
+        "promId": 0,
+        "showPoints": false,
+        "primarySkuPreSellPrice": 0,
+        "preLimitFlag": 0,
+        "itemPromValid": true,
+        "source": 0,
+        "points": 0,
+        "promotionStatus": 0,
+        "primarySkuPreSellStatus": 0,
+        "extraServiceFlag": 0,
+        "flashPageLink": "",
+        "rank": 0,
+        "id": 1535011,
+        "preLogo": [
+          {
+            "width": 48,
+            "type": 0,
+            "logoUrl": "https://yanxuan.nosdn.127.net/static-union/1699326785df5cf0.png",
+            "height": 30
+          }
+        ],
+        "autoOnsaleTimeLeft": 0,
+        "innerData": {
+          "orderBackValid": false,
+          "selectSku": 0
+        },
+        "saleCenterSkuId": 0,
+        "sellVolume": 3472,
+        "freeTryId": 0,
+        "pointsStatus": 0,
+        "extraPrice": "",
+        "colorNum": 0,
+        "primaryPicUrl": "https://yanxuan-item.nosdn.127.net/f9a2ae1df044edcab436a0b953ec4ddd.png",
+        "showTime": 0,
+        "autoOnsaleTime": 0,
+        "zc": false,
+        "soldOut": false,
+        "sortFlag": 0,
+        "preemptionStatus": 1,
+        "commentCount": 0,
+        "isPreemption": 0,
+        "zcSearchFlag": false,
+        "onSaleTime": 0,
+        "picMode": 1,
+        "cpsUser": false,
+        "name": " 【经典品质】3.3g蛋白质纯牛奶 200ml*24盒",
+        "commentWithPicCount": 0,
+        "underShelf": false,
+        "appExclusiveFlag": false,
+        "status": 2,
+        "couponConflict": true,
+        "finalPriceInfoVO": {
+          "priceInfo": {
+            "finalPrice": {
+              "price": "62.9"
+            },
+            "counterPrice": "89"
+          },
+          "banner": {
+            "style": 0,
+            "title": "省心价",
+            "content": "仅剩3天"
+          },
+          "type": 0
+        },
+        "itemType": 1,
+        "listPicUrl": "https://yanxuan-item.nosdn.127.net/f1eb356191ffeec1432b1f1ff066ce56.jpg",
+        "pointsPrice": 0,
+        "forbiddenBuy": false,
+        "shieldSpecialChannel": false,
+        "simpleDesc": "原奶指标远优于欧盟标准",
+        "limitedFlag": 204,
+        "newItemFlag": false,
+        "buttonType": 0,
+        "pieceNum": 0,
+        "extra": {
+          "crmType": 0,
+          "recommend": {
+            "itemId": "1535011"
+          },
+          "modelType": 2
+        },
+        "itemSizeTableDetailFlag": false,
+        "primarySkuId": 0,
+        "forbidExclusiveCal": false,
+        "rewardShareFlag": false,
+        "updateTime": 0,
+        "displaySkuId": 300909690,
+        "showCommentEntrance": true,
+        "pieceUnitDesc": "件",
+        "specialPromTag": "",
+        "showPrice": false,
+        "productPlace": "",
+        "counterPrice": 89,
+        "categoryL2Id": 0,
+        "zoomTransPicV2Url": "https://yanxuan-item.nosdn.127.net/24e90e0b64d888bfb92c033adc571006.png",
+        "retailPrice": 62.9,
+        "itemSizeTableFlag": false
+      },
+      {
+        "sortOriginPrice": 12,
+        "promId": 0,
+        "showPoints": false,
+        "primarySkuPreSellPrice": 0,
+        "preLimitFlag": 0,
+        "itemPromValid": true,
+        "source": 0,
+        "points": 0,
+        "promotionStatus": 0,
+        "primarySkuPreSellStatus": 0,
+        "extraServiceFlag": 0,
+        "flashPageLink": "",
+        "rank": 0,
+        "id": 3992597,
+        "preLogo": [
+          {
+            "width": 48,
+            "type": 0,
+            "logoUrl": "https://yanxuan.nosdn.127.net/static-union/1699326785df5cf0.png",
+            "height": 30
+          }
+        ],
+        "autoOnsaleTimeLeft": 0,
+        "innerData": {
+          "orderBackValid": false,
+          "selectSku": 0
+        },
+        "saleCenterSkuId": 0,
+        "sellVolume": 15266,
+        "freeTryId": 0,
+        "pointsStatus": 0,
+        "extraPrice": "",
+        "colorNum": 0,
+        "primaryPicUrl": "https://yanxuan-item.nosdn.127.net/dccca03730fc203abe4166631009570c.png",
+        "showTime": 0,
+        "autoOnsaleTime": 0,
+        "zc": false,
+        "soldOut": false,
+        "sortFlag": 0,
+        "preemptionStatus": 1,
+        "commentCount": 0,
+        "isPreemption": 0,
+        "zcSearchFlag": false,
+        "onSaleTime": 0,
+        "picMode": 1,
+        "cpsUser": false,
+        "name": "过亿爆品，全价冻干双拼猫粮",
+        "commentWithPicCount": 0,
+        "underShelf": false,
+        "appExclusiveFlag": false,
+        "status": 2,
+        "couponConflict": false,
+        "finalPriceInfoVO": {
+          "priceInfo": {
+            "finalPrice": {
+              "price": "8.9"
+            },
+            "counterPrice": "12"
+          },
+          "banner": {
+            "style": 0,
+            "title": "百亿补贴",
+            "content": "距结束2天"
+          },
+          "type": 0
+        },
+        "itemType": 1,
+        "listPicUrl": "https://yanxuan-item.nosdn.127.net/f48cb163a0342aba2ba0ae89ed8d1d7d.png",
+        "pointsPrice": 0,
+        "forbiddenBuy": false,
+        "shieldSpecialChannel": false,
+        "simpleDesc": "91%动物性原料，两种美味冻干添加",
+        "limitedFlag": 203,
+        "newItemFlag": false,
+        "buttonType": 0,
+        "pieceNum": 0,
+        "extra": {
+          "crmType": 0,
+          "recommend": {
+            "itemId": "3992597"
+          },
+          "modelType": 2
+        },
+        "itemSizeTableDetailFlag": false,
+        "primarySkuId": 0,
+        "forbidExclusiveCal": false,
+        "rewardShareFlag": false,
+        "updateTime": 0,
+        "displaySkuId": 300597088,
+        "showCommentEntrance": true,
+        "pieceUnitDesc": "件",
+        "specialPromTag": "",
+        "showPrice": false,
+        "productPlace": "",
+        "counterPrice": 12,
+        "categoryL2Id": 0,
+        "zoomTransPicV2Url": "https://yanxuan-item.nosdn.127.net/626c77eebd6a19b0bb2c07091c8d5a7a.png",
+        "retailPrice": 8.9,
+        "itemSizeTableFlag": false
       }
     ]
-  }
+  },
+  "code": "200"
 }

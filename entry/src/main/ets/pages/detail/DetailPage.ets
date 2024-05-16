@@ -20,6 +20,7 @@ import {
   appWhite,
   backgroundColor,
   backRed,
+  lineColor,
   textBlack,
   textGray,
   textLightGray,
@@ -37,6 +38,8 @@ import { IssueListItem } from '../../model/IssueListItem';
 import { ItemListItem } from '../../model/ItemListItem';
 import { GoodItem } from '../../component/GoodItem';
 import { RecommendModel } from '../../model/detail/RecommendModel';
+import display from '@ohos.display';
+import { TopData } from '../../model/topic/TopData';
 
 @Entry
 @Component
@@ -51,9 +54,12 @@ struct DetailPage {
   @State _deliveryModel: WapitemDeliveryModel = null
   @State _detailImages: Array<string> = []
   @State _rcmdData: Array<ItemListItem> = []
-
+  _scroller = new Scroller()
   /// 头部活动
   @State _activity: BannerModel = null
+  @State _showTop: boolean = false
+  @State _topData: Array<DetailTop> = [new DetailTop('商品', 0), new DetailTop('评价', 1), new DetailTop('详情', 2), new DetailTop('推荐', 3)]
+  @State _topIndex: number = 0
 
   aboutToAppear() {
     let id = router.getParams()['id'] as string
@@ -143,101 +149,196 @@ struct DetailPage {
     if (this._pageState == PageState.Loading) Column() {
       PageLoading()
     }.width('100%').height('100%').align(Alignment.Center).justifyContent(FlexAlign.Center)
-    else List() {
-      ListItem() {
-        this.bannerView()
-      }
+    else Stack() {
+      List({ scroller: this._scroller }) {
+        ListItem() {
+          this.bannerView()
+        }
 
-      ListItem() {
-        this.topActivities()
-      }
+        ListItem() {
+          this.topActivities()
+        }
 
-      ListItem() {
-        ///banner下面图片
-        this.featuredSeries(this._goodDetail.featuredSeries)
-      }
+        ListItem() {
+          ///banner下面图片
+          this.featuredSeries(this._goodDetail.featuredSeries)
+        }
 
-      if (this._goodDetail.showPrice)
-      ListItem() {
-        ///商品价格，showPrice字段控制
-        this.promBanner()
-      }
-      if (this._goodDetail.spmcBanner != null)
-      ListItem() {
-        ///pro会员
-        this.proVip(this._goodDetail.spmcBanner)
-      }
+        if (this._goodDetail.showPrice)
+        ListItem() {
+          ///商品价格，showPrice字段控制
+          this.promBanner()
+        }
+        if (this._goodDetail.spmcBanner != null)
+        ListItem() {
+          ///pro会员
+          this.proVip(this._goodDetail.spmcBanner)
+        }
 
-      ListItem() {
-        ///商品名称
-        this.goodTitle()
-      }
+        ListItem() {
+          ///商品名称
+          this.goodTitle()
+        }
 
-      if (this._goodDetail.simpleBrandInfo != null)
-      ListItem() {
-        ///品牌名称(网易严选)
-        this.yanxuanIcon(this._goodDetail.simpleBrandInfo)
-      }
+        if (this._goodDetail.simpleBrandInfo != null)
+        ListItem() {
+          ///品牌名称(网易严选)
+          this.yanxuanIcon(this._goodDetail.simpleBrandInfo)
+        }
 
-      ListItem() {
-        /// 推荐理由
-        this.recommendReason()
-      }
+        ListItem() {
+          /// 推荐理由
+          this.recommendReason()
+        }
 
-      if (this._goodDetail.welfareCardVO != null)
-      ListItem() {
-        ///活动卡
-        Image(this._goodDetail.welfareCardVO.picUrl ?? '').width('100%')
-      }
+        if (this._goodDetail.welfareCardVO != null)
+        ListItem() {
+          ///活动卡
+          Image(this._goodDetail.welfareCardVO.picUrl ?? '').width('100%')
+        }
 
-      ///规则
-      ListItem() {
-        if (this._goodDetail.fullRefundPolicy != null
-        && this._goodDetail.fullRefundPolicy.titles != null
-        && this._goodDetail.fullRefundPolicy.titles.length > 0)
-          this.fullRefundPolicy()
-      }
+        ///规则
+        ListItem() {
+          if (this._goodDetail.fullRefundPolicy != null
+            && this._goodDetail.fullRefundPolicy.titles != null
+            && this._goodDetail.fullRefundPolicy.titles.length > 0)
+            this.fullRefundPolicy()
+        }
 
-      ListItem() {
-        this.selectProperty()
-      }
+        ListItem() {
+          this.selectProperty()
+        }
 
-      ListItem() {
-        if (this._goodDetail.adBanners != null)
-        Swiper() {
-          ForEach(this._goodDetail.adBanners, (item: AdBannersItem) => {
-            Image(item.picUrl)
-          })
-        }.height(100).width('100%').autoPlay(true)
-      }
+        ListItem() {
+          if (this._goodDetail.adBanners != null)
+          Swiper() {
+            ForEach(this._goodDetail.adBanners, (item: AdBannersItem) => {
+              Image(item.picUrl)
+            })
+          }.height(100).width('100%').autoPlay(true)
+        }
 
-      ///用户评价
-      ListItem() {
-        this.detailComment()
-      }
+        ListItem() {
+          this.split()
+        }
 
-      ///_brandInfo
-      if (this._goodDetail.brandInfo != null)
-      ListItem() {
-        this.brandInfo(this._goodDetail.brandInfo)
-      }
+        ///用户评价
+        ListItem() {
+          this.detailComment()
+        }
 
-      ///商品详情
-      ListItem() {
-        this.detail()
-      }
+        ///_brandInfo
+        if (this._goodDetail.brandInfo != null)
+        ListItem() {
+          this.brandInfo(this._goodDetail.brandInfo)
+        }
 
-      ///常见问题
-      ListItem() {
-        this.issueList()
-      }
+        ListItem() {
+          this.split()
+        }
 
-      ///推荐
-      ListItem() {
-        this.recommend()
-      }
+        ///商品详情
+        ListItem() {
+          this.detail()
+        }
 
-    }.backgroundColor(appWhite)
+        ///常见问题
+        ListItem() {
+          this.issueList()
+        }
+
+        ///推荐
+        ListItem() {
+          this.recommend()
+        }
+      }
+      .backgroundColor(appWhite)
+      .sticky(StickyStyle.Header)
+      .onScrollIndex((start, end) => {
+        if (start >= 0 && start < 9) {
+          if (this._topIndex != 0) {
+            this._topIndex = 0
+          }
+        } else if (start >= 10 && start < 11) {
+          if (this._topIndex != 1) {
+            this._topIndex = 1
+          }
+        } else if (start >= 11 && start < 14) {
+          if (this._topIndex != 2) {
+            this._topIndex = 2
+          }
+        } else if (start > 14) {
+          if (this._topIndex != 3) {
+            this._topIndex = 3
+          }
+        }
+
+        if (start >= 1) {
+          if (!this._showTop) {
+            this._showTop = true
+          }
+        } else {
+          if (this._showTop) {
+            this._showTop = false
+          }
+        }
+      })
+
+      this.header()
+    }.alignContent(Alignment.TopStart)
+  }
+
+  showDialog(){
+
+  }
+
+  @Builder
+  header() {
+    if (this._showTop)
+    Row() {
+      Image($r('app.media.back')).size({ width: 30 }).padding(4).margin({ left: 12, right: 12 })
+      ForEach(this._topData, (item: DetailTop, index: number) => {
+        RelativeContainer() {
+          Text(item.tile)
+            .fontSize(14)
+            .fontColor(this._topIndex == index ? textRed : textBlack)
+            .id('tile')
+            .relativeCenter()
+          Rect()
+            .width(40)
+            .height(2)
+            .fill(this._topIndex == index ? textRed : Color.Transparent)
+            .margin({ bottom: 1 })
+            .id('line')
+            .relativeBottomCenter()
+        }.layoutWeight(1).height('100%').onClick(e => {
+          if (item.index == 0) {
+            this._scroller.scrollTo({ xOffset: 0, yOffset: 0, animation: { duration: 2000, curve: Curve.Linear } })
+          } else if (item.index == 1) {
+            this._scroller.scrollToIndex(10)
+          } else if (item.index == 2) {
+            this._scroller.scrollToIndex(12)
+          } else if (item.index == 3) {
+            this._scroller.scrollToIndex(15)
+          }
+        })
+      })
+    }
+    .height(42)
+    .alignItems(VerticalAlign.Center)
+    .width('100%')
+    .backgroundColor(appWhite)
+    .border({ width: { bottom: 0.5 }, color: { bottom: 0xFFECECEC } })
+
+    else Image($r('app.media.back'))
+      .size({ width: 30, height: 30 })
+      .backgroundColor(appWhite)
+      .borderRadius(15)
+      .border({ width: 1, color: 0xFFDEDEDE })
+      .margin({ left: 15, top: 15 })
+      .onClick(e => {
+        router.back()
+      })
   }
 
   @Builder
@@ -258,7 +359,7 @@ struct DetailPage {
   issueList() {
     Column() {
       Text('常见问题').fontSize(16).fontColor(textBlack).margin({ top: 20, bottom: 12 })
-      ForEach(this._goodDetail.issueList??[], (item: IssueListItem) => {
+      ForEach(this._goodDetail.issueList ?? [], (item: IssueListItem) => {
         Column() {
           Row() {
             Rect().size({ width: 4, height: 4 }).borderRadius(2).fill(backRed)
@@ -276,7 +377,6 @@ struct DetailPage {
   @Builder
   detail() {
     Column() {
-      this.split()
       Text('商品参数').fontSize(14).fontColor(textBlack).margin({ left: 12, top: 10 })
       /// 成分
       Column() {
@@ -332,7 +432,7 @@ struct DetailPage {
 
         Column() {
           Row() {
-            Text(brandInfo.title??'').fontSize(16).fontColor(textBlack).fontWeight(600)
+            Text(brandInfo.title ?? '').fontSize(16).fontColor(textBlack).fontWeight(600)
             ArrowIcon()
           }.width('100%').justifyContent(FlexAlign.SpaceBetween)
 
@@ -345,7 +445,6 @@ struct DetailPage {
   @Builder
   detailComment() {
     Column() {
-      this.split()
       Row() {
         Text(`用户评价${this._goodDetail.commentCount}`).fontSize(14).fontColor(textBlack)
         Row() {
@@ -373,7 +472,7 @@ struct DetailPage {
         Text('领券：').fontSize(14).fontColor(textBlack)
         Row() {
           ForEach(this._goodDetail.couponShortNameList, (item: string) => {
-            Text(item??'')
+            Text(item ?? '')
               .fontSize(12)
               .fontColor(textYellow)
               .padding({ left: 5, right: 5 })
@@ -478,7 +577,7 @@ struct DetailPage {
     Row() {
       Text('规则').fontSize(14).fontColor(textBlack)
       Column() {
-        ForEach(this._goodDetail.fullRefundPolicy.titles??[], (item: string) => {
+        ForEach(this._goodDetail.fullRefundPolicy.titles ?? [], (item: string) => {
           Row() {
             Rect().size({ width: 4, height: 4 }).borderRadius(2).fill(backRed)
             Text(item).fontSize(14).fontColor(textBlack).textOverflow({ overflow: TextOverflow.Ellipsis }).maxLines(1)
@@ -538,12 +637,12 @@ struct DetailPage {
   @Builder
   goodTitle() {
     Row() {
-      Text(this._goodDetail.name??'').layoutWeight(1).fontColor(textBlack).fontSize(15).fontWeight(600)
+      Text(this._goodDetail.name ?? '').layoutWeight(1).fontColor(textBlack).fontSize(15).fontWeight(600)
       if (this._goodDetail.commentCount > 0)
         if (this._goodDetail.goodCmtRate == null) Text('查看评价').fontSize(12).fontColor(textBlack)
         else Row() {
           Column() {
-            Text(this._goodDetail.goodCmtRate??'').fontSize(16).fontColor(textRed)
+            Text(this._goodDetail.goodCmtRate ?? '').fontSize(16).fontColor(textRed)
             Text('好评率').fontSize(12).fontColor(textGray)
           }
 
@@ -559,7 +658,10 @@ struct DetailPage {
   proVip(spmcBanner: SpmcBanner) {
     Row() {
       Image($r('app.media.pro_icon')).size({ height: 12 })
-      Text(`${spmcBanner.spmcDesc??''}${spmcBanner.spmcPrice??''}`).fontSize(12).fontColor(textBlack).layoutWeight(1)
+      Text(`${spmcBanner.spmcDesc ?? ''}${spmcBanner.spmcPrice ?? ''}`)
+        .fontSize(12)
+        .fontColor(textBlack)
+        .layoutWeight(1)
       Text('开通').fontSize(12).fontColor(textYellow)
     }
     .backgroundColor(0XFFFFF1D2)
@@ -587,7 +689,7 @@ struct DetailPage {
   @Builder
   featuredSeries(featuredSeries: FeaturedSeries) {
     if (featuredSeries != null)
-      Image(featuredSeries.detailPicUrl??'').width('100%').onClick(e => {
+      Image(featuredSeries.detailPicUrl ?? '').width('100%').onClick(e => {
         goWebView(`${baseUrl}/featuredSeries/detail?id=${featuredSeries.id}`)
       })
     else Rect()
@@ -637,11 +739,11 @@ struct DetailPage {
       .alignItems(HorizontalAlign.Start)
       .justifyContent(FlexAlign.SpaceAround)
 
-      Image(this._activity.processBanner.logoUrl??'').size({ height: 40, width: 40 })
+      Image(this._activity.processBanner.logoUrl ?? '').size({ height: 40, width: 40 })
     }
     .width('100%')
     .height(60)
-    .backgroundColor(this._activity.processBanner.bgColor??'#E53B44')
+    .backgroundColor(this._activity.processBanner.bgColor ?? '#E53B44')
     .padding({ left: 10, right: 10 })
     .justifyContent(FlexAlign.SpaceBetween)
     else Rect()
@@ -692,15 +794,47 @@ struct DetailPage {
   }
 }
 
-@Builder function ArrowIcon() {
+class DetailTop {
+  tile: string
+  index: number = 0
+
+  constructor(tile: string, index: number) {
+    this.tile = tile
+    this.index = index
+  }
+}
+
+@Builder
+function ArrowIcon() {
   Image($r('app.media.arrow_right')).size({ height: 12, width: 12 })
 }
 
-@Styles function propertyStyle() {
+@Styles
+function propertyStyle() {
   .width('100%')
   .padding({ top: 12, right: 24, bottom: 12 })
   .margin({ left: 12 })
   .border({ width: { bottom: 1 }, color: { bottom: 0xFFF2F4F9 } })
+}
+
+@Styles
+function relativeCenter() {
+  .alignRules(
+    {
+      middle: { anchor: '__container__', align: HorizontalAlign.Center },
+      center: { anchor: '__container__', align: VerticalAlign.Center },
+    }
+  )
+}
+
+@Styles
+function relativeBottomCenter() {
+  .alignRules(
+    {
+      center: { anchor: '__container__', align: VerticalAlign.Bottom },
+      middle: { anchor: '__container__', align: HorizontalAlign.Center }
+    }
+  )
 }
 
 class ActivityData {

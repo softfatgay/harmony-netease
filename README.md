@@ -14,5 +14,8 @@
 
 ![img6.jpg](screenshot%2Fimg6.jpg)
 ![img7.jpg](screenshot%2Fimg7.jpg)
+
+![img8.jpg](screenshot%2Fimg8.jpg)
+
 ### attention: 
 1:webview 在模拟器上无法滑动

@@ -11,6 +11,8 @@ import { BannerItem } from '../../model/BannerItem'
 import { Category } from '../../model/Category'
 import { PageState } from '../../base/PageState'
 import HashMap from '@ohos.util.HashMap'
+import router from '@ohos.router'
+import { pageIndex } from '../../utils/Routers'
 
 @Entry
 @Component
@@ -108,7 +110,14 @@ export struct SortPage {
                   Column() {
                     Image(category.wapBannerUrl).width('100%').aspectRatio(1)
                     Text(category.name).fontColor(textBlack).fontSize(12).margin({ top: 6 })
-                  }
+                  }.onClick(e => {
+                    router.pushUrl({ url: pageIndex.sortListPage,
+                      params: {
+                        'categoryId': category.id,
+                        'superCategoryId': category.superCategoryId
+                      }
+                    })
+                  })
                 }
               })
             }.margin({ top: 10 })

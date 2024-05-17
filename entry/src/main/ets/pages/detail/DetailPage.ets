@@ -288,7 +288,7 @@ struct DetailPage {
     }.alignContent(Alignment.TopStart)
   }
 
-  showDialog(){
+  showDialog() {
 
   }
 
@@ -296,7 +296,9 @@ struct DetailPage {
   header() {
     if (this._showTop)
     Row() {
-      Image($r('app.media.back')).size({ width: 30 }).padding(4).margin({ left: 12, right: 12 })
+      Image($r('app.media.back')).size({ width: 30 }).padding(4).margin({ left: 12, right: 12 }).onClick(e => {
+        router.back()
+      })
       ForEach(this._topData, (item: DetailTop, index: number) => {
         RelativeContainer() {
           Text(item.tile)
@@ -697,7 +699,7 @@ struct DetailPage {
 
   @Builder
   topActivities() {
-    if (this._activity.processBanner != null)
+    if (this._activity != null && this._activity.processBanner != null)
     Row() {
       Column() {
         Text(this.getActivityData(this._activity.processBanner))

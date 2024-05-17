@@ -27,8 +27,12 @@ struct WebView {
         .onPageBegin(e => {
 
         })
-        .onPageEnd(e=>{
+        .onPageEnd(e => {
           this._title = this.controller.getTitle()
+        })
+        .onUrlLoadIntercept((e) => {
+          console.log('==============',e.data.toString())
+          return false
         })
     }
   }

@@ -4,6 +4,7 @@ import { textBlack } from '../base/color'
 @Component
 export struct TopBar {
   @Prop title: string;
+
   build() {
     RelativeContainer() {
       Image($r('app.media.back'))
@@ -16,13 +17,15 @@ export struct TopBar {
         .relativeStartCenter()
       Text(`${this.title}`).fontSize(18).fontColor(textBlack).id('tv').relativeCenter()
     }
+    .border({ width: { bottom: 1 }, color: { bottom: 0xFFF2F4F9 } })
     .height(46)
     .width('100%')
     .backgroundColor(Color.White)
   }
 }
 
-@Styles function relativeCenter() {
+@Styles
+function relativeCenter() {
   .alignRules(
     {
       middle: { anchor: '__container__', align: HorizontalAlign.Center },
@@ -31,7 +34,8 @@ export struct TopBar {
   )
 }
 
-@Styles function relativeStartCenter() {
+@Styles
+function relativeStartCenter() {
   .alignRules(
     {
       center: { anchor: '__container__', align: VerticalAlign.Center },

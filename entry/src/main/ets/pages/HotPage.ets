@@ -11,18 +11,21 @@ import { PageLoading } from '../component/PageLoading'
 import { GoodItem, GoodTagName } from '../component/GoodItem'
 import { ItemTagListItem } from '../model/ItemTagListItem'
 import { dftAvatarIcon } from '../base/Url'
+import { pageIndex } from '../utils/Routers'
+import { PageState } from '../base/PageState'
 
 @Entry
 @Component
 struct HotPage {
   @State private _categoryId: string = ''
-  @State private dataList: Array<ItemListItem> = []
+  @State private _dataList: Array<ItemListItem> = []
   @State private submitInfo: Array<string> = []
   @State private hotListNav: HotListNav = null
   @State private subCateList: Array<CurrentCategory> = []
   @State private currentIndex: number = 0
-  private _currentCategoryId: number = 0
+  private _subCategoryId: number = 0
   private _bannerUrl: string = "https://yanxuan.nosdn.127.net/294b914321c27e2490b257b5b6be6fa5.png";
+  @State _pageState: PageState = PageState.Loading
 
   aboutToAppear() {
     let categoryId = router.getParams()['categoryId'] as string
@@ -34,21 +37,21 @@ struct HotPage {
   }
 
   _getItemList() {
-    axios.post<ResponseData<HotListData>>(HOT_LIST_LIST, {
-      body: {
-        "categoryId": this._categoryId,
-        "subCategoryId": this._currentCategoryId,
-        "userBusId": '',
-      },
+    console.log('===============sss',this._categoryId);
+    console.log('===============sss',this._subCategoryId);
+    this._pageState = PageState.Loading
+    axios.get<ResponseData<HotListData>>(HOT_LIST_LIST, {
       params: {
-        "csrf_token": '',
-      },
+        "categoryId": this._categoryId,
+        "subCategoryId": this._subCategoryId,
+        "userBusId": '',
+      }
     }).then(res => {
-      this.dataList = res.data.data.itemList
-      console.log('===========success-ItemList');
-      console.log(JSON.stringify(res.data.data.itemList.length))
+      this._dataList = res.data.data.itemList
+      this._pageState = PageState.Success
     }
     ).catch(err => {
+      this._pageState = PageState.Error
       console.log(err)
     })
   }
@@ -57,7 +60,7 @@ struct HotPage {
     axios.get<HotListNav>(HOT_LIST_CAT, {
       params: {
         "categoryId": this._categoryId,
-        "subCategoryId": 0
+        "subCategoryId": this._subCategoryId
       }
     }).then(res => {
       let hotListNav = res.data
@@ -68,8 +71,6 @@ struct HotPage {
       let newList = list.concat(currentCategory.subCateList)
       this.subCateList = newList
       this.hotListNav = res.data
-      console.log('===========success-Cat');
-      console.log(JSON.stringify(res.data.desc))
     }
     ).catch(err => {
       console.log(err)
@@ -91,41 +92,45 @@ struct HotPage {
   }
 
   build() {
-    if (this.hotListNav == null) PageLoading()
-    else Column() {
-      Stack() {
-        this.header()
-        List() {
-          ListItem() {
-            Swiper() {
-              ForEach(this.submitInfo, (item: string) => {
-                Text(item).fontSize(12).fontColor(Color.White)
+    Stack() {
+      Column() {
+        Stack() {
+          this.header()
+          List() {
+            ListItem() {
+              Swiper() {
+                ForEach(this.submitInfo, (item: string) => {
+                  Text(item).fontSize(12).fontColor(Color.White)
+                })
+              }
+              .backgroundColor('#0000001A')
+              .borderRadius(10)
+              .padding({ left: 20, right: 20 })
+              .vertical(true)
+              .autoPlay(true)
+              .indicator(false)
+              .height(20)
+              .margin({ top: 120, bottom: 30 })
+            }.width('100%')
+
+            ListItemGroup({ header: this.stick() }) {
+              ForEach(this._dataList, (item: ItemListItem, index: number) => {
+                ListItem() {
+                  this.itemView(item, index)
+                }
               })
             }
-            .backgroundColor('#0000001A')
-            .borderRadius(10)
-            .padding({ left: 20, right: 20 })
-            .vertical(true)
-            .autoPlay(true)
-            .indicator(false)
-            .height(20)
-            .margin({ top: 120, bottom: 30 })
-          }.width('100%')
-
-          ListItemGroup({ header: this.stick() }) {
-            ForEach(this.dataList, (item: ItemListItem, index: number) => {
-              ListItem() {
-                this.itemView(item, index)
-              }
-            })
           }
-        }
-        .padding({ left: 12, right: 12 })
-        .sticky(StickyStyle.Header)
-      }.align(Alignment.Top)
-    }
-    .width('100%')
-    .backgroundColor(backgroundColor)
+          .padding({ left: 12, right: 12 })
+          .sticky(StickyStyle.Header)
+        }.align(Alignment.Top)
+      }
+      .width('100%')
+      .backgroundColor(backgroundColor)
+
+      if (this._pageState == PageState.Loading)
+        PageLoading()
+    }.height('100%').width('100%').alignContent(Alignment.Center)
   }
 
   @Builder
@@ -163,7 +168,7 @@ struct HotPage {
             .padding({ left: 1, right: 6, top: 1, bottom: 1 })
             .borderRadius(6)
 
-            ForEach(item.itemTagList??[], (item: ItemTagListItem) => {
+            ForEach(item.itemTagList ?? [], (item: ItemTagListItem) => {
               Text(item.name)
                 .fontSize(10)
                 .fontColor(textWhite)
@@ -224,6 +229,11 @@ struct HotPage {
     .backgroundColor(appWhite)
     .borderRadius(8)
     .margin({ top: 12 })
+    .onClick(e => {
+      router.pushUrl({ url: pageIndex.detailPage,
+        params: { 'id': `${item.id}` }
+      })
+    })
   }
 
   @Builder
@@ -253,33 +263,52 @@ struct HotPage {
       Row() {
         Tabs() {
           ForEach(this.subCateList, (item: CurrentCategory, index: number) => {
-            TabContent()
-              .visibility(Visibility.Hidden)
-              .size({ height: 0, width: 0 })
-              .tabBar(this.TabBuilder(item, index))
+            TabContent() {
+            }
+            .visibility(Visibility.Hidden)
+            .size({ height: 0, width: 0 })
+            .tabBar(this.TabBuilder(item, index))
           })
-        }.scrollable(true)
+        }
+        .barMode(BarMode.Scrollable)
+        .height(46)
+        .width('100%')
+        .barHeight(46)
+        .onChange(index => {
+          this.currentIndex = index
+        })
       }
       .backgroundColor(Color.White)
       .borderRadius(6)
-      .height(40)
       .alignItems(VerticalAlign.Center)
+      .onClick(e=>{
+
+      })
     }
     .scrollable(ScrollDirection.Vertical)
     .width('100%')
   }
 
-  @Builder TabBuilder(item: CurrentCategory, index: number) {
+  @Builder
+  TabBuilder(item: CurrentCategory, index: number) {
     Column() {
       Text(item.name)
         .fontColor(this.currentIndex === index ? textRed : textBlack)
         .fontSize(14)
         .maxLines(1)
         .fontWeight(600)
-      Rect().fill(this.currentIndex === index ? appRed : Color.Transparent).width(30).height(2)
-    }.justifyContent(FlexAlign.Center).onClick(e => {
+      Rect().fill(this.currentIndex === index ? appRed : Color.Transparent).width(30).height(2).margin({ top: 6 })
+    }
+    .height('100%')
+    .margin({ left: 12, right: 12 })
+    .justifyContent(FlexAlign.Center)
+    .onClick(e => {
       this.currentIndex = index
-    }).width(100)
+      this._subCategoryId = item.id
+      console.log('===============sssqqqqqq',item.superCategoryId);
+      console.log('===============sssqqqqqq',item.id);
+      this._getItemList()
+    })
   }
 
   @Builder

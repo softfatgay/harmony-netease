@@ -36,5 +36,8 @@ export const WAPITEM_DELIVERY = baseUrl + '/xhr/wapitem/delivery.json';
 /// 商品详情推荐
 export const WAPITEM_RCMD = baseUrl + '/xhr/wapitem/rcmd.json';
 
+/// 分类列表
+export const URL_SORT_LIST_NEW = baseUrl + '/item/list.json';
+
 
 

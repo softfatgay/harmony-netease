@@ -1,828 +1,365 @@
 {
-  "data": {
-    "items": [
-      {
-        "sortOriginPrice": 199,
-        "promId": 0,
-        "showPoints": false,
-        "primarySkuPreSellPrice": 0,
-        "preLimitFlag": 0,
-        "itemPromValid": true,
-        "source": 0,
-        "points": 0,
-        "promotionStatus": 0,
-        "itemTagList": [
-          {
-            "itemId": 4104110,
-            "tagId": 0,
-            "freshmanExclusive": false,
-            "name": "可用红包",
-            "subType": 0,
-            "forbidJump": false,
-            "type": 15
-          }
-        ],
-        "primarySkuPreSellStatus": 0,
-        "extraServiceFlag": 0,
-        "flashPageLink": "",
-        "rank": 0,
-        "id": 4104110,
-        "preLogo": [
-          {
-            "width": 48,
-            "type": 0,
-            "logoUrl": "https://yanxuan.nosdn.127.net/static-union/1699326785df5cf0.png",
-            "height": 30
-          }
-        ],
-        "autoOnsaleTimeLeft": 0,
-        "innerData": {
-          "orderBackValid": false,
-          "selectSku": 0
-        },
-        "saleCenterSkuId": 0,
-        "sellVolume": 20397,
-        "freeTryId": 0,
-        "pointsStatus": 0,
-        "extraPrice": "",
-        "colorNum": 0,
-        "primaryPicUrl": "https://yanxuan-item.nosdn.127.net/6806165af187daed0e1ef8a77ed1d3c0.png",
-        "showTime": 0,
-        "autoOnsaleTime": 0,
-        "zc": false,
-        "soldOut": false,
-        "sortFlag": 0,
-        "preemptionStatus": 1,
-        "commentCount": 0,
-        "isPreemption": 0,
-        "zcSearchFlag": false,
-        "onSaleTime": 0,
-        "picMode": 1,
-        "cpsUser": false,
-        "name": "【24新款】无痕冰川牛奶丝凉席",
-        "commentWithPicCount": 0,
-        "underShelf": false,
-        "appExclusiveFlag": false,
-        "status": 2,
-        "couponConflict": true,
-        "finalPriceInfoVO": {
-          "priceInfo": {
-            "finalPrice": {
-              "prefix": "到手",
-              "price": "79"
-            },
-            "counterPrice": "199"
-          },
-          "banner": {
-            "style": 0,
-            "content": "满99减30元"
-          },
-          "type": 0
-        },
-        "itemType": 1,
-        "listPicUrl": "https://yanxuan-item.nosdn.127.net/1f0dc1530410b979e0a61bbdcca70ea6.png",
-        "pointsPrice": 0,
-        "forbiddenBuy": false,
-        "shieldSpecialChannel": false,
-        "simpleDesc": "凉感升级,Q-MAX3.0沁凉入睡；工艺升级,循环透气加倍凉爽；材质升级 ,裸睡无痕与肌肤和平相处；双重冷感面料 ,触感冰冰凉凉",
-        "limitedFlag": 204,
-        "newItemFlag": false,
-        "buttonType": 0,
-        "pieceNum": 0,
-        "extra": {
-          "crmType": 0,
-          "recommend": {
-            "itemId": "4104110"
-          },
-          "modelType": 2
-        },
-        "itemSizeTableDetailFlag": false,
-        "primarySkuId": 0,
-        "forbidExclusiveCal": false,
-        "rewardShareFlag": false,
-        "updateTime": 0,
-        "displaySkuId": 301143472,
-        "showCommentEntrance": true,
-        "pieceUnitDesc": "件",
-        "specialPromTag": "",
-        "showPrice": false,
-        "productPlace": "",
-        "counterPrice": 199,
-        "categoryL2Id": 0,
-        "zoomTransPicV2Url": "https://yanxuan-item.nosdn.127.net/0b709367876d8f6115f85448b059ce67.png",
-        "retailPrice": 109,
-        "itemSizeTableFlag": false
-      },
-      {
-        "sortOriginPrice": 1499.00,
-        "promId": 0,
-        "showPoints": false,
-        "primarySkuPreSellPrice": 0,
-        "preLimitFlag": 0,
-        "itemPromValid": true,
-        "source": 0,
-        "points": 0,
-        "promotionStatus": 0,
-        "primarySkuPreSellStatus": 0,
-        "extraServiceFlag": 0,
-        "flashPageLink": "",
-        "rank": 0,
-        "id": 3995885,
-        "preLogo": [
-          {
-            "width": 48,
-            "type": 0,
-            "logoUrl": "https://yanxuan.nosdn.127.net/static-union/1699326785df5cf0.png",
-            "height": 30
-          }
-        ],
-        "autoOnsaleTimeLeft": 0,
-        "innerData": {
-          "orderBackValid": false,
-          "selectSku": 0
-        },
-        "saleCenterSkuId": 0,
-        "sellVolume": 5562,
-        "freeTryId": 0,
-        "pointsStatus": 0,
-        "extraPrice": "",
-        "colorNum": 0,
-        "primaryPicUrl": "https://yanxuan-item.nosdn.127.net/de056cfe8800250dd20623bc3241610d.png",
-        "showTime": 0,
-        "autoOnsaleTime": 0,
-        "zc": false,
-        "soldOut": false,
-        "sortFlag": 0,
-        "preemptionStatus": 1,
-        "commentCount": 0,
-        "isPreemption": 0,
-        "zcSearchFlag": false,
-        "onSaleTime": 0,
-        "picMode": 1,
-        "cpsUser": false,
-        "name": "飞天53%vol 500ml贵州茅台酒（带杯）",
-        "commentWithPicCount": 0,
-        "underShelf": false,
-        "appExclusiveFlag": false,
-        "status": 2,
-        "couponConflict": true,
-        "finalPriceInfoVO": {
-          "priceInfo": {
-            "basicPrice": "1499"
-          },
-          "type": 0
-        },
-        "itemType": 1,
-        "listPicUrl": "https://yanxuan-item.nosdn.127.net/e1dabbad13cceb50e26735a8c06eedb6.png",
-        "pointsPrice": 0,
-        "forbiddenBuy": false,
-        "shieldSpecialChannel": false,
-        "simpleDesc": "茅台飘香，正品溯源",
-        "limitedFlag": 0,
-        "newItemFlag": false,
-        "buttonType": 0,
-        "pieceNum": 0,
-        "extra": {
-          "crmType": 0,
-          "recommend": {
-            "itemId": "3995885"
-          },
-          "modelType": 2
-        },
-        "itemSizeTableDetailFlag": false,
-        "primarySkuId": 0,
-        "forbidExclusiveCal": false,
-        "rewardShareFlag": false,
-        "updateTime": 0,
-        "displaySkuId": 300247710,
-        "showCommentEntrance": true,
-        "pieceUnitDesc": "件",
-        "specialPromTag": "",
-        "showPrice": false,
-        "productPlace": "",
-        "categoryL2Id": 0,
-        "zoomTransPicV2Url": "https://yanxuan-item.nosdn.127.net/4bd888372bb0b6b3443c9371e4325053.png",
-        "retailPrice": 1499,
-        "itemSizeTableFlag": false
-      },
-      {
-        "sortOriginPrice": 199,
-        "promId": 0,
-        "showPoints": false,
-        "primarySkuPreSellPrice": 0,
-        "preLimitFlag": 0,
-        "itemPromValid": true,
-        "source": 0,
-        "points": 0,
-        "promotionStatus": 0,
-        "itemTagList": [
-          {
-            "itemId": 4097642,
-            "tagId": 0,
-            "freshmanExclusive": false,
-            "name": "可用红包",
-            "subType": 0,
-            "forbidJump": false,
-            "type": 15
-          }
-        ],
-        "primarySkuPreSellStatus": 0,
-        "extraServiceFlag": 0,
-        "flashPageLink": "",
-        "rank": 0,
-        "id": 4097642,
-        "preLogo": [
-          {
-            "width": 48,
-            "type": 0,
-            "logoUrl": "https://yanxuan.nosdn.127.net/static-union/1699326785df5cf0.png",
-            "height": 30
-          }
-        ],
-        "autoOnsaleTimeLeft": 0,
-        "innerData": {
-          "orderBackValid": false,
-          "selectSku": 0
-        },
-        "saleCenterSkuId": 0,
-        "sellVolume": 24228,
-        "freeTryId": 0,
-        "pointsStatus": 0,
-        "extraPrice": "",
-        "colorNum": 0,
-        "primaryPicUrl": "https://yanxuan-item.nosdn.127.net/9fe67d43db9bd53c897ad77ec10eff74.png",
-        "showTime": 0,
-        "autoOnsaleTime": 0,
-        "zc": false,
-        "soldOut": false,
-        "sortFlag": 0,
-        "preemptionStatus": 1,
-        "commentCount": 0,
-        "isPreemption": 0,
-        "zcSearchFlag": false,
-        "onSaleTime": 0,
-        "picMode": 1,
-        "cpsUser": false,
-        "name": "24新品仙茶果冻®果冻被凉感夏被",
-        "commentWithPicCount": 0,
-        "underShelf": false,
-        "appExclusiveFlag": false,
-        "status": 2,
-        "couponConflict": true,
-        "finalPriceInfoVO": {
-          "priceInfo": {
-            "finalPrice": {
-              "prefix": "到手",
-              "price": "79"
-            },
-            "counterPrice": "199"
-          },
-          "banner": {
-            "style": 0,
-            "content": "满99减30元"
-          },
-          "type": 0
-        },
-        "itemType": 1,
-        "listPicUrl": "https://yanxuan-item.nosdn.127.net/c76b20d498580bcacc4c725b0a010251.png",
-        "pointsPrice": 0,
-        "forbiddenBuy": false,
-        "shieldSpecialChannel": false,
-        "simpleDesc": "7A级凉感夏被，持续凉感，内衣级柔软，带来清凉干爽的睡眠体验。",
-        "limitedFlag": 204,
-        "newItemFlag": false,
-        "buttonType": 0,
-        "pieceNum": 0,
-        "extra": {
-          "crmType": 0,
-          "recommend": {
-            "itemId": "4097642"
-          },
-          "modelType": 2
-        },
-        "itemSizeTableDetailFlag": false,
-        "primarySkuId": 0,
-        "forbidExclusiveCal": false,
-        "rewardShareFlag": false,
-        "updateTime": 0,
-        "displaySkuId": 301133035,
-        "showCommentEntrance": true,
-        "pieceUnitDesc": "件",
-        "specialPromTag": "",
-        "showPrice": false,
-        "productPlace": "",
-        "counterPrice": 199,
-        "categoryL2Id": 0,
-        "zoomTransPicV2Url": "https://yanxuan-item.nosdn.127.net/fbe60c7721fb3ad6051ff22cd2e16f73.png",
-        "retailPrice": 109,
-        "itemSizeTableFlag": false
-      },
-      {
-        "sortOriginPrice": 209,
-        "promId": 0,
-        "showPoints": false,
-        "primarySkuPreSellPrice": 0,
-        "preLimitFlag": 0,
-        "itemPromValid": true,
-        "source": 0,
-        "points": 0,
-        "promotionStatus": 0,
-        "primarySkuPreSellStatus": 0,
-        "extraServiceFlag": 0,
-        "flashPageLink": "",
-        "rank": 0,
-        "id": 4075565,
-        "preLogo": [
-          {
-            "width": 48,
-            "type": 0,
-            "logoUrl": "https://yanxuan.nosdn.127.net/static-union/1699326785df5cf0.png",
-            "height": 30
-          }
-        ],
-        "autoOnsaleTimeLeft": 0,
-        "innerData": {
-          "orderBackValid": false,
-          "selectSku": 0
-        },
-        "saleCenterSkuId": 0,
-        "sellVolume": 9626,
-        "freeTryId": 0,
-        "pointsStatus": 0,
-        "extraPrice": "",
-        "colorNum": 0,
-        "primaryPicUrl": "https://yanxuan-item.nosdn.127.net/807cf44132f149f0178d52174a668914.png",
-        "showTime": 0,
-        "autoOnsaleTime": 0,
-        "zc": false,
-        "soldOut": false,
-        "sortFlag": 0,
-        "preemptionStatus": 1,
-        "commentCount": 0,
-        "isPreemption": 0,
-        "zcSearchFlag": false,
-        "onSaleTime": 0,
-        "picMode": 1,
-        "cpsUser": false,
-        "name": "A类负离子抗菌提花大豆被夏被四季被",
-        "commentWithPicCount": 0,
-        "underShelf": false,
-        "appExclusiveFlag": false,
-        "status": 2,
-        "couponConflict": true,
-        "finalPriceInfoVO": {
-          "priceInfo": {
-            "finalPrice": {
-              "price": "89"
-            },
-            "counterPrice": "209"
-          },
-          "banner": {
-            "style": 0,
-            "title": "省心价",
-            "content": "仅剩3天"
-          },
-          "type": 0
-        },
-        "itemType": 1,
-        "listPicUrl": "https://yanxuan-item.nosdn.127.net/664ec8380254f32b251b696934cc1f6c.png",
-        "pointsPrice": 0,
-        "forbiddenBuy": false,
-        "shieldSpecialChannel": false,
-        "simpleDesc": "A类母婴级负离子抗菌大豆被",
-        "limitedFlag": 204,
-        "newItemFlag": false,
-        "buttonType": 0,
-        "pieceNum": 0,
-        "extra": {
-          "crmType": 0,
-          "recommend": {
-            "itemId": "4075565"
-          },
-          "modelType": 2
-        },
-        "itemSizeTableDetailFlag": false,
-        "primarySkuId": 0,
-        "forbidExclusiveCal": false,
-        "rewardShareFlag": false,
-        "updateTime": 0,
-        "displaySkuId": 300901120,
-        "showCommentEntrance": true,
-        "pieceUnitDesc": "件",
-        "specialPromTag": "",
-        "showPrice": false,
-        "productPlace": "",
-        "counterPrice": 209,
-        "categoryL2Id": 0,
-        "zoomTransPicV2Url": "https://yanxuan-item.nosdn.127.net/a638656ab9c82e645214a51798cb88f5.png",
-        "retailPrice": 89,
-        "itemSizeTableFlag": false
-      },
-      {
-        "sortOriginPrice": 9.9,
-        "promId": 0,
-        "showPoints": false,
-        "primarySkuPreSellPrice": 0,
-        "preLimitFlag": 0,
-        "itemPromValid": true,
-        "source": 0,
-        "points": 0,
-        "promotionStatus": 0,
-        "primarySkuPreSellStatus": 0,
-        "extraServiceFlag": 0,
-        "flashPageLink": "",
-        "rank": 0,
-        "id": 1318002,
-        "preLogo": [
-          {
-            "width": 48,
-            "type": 0,
-            "logoUrl": "https://yanxuan.nosdn.127.net/static-union/1699326785df5cf0.png",
-            "height": 30
-          }
-        ],
-        "autoOnsaleTimeLeft": 0,
-        "innerData": {
-          "orderBackValid": false,
-          "selectSku": 0
-        },
-        "saleCenterSkuId": 0,
-        "sellVolume": 74222,
-        "freeTryId": 0,
-        "pointsStatus": 0,
-        "extraPrice": "",
-        "colorNum": 0,
-        "primaryPicUrl": "https://yanxuan-item.nosdn.127.net/7d5ea424cd88d230a16df02f5d4be634.png",
-        "showTime": 0,
-        "autoOnsaleTime": 0,
-        "zc": false,
-        "soldOut": false,
-        "sortFlag": 0,
-        "preemptionStatus": 1,
-        "commentCount": 0,
-        "isPreemption": 0,
-        "zcSearchFlag": false,
-        "onSaleTime": 0,
-        "picMode": 1,
-        "cpsUser": false,
-        "name": "每一口都有九种肉，全价猫粮",
-        "commentWithPicCount": 0,
-        "underShelf": false,
-        "appExclusiveFlag": false,
-        "status": 2,
-        "couponConflict": false,
-        "finalPriceInfoVO": {
-          "priceInfo": {
-            "finalPrice": {
-              "price": "9"
-            },
-            "counterPrice": "9.9"
-          },
-          "banner": {
-            "style": 0,
-            "title": "省心价",
-            "content": "仅剩3天"
-          },
-          "type": 0
-        },
-        "itemType": 1,
-        "listPicUrl": "https://yanxuan-item.nosdn.127.net/bb04395b4fad70adf01c9f757774aa6a.jpg",
-        "pointsPrice": 0,
-        "forbiddenBuy": false,
-        "shieldSpecialChannel": false,
-        "simpleDesc": "全新鲜肉升级，新增鲣鱼干喷涂，征服挑嘴猫",
-        "limitedFlag": 204,
-        "newItemFlag": false,
-        "buttonType": 0,
-        "pieceNum": 0,
-        "extra": {
-          "crmType": 0,
-          "recommend": {
-            "itemId": "1318002"
-          },
-          "modelType": 2
-        },
-        "itemSizeTableDetailFlag": false,
-        "primarySkuId": 0,
-        "forbidExclusiveCal": false,
-        "rewardShareFlag": false,
-        "updateTime": 0,
-        "displaySkuId": 301140261,
-        "showCommentEntrance": true,
-        "pieceUnitDesc": "件",
-        "specialPromTag": "",
-        "showPrice": false,
-        "productPlace": "",
-        "counterPrice": 9.9,
-        "categoryL2Id": 0,
-        "zoomTransPicV2Url": "https://yanxuan-item.nosdn.127.net/d41d5338ce1882a59781b5b430133267.png",
-        "retailPrice": 9,
-        "itemSizeTableFlag": false
-      },
-      {
-        "sortOriginPrice": 69,
-        "promId": 0,
-        "showPoints": false,
-        "primarySkuPreSellPrice": 0,
-        "preLimitFlag": 0,
-        "itemPromValid": true,
-        "source": 0,
-        "points": 0,
-        "promotionStatus": 0,
-        "primarySkuPreSellStatus": 0,
-        "extraServiceFlag": 0,
-        "flashPageLink": "",
-        "rank": 0,
-        "id": 4102285,
-        "preLogo": [
-          {
-            "width": 48,
-            "type": 0,
-            "logoUrl": "https://yanxuan.nosdn.127.net/static-union/1699326785df5cf0.png",
-            "height": 30
-          }
-        ],
-        "autoOnsaleTimeLeft": 0,
-        "innerData": {
-          "orderBackValid": false,
-          "selectSku": 0
-        },
-        "saleCenterSkuId": 0,
-        "sellVolume": 111512,
-        "freeTryId": 0,
-        "pointsStatus": 0,
-        "extraPrice": "",
-        "colorNum": 0,
-        "primaryPicUrl": "https://yanxuan-item.nosdn.127.net/6a858a28f1c4a2acf6031ee95e86668c.png",
-        "showTime": 0,
-        "autoOnsaleTime": 0,
-        "zc": false,
-        "soldOut": false,
-        "sortFlag": 0,
-        "preemptionStatus": 1,
-        "commentCount": 0,
-        "isPreemption": 0,
-        "zcSearchFlag": false,
-        "onSaleTime": 0,
-        "picMode": 1,
-        "cpsUser": false,
-        "name": "超值！5A级抗菌100%纯棉T恤男女同款",
-        "commentWithPicCount": 0,
-        "underShelf": false,
-        "appExclusiveFlag": false,
-        "status": 2,
-        "couponConflict": true,
-        "finalPriceInfoVO": {
-          "priceInfo": {
-            "finalPrice": {
-              "price": "39.9"
-            },
-            "counterPrice": "69"
-          },
-          "banner": {
-            "style": 0,
-            "title": "省心价",
-            "content": "仅剩3天"
-          },
-          "type": 0
-        },
-        "itemType": 1,
-        "listPicUrl": "https://yanxuan-item.nosdn.127.net/4536f298f3434acc56511888a1117986.jpg",
-        "pointsPrice": 0,
-        "forbiddenBuy": false,
-        "shieldSpecialChannel": false,
-        "simpleDesc": "100%纯棉材质，200G重磅，吸湿透气，5A级抗菌",
-        "limitedFlag": 204,
-        "newItemFlag": false,
-        "buttonType": 0,
-        "pieceNum": 0,
-        "extra": {
-          "crmType": 0,
-          "recommend": {
-            "itemId": "4102285"
-          },
-          "modelType": 2
-        },
-        "itemSizeTableDetailFlag": false,
-        "primarySkuId": 0,
-        "forbidExclusiveCal": false,
-        "rewardShareFlag": false,
-        "updateTime": 0,
-        "displaySkuId": 301136566,
-        "showCommentEntrance": true,
-        "pieceUnitDesc": "件",
-        "specialPromTag": "",
-        "showPrice": false,
-        "productPlace": "",
-        "counterPrice": 69,
-        "categoryL2Id": 0,
-        "zoomTransPicV2Url": "https://yanxuan-item.nosdn.127.net/77355fe3a7db902fff036252544e6609.png",
-        "retailPrice": 39.9,
-        "itemSizeTableFlag": false
-      },
-      {
-        "sortOriginPrice": 89,
-        "promId": 0,
-        "showPoints": false,
-        "primarySkuPreSellPrice": 0,
-        "preLimitFlag": 0,
-        "itemPromValid": true,
-        "source": 0,
-        "points": 0,
-        "promotionStatus": 0,
-        "primarySkuPreSellStatus": 0,
-        "extraServiceFlag": 0,
-        "flashPageLink": "",
-        "rank": 0,
-        "id": 1535011,
-        "preLogo": [
-          {
-            "width": 48,
-            "type": 0,
-            "logoUrl": "https://yanxuan.nosdn.127.net/static-union/1699326785df5cf0.png",
-            "height": 30
-          }
-        ],
-        "autoOnsaleTimeLeft": 0,
-        "innerData": {
-          "orderBackValid": false,
-          "selectSku": 0
-        },
-        "saleCenterSkuId": 0,
-        "sellVolume": 3472,
-        "freeTryId": 0,
-        "pointsStatus": 0,
-        "extraPrice": "",
-        "colorNum": 0,
-        "primaryPicUrl": "https://yanxuan-item.nosdn.127.net/f9a2ae1df044edcab436a0b953ec4ddd.png",
-        "showTime": 0,
-        "autoOnsaleTime": 0,
-        "zc": false,
-        "soldOut": false,
-        "sortFlag": 0,
-        "preemptionStatus": 1,
-        "commentCount": 0,
-        "isPreemption": 0,
-        "zcSearchFlag": false,
-        "onSaleTime": 0,
-        "picMode": 1,
-        "cpsUser": false,
-        "name": " 【经典品质】3.3g蛋白质纯牛奶 200ml*24盒",
-        "commentWithPicCount": 0,
-        "underShelf": false,
-        "appExclusiveFlag": false,
-        "status": 2,
-        "couponConflict": true,
-        "finalPriceInfoVO": {
-          "priceInfo": {
-            "finalPrice": {
-              "price": "62.9"
-            },
-            "counterPrice": "89"
-          },
-          "banner": {
-            "style": 0,
-            "title": "省心价",
-            "content": "仅剩3天"
-          },
-          "type": 0
-        },
-        "itemType": 1,
-        "listPicUrl": "https://yanxuan-item.nosdn.127.net/f1eb356191ffeec1432b1f1ff066ce56.jpg",
-        "pointsPrice": 0,
-        "forbiddenBuy": false,
-        "shieldSpecialChannel": false,
-        "simpleDesc": "原奶指标远优于欧盟标准",
-        "limitedFlag": 204,
-        "newItemFlag": false,
-        "buttonType": 0,
-        "pieceNum": 0,
-        "extra": {
-          "crmType": 0,
-          "recommend": {
-            "itemId": "1535011"
-          },
-          "modelType": 2
-        },
-        "itemSizeTableDetailFlag": false,
-        "primarySkuId": 0,
-        "forbidExclusiveCal": false,
-        "rewardShareFlag": false,
-        "updateTime": 0,
-        "displaySkuId": 300909690,
-        "showCommentEntrance": true,
-        "pieceUnitDesc": "件",
-        "specialPromTag": "",
-        "showPrice": false,
-        "productPlace": "",
-        "counterPrice": 89,
-        "categoryL2Id": 0,
-        "zoomTransPicV2Url": "https://yanxuan-item.nosdn.127.net/24e90e0b64d888bfb92c033adc571006.png",
-        "retailPrice": 62.9,
-        "itemSizeTableFlag": false
-      },
-      {
-        "sortOriginPrice": 12,
-        "promId": 0,
-        "showPoints": false,
-        "primarySkuPreSellPrice": 0,
-        "preLimitFlag": 0,
-        "itemPromValid": true,
-        "source": 0,
-        "points": 0,
-        "promotionStatus": 0,
-        "primarySkuPreSellStatus": 0,
-        "extraServiceFlag": 0,
-        "flashPageLink": "",
-        "rank": 0,
-        "id": 3992597,
-        "preLogo": [
-          {
-            "width": 48,
-            "type": 0,
-            "logoUrl": "https://yanxuan.nosdn.127.net/static-union/1699326785df5cf0.png",
-            "height": 30
-          }
-        ],
-        "autoOnsaleTimeLeft": 0,
-        "innerData": {
-          "orderBackValid": false,
-          "selectSku": 0
-        },
-        "saleCenterSkuId": 0,
-        "sellVolume": 15266,
-        "freeTryId": 0,
-        "pointsStatus": 0,
-        "extraPrice": "",
-        "colorNum": 0,
-        "primaryPicUrl": "https://yanxuan-item.nosdn.127.net/dccca03730fc203abe4166631009570c.png",
-        "showTime": 0,
-        "autoOnsaleTime": 0,
-        "zc": false,
-        "soldOut": false,
-        "sortFlag": 0,
-        "preemptionStatus": 1,
-        "commentCount": 0,
-        "isPreemption": 0,
-        "zcSearchFlag": false,
-        "onSaleTime": 0,
-        "picMode": 1,
-        "cpsUser": false,
-        "name": "过亿爆品，全价冻干双拼猫粮",
-        "commentWithPicCount": 0,
-        "underShelf": false,
-        "appExclusiveFlag": false,
-        "status": 2,
-        "couponConflict": false,
-        "finalPriceInfoVO": {
-          "priceInfo": {
-            "finalPrice": {
-              "price": "8.9"
-            },
-            "counterPrice": "12"
-          },
-          "banner": {
-            "style": 0,
-            "title": "百亿补贴",
-            "content": "距结束2天"
-          },
-          "type": 0
-        },
-        "itemType": 1,
-        "listPicUrl": "https://yanxuan-item.nosdn.127.net/f48cb163a0342aba2ba0ae89ed8d1d7d.png",
-        "pointsPrice": 0,
-        "forbiddenBuy": false,
-        "shieldSpecialChannel": false,
-        "simpleDesc": "91%动物性原料，两种美味冻干添加",
-        "limitedFlag": 203,
-        "newItemFlag": false,
-        "buttonType": 0,
-        "pieceNum": 0,
-        "extra": {
-          "crmType": 0,
-          "recommend": {
-            "itemId": "3992597"
-          },
-          "modelType": 2
-        },
-        "itemSizeTableDetailFlag": false,
-        "primarySkuId": 0,
-        "forbidExclusiveCal": false,
-        "rewardShareFlag": false,
-        "updateTime": 0,
-        "displaySkuId": 300597088,
-        "showCommentEntrance": true,
-        "pieceUnitDesc": "件",
-        "specialPromTag": "",
-        "showPrice": false,
-        "productPlace": "",
-        "counterPrice": 12,
-        "categoryL2Id": 0,
-        "zoomTransPicV2Url": "https://yanxuan-item.nosdn.127.net/626c77eebd6a19b0bb2c07091c8d5a7a.png",
-        "retailPrice": 8.9,
-        "itemSizeTableFlag": false
-      }
-    ]
+  "bgStyle": {
+    "bgcolor": "#EEEEEE"
   },
-  "code": "200"
+  "currentCategory": {
+    "id": 1005002,
+    "superCategoryId": 0,
+    "showIndex": 3,
+    "name": "乳饮酒水",
+    "frontName": "",
+    "frontNameIcon": null,
+    "frontDesc": "好吃，高颜值美食",
+    "bannerUrl": "https://yanxuan.nosdn.127.net/23ebcca65dfb159564fbee8aaacff6e4.png",
+    "bannerList": [
+      {
+        "id": 0,
+        "picUrl": "http://yanxuan.nosdn.127.net/7baf877358f953bdfd8eaf1757e4bdb0.png",
+        "targetUrl": "",
+        "extra": null
+      }
+    ],
+    "iconUrl": "http://yanxuan.nosdn.127.net/01d6d31a08f49538417b93d65e62bc77.png",
+    "imgUrl": null,
+    "level": "L1",
+    "subCateList": [
+      {
+        "id": 1053001,
+        "superCategoryId": 1005002,
+        "showIndex": 2,
+        "name": "国产酒",
+        "frontName": "国产美酒佳酿，用心典藏",
+        "frontNameIcon": null,
+        "frontDesc": "国产美酒佳酿，用心典藏",
+        "bannerUrl": null,
+        "bannerList": null,
+        "iconUrl": null,
+        "imgUrl": null,
+        "level": "L2",
+        "subCateList": [],
+        "wapBannerUrl": "http://yanxuan.nosdn.127.net/e2a8a20052ed9ab7461059c5f7d0a4ae.png",
+        "type": 0,
+        "wapExpandPicTargetUrl": null,
+        "categoryType": 0,
+        "extra": null
+      },
+      {
+        "id": 109285003,
+        "superCategoryId": 1005002,
+        "showIndex": 5,
+        "name": "进口酒",
+        "frontName": "进口酒，精选全球佳酿",
+        "frontNameIcon": null,
+        "frontDesc": "进口酒，精选全球佳酿",
+        "bannerUrl": null,
+        "bannerList": null,
+        "iconUrl": null,
+        "imgUrl": null,
+        "level": "L2",
+        "subCateList": [],
+        "wapBannerUrl": "https://yanxuan-item.nosdn.127.net/19a4f8ff2cfb6b77c6b888e0e83028b6.png",
+        "type": 0,
+        "wapExpandPicTargetUrl": null,
+        "categoryType": 0,
+        "extra": null
+      },
+      {
+        "id": 109206008,
+        "superCategoryId": 1005002,
+        "showIndex": 13,
+        "name": "乳品饮料",
+        "frontName": "四季饮料，欢乐共享",
+        "frontNameIcon": null,
+        "frontDesc": "四季饮料，欢乐共享",
+        "bannerUrl": null,
+        "bannerList": null,
+        "iconUrl": null,
+        "imgUrl": null,
+        "level": "L2",
+        "subCateList": [],
+        "wapBannerUrl": "http://yanxuan.nosdn.127.net/534fce6fb16de3e188aa2037ec32c550.png",
+        "type": 0,
+        "wapExpandPicTargetUrl": null,
+        "categoryType": 0,
+        "extra": null
+      },
+      {
+        "id": 1005013,
+        "superCategoryId": 1005002,
+        "showIndex": 22,
+        "name": "冲调饮品",
+        "frontName": "以用料天然之美，尽享闲雅之意",
+        "frontNameIcon": null,
+        "frontDesc": "以用料天然之美，尽享闲雅之意",
+        "bannerUrl": "",
+        "bannerList": null,
+        "iconUrl": null,
+        "imgUrl": null,
+        "level": "L2",
+        "subCateList": [],
+        "wapBannerUrl": "http://yanxuan.nosdn.127.net/8bd0590d7fde224082f02f7b0bd80448.jpg",
+        "type": 0,
+        "wapExpandPicTargetUrl": null,
+        "categoryType": 0,
+        "extra": null
+      },
+      {
+        "id": 1027000,
+        "superCategoryId": 1005002,
+        "showIndex": 24,
+        "name": "传统茗茶",
+        "frontName": "一品茶香，品茗即是观心，饮茶涤净尘虑",
+        "frontNameIcon": null,
+        "frontDesc": "一品茶香，品茗即是观心，饮茶涤净尘虑，2022年春茶上市",
+        "bannerUrl": null,
+        "bannerList": null,
+        "iconUrl": null,
+        "imgUrl": null,
+        "level": "L2",
+        "subCateList": [],
+        "wapBannerUrl": "http://yanxuan.nosdn.127.net/22729dc1ace50652ae3c519d04757f37.png",
+        "type": 0,
+        "wapExpandPicTargetUrl": null,
+        "categoryType": 0,
+        "extra": null
+      },
+      {
+        "id": 109206006,
+        "superCategoryId": 1005002,
+        "showIndex": 60,
+        "name": "其它茶类",
+        "frontName": "其它茶类",
+        "frontNameIcon": null,
+        "frontDesc": "其它茶类",
+        "bannerUrl": null,
+        "bannerList": null,
+        "iconUrl": null,
+        "imgUrl": null,
+        "level": "L2",
+        "subCateList": [],
+        "wapBannerUrl": "http://yanxuan.nosdn.127.net/0628f6f329ad357a48044bc7d9d79874.png",
+        "type": 0,
+        "wapExpandPicTargetUrl": null,
+        "categoryType": 0,
+        "extra": null
+      }
+    ],
+    "wapBannerUrl": "http://yanxuan.nosdn.127.net/766ce2fa0334a3beaa65169075692977.png",
+    "type": 0,
+    "wapExpandPicTargetUrl": null,
+    "categoryType": 0,
+    "extra": null
+  },
+  "YXJSONArray": {
+    "empty": false
+  },
+
+  "subCategoryId": 0,
+  "title": "热销榜单－乳饮酒水篇",
+  "bannerList": [
+    {
+      "picUrl": "https://yanxuan.nosdn.127.net/23ebcca65dfb159564fbee8aaacff6e4.png",
+      "targetUrl": ""
+    }
+  ],
+  "YXJSONObject": {
+    "empty": false
+  },
+  "moreCategories": [
+    {
+      "id": 1005000,
+      "superCategoryId": 0,
+      "showIndex": 1,
+      "name": "床品",
+      "frontName": "",
+      "frontNameIcon": null,
+      "frontDesc": "回家，放松身心",
+      "bannerUrl": "http://yanxuan.nosdn.127.net/99f6fc24cae48032ed3d9826a6378f33.png",
+      "bannerList": null,
+      "iconUrl": null,
+      "imgUrl": null,
+      "level": "L1",
+      "subCateList": [],
+      "wapBannerUrl": "http://yanxuan.nosdn.127.net/6a0bbd07f0daa2189d67ffbbc96f551d.png",
+      "type": 0,
+      "wapExpandPicTargetUrl": null,
+      "categoryType": 0,
+      "extra": null,
+      "showItem": {
+        "id": 0,
+        "picUrl": "https://yanxuan.nosdn.127.net/b4949f469d564ab34e69ebc45a6233ec.png"
+      }
+    },
+    {
+      "id": 1010000,
+      "superCategoryId": 0,
+      "showIndex": 2,
+      "name": "男装",
+      "frontName": "",
+      "frontNameIcon": null,
+      "frontDesc": "贴身的，要亲肤",
+      "bannerUrl": "http://yanxuan.nosdn.127.net/bba0a97496981ed99c210d316f0670cd.png",
+      "bannerList": null,
+      "iconUrl": null,
+      "imgUrl": null,
+      "level": "L1",
+      "subCateList": [],
+      "wapBannerUrl": "http://yanxuan.nosdn.127.net/89088b447af339891c67a9344b99a89f.png",
+      "type": 0,
+      "wapExpandPicTargetUrl": null,
+      "categoryType": 0,
+      "extra": null,
+      "showItem": {
+        "id": 0,
+        "picUrl": "https://yanxuan.nosdn.127.net/ce4e606b4ddd2edebf57f63b56256813.png"
+      }
+    },
+    {
+      "id": 1013001,
+      "superCategoryId": 0,
+      "showIndex": 4,
+      "name": "家庭清洁",
+      "frontName": "",
+      "frontNameIcon": null,
+      "frontDesc": "亲肤之物，严选天然",
+      "bannerUrl": "http://yanxuan.nosdn.127.net/c870218f33af215d063b08b1c29358bb.png",
+      "bannerList": null,
+      "iconUrl": null,
+      "imgUrl": null,
+      "level": "L1",
+      "subCateList": [],
+      "wapBannerUrl": "http://yanxuan.nosdn.127.net/6130a5a854c4e15102562b3a5c0eef27.png",
+      "type": 0,
+      "wapExpandPicTargetUrl": null,
+      "categoryType": 0,
+      "extra": null,
+      "showItem": {
+        "id": 0,
+        "picUrl": "https://yanxuan.nosdn.127.net/8f3798ffdabcacb525bc5dfa88bd4b4e.png"
+      }
+    },
+    {
+      "id": 1011000,
+      "superCategoryId": 0,
+      "showIndex": 5,
+      "name": "母婴亲子",
+      "frontName": "",
+      "frontNameIcon": null,
+      "frontDesc": "爱，从心开始",
+      "bannerUrl": "http://yanxuan.nosdn.127.net/e65d94b55a1c785cedeb398f62115922.png",
+      "bannerList": null,
+      "iconUrl": null,
+      "imgUrl": null,
+      "level": "L1",
+      "subCateList": [],
+      "wapBannerUrl": "http://yanxuan.nosdn.127.net/f946bc18da43e2f1f5417aec2060e492.png",
+      "type": 0,
+      "wapExpandPicTargetUrl": null,
+      "categoryType": 0,
+      "extra": null,
+      "showItem": {
+        "id": 0,
+        "picUrl": "https://yanxuan.nosdn.127.net/2f0620f2f41555d24b2645d4bcff451e.png"
+      }
+    },
+    {
+      "id": 109243029,
+      "superCategoryId": 0,
+      "showIndex": 3,
+      "name": "运动/户外",
+      "frontName": "运动/户外",
+      "frontNameIcon": null,
+      "frontDesc": "走出去，自然的恩赐",
+      "bannerUrl": "http://yanxuan.nosdn.127.net/fb86577144b14235130403c64f396c09.png",
+      "bannerList": null,
+      "iconUrl": null,
+      "imgUrl": null,
+      "level": "L1",
+      "subCateList": [],
+      "wapBannerUrl": "http://yanxuan.nosdn.127.net/64540d1f456a0a0832124345293042b0.png",
+      "type": 0,
+      "wapExpandPicTargetUrl": null,
+      "categoryType": 0,
+      "extra": null,
+      "showItem": {
+        "id": 0,
+        "picUrl": "https://yanxuan.nosdn.127.net/17c904bff54e6e550c6d24632e1acd8d.png"
+      }
+    },
+    {
+      "id": 1043000,
+      "superCategoryId": 0,
+      "showIndex": 7,
+      "name": "数码家电",
+      "frontName": "",
+      "frontNameIcon": null,
+      "frontDesc": "智能电器，点亮生活。",
+      "bannerUrl": "http://yanxuan.nosdn.127.net/9170e9539294770a8b33bfbc46b24b6a.png",
+      "bannerList": null,
+      "iconUrl": null,
+      "imgUrl": null,
+      "level": "L1",
+      "subCateList": [],
+      "wapBannerUrl": "http://yanxuan.nosdn.127.net/ce69779c720a5bf3b516b55cbd17857b.png",
+      "type": 0,
+      "wapExpandPicTargetUrl": null,
+      "categoryType": 0,
+      "extra": null,
+      "showItem": {
+        "id": 0,
+        "picUrl": "https://yanxuan.nosdn.127.net/aa1ec3b84c88e959df8dcc4588d002ed.png"
+      }
+    },
+    {
+      "id": 1019000,
+      "superCategoryId": 0,
+      "showIndex": 9,
+      "name": "严选全球",
+      "frontName": "",
+      "frontNameIcon": null,
+      "frontDesc": "爱好，点缀生活",
+      "bannerUrl": "http://yanxuan.nosdn.127.net/54e55e9d8a74c2cef5d624f99860ccdb.png",
+      "bannerList": null,
+      "iconUrl": null,
+      "imgUrl": null,
+      "level": "L1",
+      "subCateList": [],
+      "wapBannerUrl": "http://yanxuan.nosdn.127.net/1706e24a5e605870ba3b37ff5f49aa18.png",
+      "type": 0,
+      "wapExpandPicTargetUrl": null,
+      "categoryType": 0,
+      "extra": null,
+      "showItem": {
+        "id": 0,
+        "picUrl": "https://yanxuan.nosdn.127.net/6f3c97245dde19b9017a04045128ca7e.png"
+      }
+    },
+    {
+      "id": 109320005,
+      "superCategoryId": 0,
+      "showIndex": 4,
+      "name": "宠物生活",
+      "frontName": "",
+      "frontNameIcon": null,
+      "frontDesc": "天然食材，激活天性",
+      "bannerUrl": "http://yanxuan.nosdn.127.net/149655722a6b03d54d62321e78847563.png",
+      "bannerList": null,
+      "iconUrl": null,
+      "imgUrl": null,
+      "level": "L1",
+      "subCateList": [],
+      "wapBannerUrl": "http://yanxuan.nosdn.127.net/862eb4847d73dd499d77f5cae84cd92d.png",
+      "type": 0,
+      "wapExpandPicTargetUrl": null,
+      "categoryType": 0,
+      "extra": null,
+      "showItem": {
+        "id": 0,
+        "picUrl": "https://yanxuan.nosdn.127.net/static-union/1642506913355bb9.png"
+      }
+    }
+  ],
+  "items": null,
+  "categoryId": 1005002,
+  "desc": "本排名按严选官方实时数据计算得出，榜单所覆盖均为在售商品。每1小时更新1次"
 }

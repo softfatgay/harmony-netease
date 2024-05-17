@@ -4,6 +4,7 @@
     "pages/KingKongListPage",
     "pages/WebView",
     "pages/HotPage",
-    "pages/detail/DetailPage"
+    "pages/detail/DetailPage",
+    "pages/SortListPage"
   ]
 }

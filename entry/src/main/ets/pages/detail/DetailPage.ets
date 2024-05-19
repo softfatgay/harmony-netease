@@ -35,7 +35,7 @@ import image from '@ohos.multimedia.image';
 import { goWebView, pageIndex } from '../../utils/Routers';
 import { WapitemDeliveryModel } from '../../model/detail/WapitemDeliveryModel';
 import { PolicyListItem } from '../../model/SkuMapValue';
-import { CommentItem } from '../../component/CommentItem';
+import { CommentItemView } from '../../component/CommentItem';
 import { IssueListItem } from '../../model/IssueListItem';
 import { ItemListItem } from '../../model/ItemListItem';
 import { GoodItem } from '../../component/GoodItem';
@@ -467,7 +467,7 @@ struct DetailPage {
       })
 
       if (this._goodDetail.comments != null && this._goodDetail.comments.length > 0)
-        CommentItem(this._goodDetail.comments[0])
+        CommentItemView(this._goodDetail.comments[0])
     }
   }
 

@@ -17,5 +17,7 @@
 
 ![img8.jpg](screenshot%2Fimg8.jpg)
 
+![img9.jpg](screenshot%2Fimg9.jpg)
+
 ### attention: 
-1:webview 在模拟器上无法滑动
+1:webview 在模拟器上无法滑动/点击

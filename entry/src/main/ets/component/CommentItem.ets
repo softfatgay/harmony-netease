@@ -4,7 +4,7 @@ import { ResultItem } from '../model/ResultItem';
 import { dateFormat } from '../utils/TimeUtil';
 
 @Builder
-export function CommentItem(item: ResultItem) {
+export function CommentItemView(item: ResultItem) {
   Column() {
     Row() {
       Image(item.frontUserAvatar ?? dftAvatarIcon).size({ width: 30, height: 30 }).borderRadius(15)

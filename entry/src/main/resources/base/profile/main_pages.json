@@ -5,6 +5,7 @@
     "pages/WebView",
     "pages/HotPage",
     "pages/detail/DetailPage",
-    "pages/SortListPage"
+    "pages/SortListPage",
+    "pages/detail/CommentsPage"
   ]
 }

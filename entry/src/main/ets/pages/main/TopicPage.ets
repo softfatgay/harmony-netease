@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from '@ohos/axios'
-import { SORT_DATA, TOPIC_LIST, TOPIC_NAVWAP } from '../../base/Api'
+import { baseUrl, SORT_DATA, TOPIC_LIST, TOPIC_NAVWAP } from '../../base/Api'
 import { ResponseData } from '../../base/BaseModel'
 import { appRed, backgroundColor, textBlack, textGray, textLightGray } from '../../base/color'
 import { margin_screen } from '../../base/dimens'
@@ -9,6 +9,7 @@ import { TopData } from '../../model/topic/TopData'
 import { TopicData } from '../../model/topic/TopicData'
 import { TopicItem } from '../../model/topic/TopicItem'
 import { LoadingMore } from '../../component/LoadingMore'
+import { goWebView } from '../../utils/Routers'
 
 @Entry
 @Component
@@ -133,6 +134,13 @@ export struct TopicPage {
     .borderRadius(8)
     .alignItems(HorizontalAlign.Start)
     .padding({ bottom: 12 })
+    .onClick(e => {
+      var url = item.schemeUrl
+      if (!url.startsWith('http')) {
+        url = baseUrl + url
+      }
+      goWebView(url)
+    })
   }
 
   @Builder
@@ -145,7 +153,11 @@ export struct TopicPage {
               Image(item.picUrl).height(60)
               Text(item.mainTitle).fontSize(14).fontWeight(600).fontColor(textBlack).margin({ top: 6 })
               Text(item.viceTitle).fontSize(12).fontColor(textGray)
-            }.justifyContent(FlexAlign.Center)
+            }
+            .justifyContent(FlexAlign.Center)
+            .onClick(e => {
+              goWebView(item.columnUrl)
+            })
           }.width('25%')
         })
       }

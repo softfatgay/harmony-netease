@@ -4,11 +4,13 @@ import { baseUrl, GOOD_DETAIL, WAPITEM_DELIVERY, WAPITEM_RCMD } from '../../base
 import { ResponseData } from '../../base/BaseModel';
 import { GoodDetailPre } from '../../model/detail/GoodDetailPre';
 import { HotListData } from '../../model/hotlist/HotListData';
+import { CustomDialog01 } from '../../component/CustomDialog01'
 import {
   AdBannersItem,
   AttrListItem,
   BrandInfo,
   FeaturedSeries,
+  FullRefundPolicy,
   GoodDetail,
   SimpleBrandInfo,
   SpmcBanner
@@ -30,7 +32,7 @@ import {
 } from '../../base/color';
 import resourceManager from '@ohos.resourceManager';
 import image from '@ohos.multimedia.image';
-import { goWebView } from '../../utils/Routers';
+import { goWebView, pageIndex } from '../../utils/Routers';
 import { WapitemDeliveryModel } from '../../model/detail/WapitemDeliveryModel';
 import { PolicyListItem } from '../../model/SkuMapValue';
 import { CommentItem } from '../../component/CommentItem';
@@ -60,6 +62,7 @@ struct DetailPage {
   @State _showTop: boolean = false
   @State _topData: Array<DetailTop> = [new DetailTop('商品', 0), new DetailTop('评价', 1), new DetailTop('详情', 2), new DetailTop('推荐', 3)]
   @State _topIndex: number = 0
+  _controller: CustomDialogController = null
 
   aboutToAppear() {
     let id = router.getParams()['id'] as string
@@ -454,10 +457,14 @@ struct DetailPage {
           Text(`${this._goodDetail.goodCmtRate == null ? '查看全部' : '好评率'}`).fontSize(14).fontColor(textBlack)
           ArrowIcon()
         }
-      }.width('100%')
+      }
+      .width('100%')
       .alignItems(VerticalAlign.Center)
       .justifyContent(FlexAlign.SpaceBetween)
       .propertyStyle()
+      .onClick(e => {
+        router.pushUrl({ url: pageIndex.commentsPage, params: { 'id': this._id } })
+      })
 
       if (this._goodDetail.comments != null && this._goodDetail.comments.length > 0)
         CommentItem(this._goodDetail.comments[0])
@@ -498,6 +505,9 @@ struct DetailPage {
       }
       .alignItems(VerticalAlign.Center)
       .propertyStyle()
+      .onClick(e => {
+        this.propertyDetail(Property.SKUFREIGHT, this._goodDetail.skuFreight.title ?? '', this._goodDetail.skuFreight.policyList ?? [])
+      })
 
       /// 购物反
       if (this._goodDetail.shoppingReward != null)
@@ -509,6 +519,9 @@ struct DetailPage {
       }
       .alignItems(VerticalAlign.Center)
       .propertyStyle()
+      .onClick(e => {
+        this.propertyDetail(Property.SHOPPINGREWARD, this._goodDetail.shoppingRewardRule.title ?? '', this._goodDetail.shoppingRewardRule.ruleList ?? [])
+      })
 
       this.split()
       ///选择属性
@@ -568,10 +581,50 @@ struct DetailPage {
       }
       .alignItems(VerticalAlign.Center)
       .propertyStyle()
+      .onClick(e => {
+        this.propertyDetail(Property.POLICY, '服务', this._policyList ?? [])
+      })
 
     }
     .alignItems(HorizontalAlign.Start)
     .margin({ top: 10, bottom: 10 })
+  }
+
+  propertyDetail(property: Property, title: string, data: FullRefundPolicy | Array<PolicyListItem>) {
+    this._controller = new CustomDialogController({
+      builder: CustomDialog01({
+        title: title,
+        content: () => {
+          if (property == Property.SKUFREIGHT ||
+            property == Property.SHOPPINGREWARD ||
+            property == Property.POLICY)
+            this.skuFreightDetail(data as Array<PolicyListItem>)
+          else this.empty()
+        },
+        controller: this._controller
+      }),
+      alignment: DialogAlignment.Bottom,
+      customStyle: true
+    })
+    this._controller.open()
+  }
+
+  @Builder
+  skuFreightDetail(data: Array<PolicyListItem>) {
+    Column() {
+      ForEach(data, (item: PolicyListItem) => {
+        Column() {
+          Text(item.title).fontColor(textBlack).textAlign(TextAlign.Start)
+          Text(item.content).fontSize(12).fontColor(textGray).textAlign(TextAlign.Start).padding({ top: 4, bottom: 8 })
+        }
+        .alignItems(HorizontalAlign.Start)
+        .width('100%').padding({ bottom: 30, top: 16 })
+        .padding({ left: 12, right: 12 })
+      })
+    }
+    .padding({ top: 16 })
+    .width('100%')
+    .alignItems(HorizontalAlign.Start)
   }
 
   @Builder
@@ -685,6 +738,7 @@ struct DetailPage {
         .fontWeight(600)
         .decoration({ type: TextDecorationType.LineThrough })
     }.alignItems(VerticalAlign.Bottom)
+    .padding(12)
     else Rect()
   }
 
@@ -794,6 +848,11 @@ struct DetailPage {
   split() {
     Rect().width('100%').fill(this.backColor).height(10)
   }
+
+  @Builder
+  empty() {
+    Rect()
+  }
 }
 
 class DetailTop {
@@ -845,4 +904,10 @@ class ActivityData {
 
   constructor() {
   }
+}
+
+enum Property {
+  SKUFREIGHT,
+  SHOPPINGREWARD,
+  POLICY
 }

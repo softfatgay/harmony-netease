@@ -25,15 +25,17 @@ struct WebView {
         .imageAccess(true)
         .enabled(true)
         .onPageBegin(e => {
-
+          this.excJS()
         })
         .onPageEnd(e => {
           this._title = this.controller.getTitle()
         })
         .onUrlLoadIntercept((e) => {
-          console.log('==============',e.data.toString())
+          console.log('==============loadurl',e.data.toString())
           return false
         })
     }
+  }
+  excJS(){
   }
 }

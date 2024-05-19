@@ -78,6 +78,7 @@ struct SortListPage {
             }.tabBar(this.tabs(item, index))
           })
         }
+        .layoutWeight(1)
         .barHeight(46)
         .barMode(BarMode.Scrollable)
         .onChange(index => {
@@ -112,8 +113,7 @@ struct SortListPage {
     .height('100%')
     .padding({ left: 12, right: 12 })
     .onClick(e => {
-      // this.changeGetData(index)
-      this._currentIndex = index
+      this.changeGetData(index)
     })
   }
 

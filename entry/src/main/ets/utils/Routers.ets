@@ -6,6 +6,7 @@ export class pageIndex {
   static readonly hotPage = "pages/HotPage"
   static readonly detailPage = "pages/detail/DetailPage"
   static readonly sortListPage = "pages/SortListPage"
+  static readonly commentsPage = "pages/detail/CommentsPage"
 }
 
 export function goWebView(url: string) {

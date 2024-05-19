@@ -39,5 +39,11 @@ export const WAPITEM_RCMD = baseUrl + '/xhr/wapitem/rcmd.json';
 /// 分类列表
 export const URL_SORT_LIST_NEW = baseUrl + '/item/list.json';
 
+///好评率
+export const COMMENT_PRAISE = baseUrl + '/xhr/comment/itemGoodRates.json';
 
+///评价tags
+export const COMMENT_TAGS = baseUrl + '/xhr/comment/tags.json';
 
+///评论
+export const COMMENT_LIST = baseUrl + '/xhr/comment/listByItemByTag.json';

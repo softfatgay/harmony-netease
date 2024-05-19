@@ -115,6 +115,7 @@ struct CommentsPage {
         }
         .align(Alignment.Top)
       }
+      .align(Alignment.Top)
       .layoutWeight(1)
       .onScrollEdge(event => {
         console.log('================', this._pagination.lastPage)
@@ -126,6 +127,7 @@ struct CommentsPage {
       })
     }
     .height('100%')
+    .align(Alignment.Top)
   }
 
   @Builder

@@ -1,6 +1,6 @@
 import axios from '@ohos/axios';
 import router from '@ohos.router';
-import { baseUrl, GOOD_DETAIL, WAPITEM_DELIVERY, WAPITEM_RCMD } from '../../base/Api';
+import { baseUrl, DETAIL_AND_USER, GOOD_DETAIL, WAPITEM_DELIVERY, WAPITEM_RCMD } from '../../base/Api';
 import { ResponseData } from '../../base/BaseModel';
 import { GoodDetailPre } from '../../model/detail/GoodDetailPre';
 import { HotListData } from '../../model/hotlist/HotListData';
@@ -12,6 +12,7 @@ import {
   FeaturedSeries,
   FullRefundPolicy,
   GoodDetail,
+  PromotionSimple,
   SimpleBrandInfo,
   SpmcBanner
 } from '../../model/detail/GoodDetail';
@@ -20,6 +21,7 @@ import { PageLoading } from '../../component/PageLoading'
 import { BannerModel, ProcessBanner } from '../../model/BannerModel';
 import {
   appWhite,
+  backBlack,
   backgroundColor,
   backRed,
   lineColor,
@@ -34,7 +36,7 @@ import resourceManager from '@ohos.resourceManager';
 import image from '@ohos.multimedia.image';
 import { goWebView, pageIndex } from '../../utils/Routers';
 import { WapitemDeliveryModel } from '../../model/detail/WapitemDeliveryModel';
-import { PolicyListItem } from '../../model/SkuMapValue';
+import { HdrkDetailVOListItem, PolicyListItem } from '../../model/SkuMapValue';
 import { CommentItemView } from '../../component/CommentItem';
 import { IssueListItem } from '../../model/IssueListItem';
 import { ItemListItem } from '../../model/ItemListItem';
@@ -42,11 +44,13 @@ import { GoodItem } from '../../component/GoodItem';
 import { RecommendModel } from '../../model/detail/RecommendModel';
 import display from '@ohos.display';
 import { TopData } from '../../model/topic/TopData';
+import { CouponModel } from '../../model/CouponModel';
 
 @Entry
 @Component
 struct DetailPage {
   @State _id: string = ''
+  @State _primarySkuId: string = ''
   @State _policyList: Array<PolicyListItem> = []
   @State _goodDetail: GoodDetail = null
   @State _banner: Array<string> = []
@@ -62,12 +66,14 @@ struct DetailPage {
   @State _showTop: boolean = false
   @State _topData: Array<DetailTop> = [new DetailTop('商品', 0), new DetailTop('评价', 1), new DetailTop('详情', 2), new DetailTop('推荐', 3)]
   @State _topIndex: number = 0
+  @State _coupon: Array<CouponModel> = []
   _controller: CustomDialogController = null
 
   aboutToAppear() {
-    let id = router.getParams()['id'] as string
-    this._id = id
+    this._id = router.getParams()['id'] as string
+    this._primarySkuId = router.getParams()['skuId'] as string
     this._getDetailData()
+    this._queryByItemAndUser()
     this._recommend()
   }
 
@@ -93,6 +99,21 @@ struct DetailPage {
     })
   }
 
+  _queryByItemAndUser() {
+    axios.get<ResponseData<Array<CouponModel>>>(DETAIL_AND_USER, {
+      params: {
+        'itemId': this._id,
+        'skuId': this._primarySkuId
+      }
+    }).then(res => {
+      this._coupon = res.data.data
+    }
+    ).catch(err => {
+      console.log(err)
+      this._pageState = PageState.Error
+    })
+  }
+
   _recommend() {
     axios.get<ResponseData<RecommendModel>>(WAPITEM_RCMD, {
       params: {
@@ -108,7 +129,6 @@ struct DetailPage {
   }
 
   _wapitemDelivery(skuId: number) {
-    console.log('==============配送', '配送信息');
     axios.get<ResponseData<WapitemDeliveryModel>>(WAPITEM_DELIVERY, {
       params: {
         'type': 2,
@@ -125,11 +145,8 @@ struct DetailPage {
       }
     }).then(res => {
       this._deliveryModel = res.data.data
-      console.log('==============配送', 'success');
-      console.log('==============配送', JSON.stringify(res.data.data));
     }
     ).catch(err => {
-      console.log('==============配送', 'error');
       console.log(err)
       this._pageState = PageState.Error
     })
@@ -138,13 +155,11 @@ struct DetailPage {
   bannerData(item: GoodDetail) {
     let banner = new Array<string>()
     let itemDetail = item.itemDetail
-    console.log('==============success', '1111');
     banner.push(itemDetail.picUrl1)
     banner.push(itemDetail.picUrl2)
     banner.push(itemDetail.picUrl3)
     banner.push(itemDetail.picUrl4)
     banner.push(itemDetail.picUrl5)
-    console.log('==============size', `${banner.length}`);
     this._banner = banner
   }
 
@@ -197,7 +212,9 @@ struct DetailPage {
         if (this._goodDetail.welfareCardVO != null)
         ListItem() {
           ///活动卡
-          Image(this._goodDetail.welfareCardVO.picUrl ?? '').width('100%')
+          Image(this._goodDetail.welfareCardVO.picUrl ?? '').width('100%').margin({ top: 10 }).onClick(e => {
+            goWebView(this._goodDetail.welfareCardVO.schemeUrl)
+          })
         }
 
         ///规则
@@ -444,7 +461,12 @@ struct DetailPage {
           Text(brandInfo.desc).fontSize(12).fontColor(textBlack).margin({ top: 12 })
         }.layoutWeight(1).margin({ left: 12 })
       }.padding(12)
-    }
+    }.onClick(e=>{
+      router.pushUrl({
+        url: pageIndex.brandPage,
+        params: { 'brandInfo': brandInfo, 'id': this._id }
+      })
+    })
   }
 
   @Builder
@@ -476,17 +498,29 @@ struct DetailPage {
     Column() {
       this.split()
       ///领券
-      if (this._goodDetail.couponShortNameList != null && this._goodDetail.couponShortNameList.length > 0)
+      if (this._goodDetail.promotionSimpleList != null
+        && this._goodDetail.promotionSimpleList.length > 0)
       Row() {
         Text('领券：').fontSize(14).fontColor(textBlack)
         Row() {
-          ForEach(this._goodDetail.couponShortNameList, (item: string) => {
-            Text(item ?? '')
-              .fontSize(12)
-              .fontColor(textYellow)
-              .padding({ left: 5, right: 5 })
-              .borderRadius(2)
-              .border({ width: 0.5, color: 0xFFF48F18 })
+          ForEach(this._goodDetail.promotionSimpleList, (item: PromotionSimple) => {
+            Row() {
+              Text(item.name ?? '')
+                .fontSize(10)
+                .fontColor(textWhite)
+                .fontWeight(600)
+                .padding({ left: 5, right: 5, top:3, bottom: 3 })
+                .borderRadius(4)
+                .backgroundColor(backRed)
+
+              Text(item.desc ?? '')
+                .fontSize(10)
+                .fontWeight(600)
+                .fontColor(textRed)
+                .borderRadius(4)
+                .padding(1)
+                .border({ width: 2, color: backRed })
+            }.margin({ right: 6 })
           })
         }.layoutWeight(1)
 
@@ -494,7 +528,9 @@ struct DetailPage {
       }
       .alignItems(VerticalAlign.Center)
       .propertyStyle()
-
+      .onClick(e => {
+        this.propertyDetail(Property.COUPON, '领券')
+      })
 
       /// 邮费
       if (this._goodDetail.skuFreight != null)
@@ -509,12 +545,40 @@ struct DetailPage {
         this.propertyDetail(Property.SKUFREIGHT, this._goodDetail.skuFreight.title ?? '', this._goodDetail.skuFreight.policyList ?? [])
       })
 
+      /// 促销
+      if (this._goodDetail.hdrkDetailVOList != null && this._goodDetail.hdrkDetailVOList.length > 0)
+      Row() {
+        Text('促销：').fontSize(14).fontColor(textBlack)
+        Column() {
+          ForEach(this._goodDetail.hdrkDetailVOList, (item: HdrkDetailVOListItem) => {
+            Row() {
+              Text(item.activityType)
+                .fontSize(10)
+                .fontColor(textRed)
+                .border({ color: backRed, width: 1 })
+                .borderRadius(8)
+                .padding(2)
+              Column() {
+                Text(item.name).fontSize(12).fontColor(textBlack)
+                if (item.promLimitDesc != null)
+                  Text(item.promLimitDesc ?? '').fontSize(10).fontColor(textGray)
+              }.alignItems(HorizontalAlign.Start).margin({ left: 4 })
+            }
+          })
+        }
+        .alignItems(HorizontalAlign.Start)
+        .layoutWeight(1)
+
+        ArrowIcon()
+      }.alignItems(VerticalAlign.Center)
+      .propertyStyle()
+
       /// 购物反
       if (this._goodDetail.shoppingReward != null)
       Row() {
         Text(`${this._goodDetail.shoppingReward.name ?? ''}：`).fontSize(14).fontColor(textBlack)
-        Text(`${this._goodDetail.shoppingReward.rewardDesc ?? ''}：`).fontSize(14).fontColor(textBlack)
-        Text(this._goodDetail.shoppingReward.rewardValue ?? '').fontSize(14).fontColor(textBlack).layoutWeight(1)
+        Text(`${this._goodDetail.shoppingReward.rewardDesc ?? ''}`).fontSize(14).fontColor(textBlack)
+        Text(this._goodDetail.shoppingReward.rewardValue ?? '').fontSize(14).fontColor(textRed).layoutWeight(1)
         ArrowIcon()
       }
       .alignItems(VerticalAlign.Center)
@@ -590,7 +654,43 @@ struct DetailPage {
     .margin({ top: 10, bottom: 10 })
   }
 
-  propertyDetail(property: Property, title: string, data: FullRefundPolicy | Array<PolicyListItem>) {
+  @Builder
+  couponDetail() {
+    Column() {
+      ForEach(this._coupon, (item: CouponModel) => {
+        Column() {
+          Row() {
+            Row() {
+              Text(item.briefDesc).fontSize(30).fontWeight(600).fontColor(textWhite)
+              Text('元').fontSize(15).fontWeight(600).fontColor(textWhite)
+            }.alignItems(VerticalAlign.Bottom)
+
+            Column() {
+              Text(item.name).fontSize(14).fontWeight(600).fontColor(textWhite)
+              Text(item.timeDesc).fontSize(10).fontWeight(600).fontColor(textWhite)
+            }.alignItems(HorizontalAlign.Start)
+
+            Text()
+              .fontSize(14)
+              .fontColor(textRed)
+              .padding({ left: 6, right: 6, top: 2, bottom: 2 })
+              .backgroundColor(0xffe65e5f)
+          }
+          .width('100%')
+          .justifyContent(FlexAlign.SpaceEvenly)
+          .padding({ top: 30, bottom: 30, left: 20, right: 20 })
+          .backgroundColor(0xfff4948a)
+
+          Text(item.useCondition)
+            .width('100%')
+            .padding({ left: 16, top: 12, bottom: 12, right: 16 })
+            .backgroundColor(0xffeb7073)
+        }.width('100%')
+      })
+    }.padding({ left: 12, right: 12 })
+  }
+
+  propertyDetail(property: Property, title: string, data?: FullRefundPolicy | Array<PolicyListItem>) {
     this._controller = new CustomDialogController({
       builder: CustomDialog01({
         title: title,
@@ -599,6 +699,7 @@ struct DetailPage {
             property == Property.SHOPPINGREWARD ||
             property == Property.POLICY)
             this.skuFreightDetail(data as Array<PolicyListItem>)
+          else if (Property.COUPON) this.couponDetail()
           else this.empty()
         },
         controller: this._controller
@@ -653,17 +754,20 @@ struct DetailPage {
           Row() {
             Text(index + '')
               .fontColor(textRed)
-              .fontSize(12)
+              .fontSize(10)
               .width(14)
               .height(14)
               .textAlign(TextAlign.Center)
               .border({ width: 1, color: backRed })
               .borderRadius(7)
               .padding({ bottom: 2 })
-            Text(item ?? '').fontSize(12).fontColor(textBlack)
-          }.margin({ top: 2 })
+            Text(item ?? '').fontSize(12).fontColor(textBlack).margin({ left: 2 })
+          }
+          .alignItems(VerticalAlign.Center)
+          .margin({ top: 4 })
         })
       }
+      .margin({ top: 4 })
       .width('100%')
       .alignItems(HorizontalAlign.Start)
       .align(Alignment.Start)
@@ -713,11 +817,22 @@ struct DetailPage {
   proVip(spmcBanner: SpmcBanner) {
     Row() {
       Image($r('app.media.pro_icon')).size({ height: 12 })
-      Text(`${spmcBanner.spmcDesc ?? ''}${spmcBanner.spmcPrice ?? ''}`)
+      Row() {
+        Text(`${spmcBanner.spmcDesc ?? ''}`)
+          .fontSize(12)
+          .fontColor(textBlack)
+        Text(`${spmcBanner.spmcPrice ?? ''}`)
+          .fontSize(12)
+          .fontColor(textRed)
+          .fontWeight(600)
+      }.layoutWeight(1)
+
+      Text('开通')
         .fontSize(12)
-        .fontColor(textBlack)
-        .layoutWeight(1)
-      Text('开通').fontSize(12).fontColor(textYellow)
+        .fontColor(textYellow)
+        .backgroundColor(backBlack)
+        .padding({ left: 8, top: 4, right: 8, bottom: 4 })
+        .borderRadius(12)
     }
     .backgroundColor(0XFFFFF1D2)
     .borderRadius(6)
@@ -795,7 +910,7 @@ struct DetailPage {
       .alignItems(HorizontalAlign.Start)
       .justifyContent(FlexAlign.SpaceAround)
 
-      Image(this._activity.processBanner.logoUrl ?? '').size({ height: 40, width: 40 })
+      Image(this._activity.processBanner.logoUrl ?? '').size({ height: 40 })
     }
     .width('100%')
     .height(60)
@@ -907,6 +1022,7 @@ class ActivityData {
 }
 
 enum Property {
+  COUPON,
   SKUFREIGHT,
   SHOPPINGREWARD,
   POLICY

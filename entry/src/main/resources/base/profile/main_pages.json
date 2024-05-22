@@ -6,6 +6,7 @@
     "pages/HotPage",
     "pages/detail/DetailPage",
     "pages/SortListPage",
-    "pages/detail/CommentsPage"
+    "pages/detail/CommentsPage",
+    "pages/detail/BrandPage"
   ]
 }

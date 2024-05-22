@@ -77,7 +77,6 @@ export class GoodDetail {
   itemSizeTableDetailFlag: boolean
   featuredSeries: FeaturedSeries
   categoryList: Array<CategoryL1ListItem>
-
   ///是否有评价率
   goodCmtRate: string
   promoTip: string
@@ -87,6 +86,7 @@ export class GoodDetail {
   skuFreight: SkuFreight
   fullRefundPolicy: FullRefundPolicy
   couponShortNameList: Array<string>
+  promotionSimpleList: Array<PromotionSimple>
   detailPromBanner: DetailPromBanner
   welfareCardVO: WelfareCardVO
   simpleBrandInfo: SimpleBrandInfo
@@ -136,6 +136,16 @@ export class FullRefundPolicy {
   detailTitle: string
   titles: Array<string>
   content: Array<string>
+}
+
+export class PromotionSimple {
+  type: number
+  couponCode: string
+  style: number
+  packetId: number
+  promotionStatus: number
+  desc: string
+  name: string
 }
 
 export class DetailPromBanner {

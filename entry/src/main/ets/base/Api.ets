@@ -30,11 +30,20 @@ export const URL_KING_KONG = baseUrl + '/item/list.json';
 /// kingkong
 export const GOOD_DETAIL = baseUrl + '/item/detail.json';
 
+/// 详情领券
+export const DETAIL_AND_USER = baseUrl + '/xhr/item/queryByItemAndUser.json';
+
 /// 配送信息
 export const WAPITEM_DELIVERY = baseUrl + '/xhr/wapitem/delivery.json';
 
 /// 商品详情推荐
 export const WAPITEM_RCMD = baseUrl + '/xhr/wapitem/rcmd.json';
+
+///商品详情品牌研究所
+export const BRAND_INFO = baseUrl+'/xhr/brand/info.json';
+
+///商品详情品牌研究所
+export const BRAND_INFO_ITEMS = baseUrl+'/xhr/item/brand/index.json';
 
 /// 分类列表
 export const URL_SORT_LIST_NEW = baseUrl + '/item/list.json';

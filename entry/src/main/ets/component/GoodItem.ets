@@ -5,9 +5,10 @@ import { ItemListItem } from '../model/ItemListItem';
 import { Logo } from '../model/Logo';
 import { pageIndex } from '../utils/Routers';
 
-@Builder function GoodItem(item: ItemListItem) {
+@Builder
+function GoodItem(item: ItemListItem) {
   Column() {
-    Image(item.listPicUrl).width('100%').aspectRatio(1).borderRadius(4)
+    Image(item.listPicUrl ?? '').width('100%').aspectRatio(1).borderRadius(4)
     GoodTagName(item)
     Row() {
       Text(getPricePrefix(item))
@@ -42,14 +43,16 @@ import { pageIndex } from '../utils/Routers';
       {
         url: pageIndex.detailPage,
         params: {
-          'id': `${item.id}`
+          'id': `${item.id}`,
+          'skuId': `${item.primarySkuId ?? ''}`,
         }
       }
     )
   })
 }
 
-@Builder function GoodTagName(item: ItemListItem) {
+@Builder
+function GoodTagName(item: ItemListItem) {
   Row() {
     Flex({ wrap: FlexWrap.Wrap, alignItems: ItemAlign.Center }) {
       if (item.preLogo != null)
@@ -69,11 +72,12 @@ import { pageIndex } from '../utils/Routers';
   .padding({ left: 6, right: 6 })
 }
 
-@Builder function GoodItemTag(banner: BannerVO) {
+@Builder
+function GoodItemTag(banner: BannerVO) {
   if (banner != null && banner.title != null)
   Row() {
     if (banner.title != null)
-      Text(banner.title??'')
+      Text(banner.title ?? '')
         .backgroundColor(appRed)
         .height('100%')
         .padding({ left: 10, right: 10 })
@@ -82,7 +86,7 @@ import { pageIndex } from '../utils/Routers';
         .fontColor(textWhite)
         .fontWeight(600)
     if (banner.content != null)
-      Text(banner.content??'')
+      Text(banner.content ?? '')
         .padding({ left: 10, right: 10 })
         .borderRadius(12)
         .fontSize(10)
@@ -99,7 +103,7 @@ import { pageIndex } from '../utils/Routers';
   .margin({ left: 6, right: 6, top: 4 })
 
   if (banner != null && banner.title == null && banner.content != null)
-    Text(banner.content??'')
+    Text(banner.content ?? '')
       .backgroundColor(appRed)
       .height(24)
       .margin({ top: 4 })
@@ -115,7 +119,7 @@ function getPricePrefix(item: ItemListItem): string {
   let finalPrice = item.finalPriceInfoVO.priceInfo.finalPrice
   if (finalPrice == null) return '¥'
   if (finalPrice.prefix == null) '¥'
-  let priceStr = (finalPrice.prefix??'') + '¥'
+  let priceStr = (finalPrice.prefix ?? '') + '¥'
   return priceStr
 }
 

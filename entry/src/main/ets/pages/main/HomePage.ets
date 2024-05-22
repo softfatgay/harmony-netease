@@ -122,7 +122,7 @@ export struct Homepage {
     if (priceInfo.finalPrice == null) {
       return priceInfo.basicPrice
     }
-    return priceInfo.finalPrice.prefix??'' + priceInfo.finalPrice.price
+    return priceInfo.finalPrice.prefix ?? '' + priceInfo.finalPrice.price
   }
 
   @Builder
@@ -266,28 +266,23 @@ export struct Homepage {
           GridRow({ columns: item.columnNum }) {
             ForEach(item.cells, (cell: Cells) => {
               GridCol() {
-                Image(cell.picUrl).objectFit(ImageFit.Fill).height(item.height / 3 + 10)
+                Stack() {
+                  Image(cell.picUrl).objectFit(ImageFit.Fill).height('100%').width('100%')
+                  if (item.layout == 2)
+                    Image(item.cells[0].itemList[0].picUrl ?? '').height('100%').margin({ left: 30 })
+                  else Row() {
+                    ForEach(cell.itemList, (item: Cells) => {
+                      Image(item.picUrl ?? '').height('60%').margin({ bottom: 10 })
+                    })
+                  }
+                }
+                .height(item.height / 3 + 10)
+                .alignContent(item.layout == 2 ? Alignment.Start : Alignment.Bottom)
               }.onClick(e => {
                 this._goWebView(cell.schemeUrl)
               })
             })
           }.margin({ left: item.columnNum > 1 ? 6 : 0, right: item.columnNum > 1 ? 12 : 6, top: 6 })
-
-          // ForEach(item.cells, (cell: Cells) => {
-          //   Image(cell.picUrl)
-          //
-          //   // Row() {
-          //   //   Flex() {
-          //   //     // Image(cell.picUrl)
-          //   //     if (item.layout == 2 || item.layout == 1) Image(item.cells[0].picUrl)
-          //   //     else Row() {
-          //   //       ForEach(cell.itemList, (cellItem: Cells) => {
-          //   //         Image(cellItem.picUrl).height(30).width(30)
-          //   //       })
-          //   //     }
-          //   //   }.width('100%')
-          //   // }.width((98 / (item.columnNum)) + '%')
-          // })
         }.justifyContent(FlexAlign.SpaceBetween).height((item.height / 3 + 10)).width('100%')
       })
     }.width('100%').margin({ top: 10 })
@@ -407,7 +402,8 @@ const searchSwiper: string[] = [
   "春季计划"
 ]
 
-@Styles function relativeCenter() {
+@Styles
+function relativeCenter() {
   .alignRules(
     {
       middle: { anchor: '__container__', align: HorizontalAlign.Center },
@@ -416,7 +412,8 @@ const searchSwiper: string[] = [
   )
 }
 
-@Styles function relativeFull() {
+@Styles
+function relativeFull() {
   .alignRules(
     {
       top: { anchor: '__container__', align: VerticalAlign.Top },
@@ -427,7 +424,8 @@ const searchSwiper: string[] = [
   )
 }
 
-@Styles function relativeBottomEnd() {
+@Styles
+function relativeBottomEnd() {
   .alignRules(
     {
       bottom: { anchor: '__container__', align: VerticalAlign.Bottom },
@@ -436,7 +434,8 @@ const searchSwiper: string[] = [
   )
 }
 
-@Styles function relativeEndCenter() {
+@Styles
+function relativeEndCenter() {
   .alignRules(
     {
       center: { anchor: '__container__', align: VerticalAlign.Center },
@@ -445,7 +444,8 @@ const searchSwiper: string[] = [
   )
 }
 
-@Styles function relativeStartCenter() {
+@Styles
+function relativeStartCenter() {
   .alignRules(
     {
       center: { anchor: '__container__', align: VerticalAlign.Center },

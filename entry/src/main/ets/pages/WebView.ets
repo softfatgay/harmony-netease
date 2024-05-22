@@ -1,6 +1,9 @@
 import webview from '@ohos.web.webview';
 import router from '@ohos.router';
 import { TopBar } from '../component/TopBar';
+import uri from '@ohos.uri';
+import { queryURLParameter } from '../utils/UrlUtil';
+import { pageIndex } from '../utils/Routers';
 
 @Entry
 @Component
@@ -31,11 +34,27 @@ struct WebView {
           this._title = this.controller.getTitle()
         })
         .onUrlLoadIntercept((e) => {
-          console.log('==============loadurl',e.data.toString())
+          console.log('==============loadurl', e.data.toString())
+          let url: string = e.data.toString()
+          if (url.includes('item/detail')) {
+            this.goDetail(url)
+            return true
+          }
           return false
         })
     }
   }
-  excJS(){
+
+  goDetail(url: string) {
+    if (url.includes('item/detail')) {
+      let params = queryURLParameter(url)
+      let id = params['id']
+      router.pushUrl({ url: pageIndex.detailPage, params: {
+        'id': id
+      } })
+    }
+  }
+
+  excJS() {
   }
 }

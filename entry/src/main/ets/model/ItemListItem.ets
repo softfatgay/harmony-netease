@@ -14,7 +14,7 @@ export class ItemListItem extends KingKongType{
   seoTitle: String
   simpleDesc: String
   primaryPicUrl: String
-  primarySkuId: Number
+  primarySkuId: number
   retailPrice: number
   counterPrice: Number
   status: Number

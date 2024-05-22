@@ -41,6 +41,9 @@
     },{
       "name": "back_red_light",
       "value": "#FFFBE7E8"
+    },{
+      "name": "back_black",
+      "value": "#FF12161C"
     },
     {
       "name": "app_white",

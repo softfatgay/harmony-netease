@@ -1,5 +1,7 @@
 export const baseUrl = 'https://m.you.163.com';
 
+export const LOGIN_PAGE_URL = "https://m.you.163.com/u/login";
+
 ///首页
 export const URL_HOME_NEW = baseUrl + '/xhr/index.json';
 
@@ -40,10 +42,10 @@ export const WAPITEM_DELIVERY = baseUrl + '/xhr/wapitem/delivery.json';
 export const WAPITEM_RCMD = baseUrl + '/xhr/wapitem/rcmd.json';
 
 ///商品详情品牌研究所
-export const BRAND_INFO = baseUrl+'/xhr/brand/info.json';
+export const BRAND_INFO = baseUrl + '/xhr/brand/info.json';
 
 ///商品详情品牌研究所
-export const BRAND_INFO_ITEMS = baseUrl+'/xhr/item/brand/index.json';
+export const BRAND_INFO_ITEMS = baseUrl + '/xhr/item/brand/index.json';
 
 /// 分类列表
 export const URL_SORT_LIST_NEW = baseUrl + '/item/list.json';
@@ -56,3 +58,7 @@ export const COMMENT_TAGS = baseUrl + '/xhr/comment/tags.json';
 
 ///评论
 export const COMMENT_LIST = baseUrl + '/xhr/comment/listByItemByTag.json';
+
+///检查登录GET
+export const CHECK_LOGIN = baseUrl + '/xhr/common/checklogin.json';
+

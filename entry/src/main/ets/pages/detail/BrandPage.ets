@@ -2,9 +2,10 @@ import router from '@ohos.router'
 import axios from '@ohos/axios'
 import { BRAND_INFO, BRAND_INFO_ITEMS } from '../../base/Api'
 import { ResponseData } from '../../base/BaseModel'
-import { appWhite, textBlack, textGray } from '../../base/color'
+import { appWhite, textBlack, textGray, textRed } from '../../base/color'
 import { PageState } from '../../base/PageState'
 import { GoodItem } from '../../component/GoodItem'
+import { PageLoading } from '../../component/PageLoading'
 import { BrandIndexModel } from '../../model/detail/BrandIndexModel'
 import { BrandInfo } from '../../model/detail/GoodDetail'
 import { ItemListItem } from '../../model/ItemListItem'
@@ -18,6 +19,9 @@ struct BrandPage {
   @State _extInfo: string = '';
   _hasMore: boolean = true
   @State _itemList: Array<ItemListItem> = []
+  @State _descSorted: boolean = true
+  @State _sortType: number = 0
+  @State _checkedIndex: number = 0
 
   aboutToAppear() {
     this._brandInfo = router.getParams()['brandInfo'] as BrandInfo
@@ -46,20 +50,20 @@ struct BrandPage {
   }
 
   _getBrandIndex() {
+    this._pageState = PageState.Loading
     let param = {
       'brandId': this._brandInfo.brandId,
-      'descSorted': true,
+      'descSorted': this._descSorted,
       'extInfo': this._extInfo,
       'itemId': this._goodId,
       'merchantId': this._brandInfo.merchantId ?? 'null',
-      'sortType': 0,
+      'sortType': this._sortType,
       'type': this._brandInfo.type + '',
     }
     axios.post<ResponseData<BrandIndexModel>>(BRAND_INFO_ITEMS, JSON.stringify(param)).then(res => {
       let data = res.data.data
       this._hasMore = data.hasMore ?? false
-      let newItems = this._itemList.concat(data.itemList)
-      this._itemList = newItems
+      this._itemList = data.itemList
       this._pageState = PageState.Success
     }).catch(err => {
       this._pageState = PageState.Error
@@ -71,8 +75,8 @@ struct BrandPage {
       ListItem() {
         this.top()
       }
-
-      ListItemGroup({ header: this.header() }) {
+      if (this._pageState == PageState.Loading) ListItem() {PageLoading()}.width('100%')
+      else ListItemGroup({ header: this.header() }) {
         ListItem() {
           GridRow({ columns: 2, gutter: 8 }) {
             ForEach(this._itemList, (item: ItemListItem) => {
@@ -83,7 +87,9 @@ struct BrandPage {
           }.padding({ left: 12, right: 12 })
         }
       }
-    }.sticky(StickyStyle.Header)
+    }
+    .sticky(StickyStyle.Header)
+    .alignListItem(ListItemAlign.Center)
   }
 
   @Builder
@@ -91,22 +97,52 @@ struct BrandPage {
     Row() {
       Text('综合')
         .fontSize(14)
-        .fontColor(textBlack)
+        .fontColor(this._checkedIndex == 0 ? textRed : textBlack)
         .textAlign(TextAlign.Center)
         .layoutWeight(1)
         .padding({ top: 12, bottom: 12 })
-      Text('价格')
-        .fontSize(14)
-        .fontColor(textBlack)
-        .textAlign(TextAlign.Center)
-        .layoutWeight(1)
-        .padding({ top: 12, bottom: 12 })
-      Text('销量')
-        .fontSize(14)
-        .fontColor(textBlack)
-        .textAlign(TextAlign.Center)
-        .layoutWeight(1)
-        .padding({ top: 12, bottom: 12 })
+        .onClick(e => {
+          this._checkedIndex = 0
+          this._sortType = 0
+          this._getBrandIndex()
+        })
+
+      Row() {
+        Text('价格')
+          .fontSize(14)
+          .fontColor(this._checkedIndex == 1 ? textRed : textBlack)
+          .textAlign(TextAlign.Center)
+        Image(this._descSorted ? $r('app.media.arrow_down') : $r('app.media.arrow_up'))
+          .size({ width: 16 })
+          .colorFilter(this._checkedIndex == 1 ? textRed : textBlack)
+      }
+      .layoutWeight(1)
+      .justifyContent(FlexAlign.Center)
+      .padding({ top: 12, bottom: 12 })
+      .onClick(e => {
+        this._checkedIndex = 1
+        this._sortType = 1
+        this._descSorted = !this._descSorted
+        this._getBrandIndex()
+      })
+
+      Row() {
+        Text('销量')
+          .fontSize(14)
+          .fontColor(this._checkedIndex == 2 ? textRed : textBlack)
+          .textAlign(TextAlign.Center)
+        Image(this._sortType == 5 ? $r('app.media.arrow_down') : $r('app.media.arrow_up'))
+          .size({ width: 16 })
+          .colorFilter(this._checkedIndex == 1 ? textRed : textBlack)
+      }
+      .layoutWeight(1)
+      .justifyContent(FlexAlign.Center)
+      .padding({ top: 12, bottom: 12 })
+      .onClick(e => {
+        this._checkedIndex = 2
+        this._sortType = 5
+        this._getBrandIndex()
+      })
     }.backgroundColor(appWhite)
   }
 

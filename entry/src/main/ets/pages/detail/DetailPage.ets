@@ -84,7 +84,6 @@ struct DetailPage {
       }
     }).then(res => {
       let item = res.data.item
-      console.log('==============size', `${item.id}`);
       this._policyList = res.data.policyList
       this._goodDetail = item
       this.getAllPic(item)

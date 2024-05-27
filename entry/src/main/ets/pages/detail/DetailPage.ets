@@ -803,9 +803,10 @@ struct DetailPage {
             Text(this._goodDetail.goodCmtRate ?? '').fontSize(16).fontColor(textRed)
             Text('好评率').fontSize(12).fontColor(textGray)
           }
-
           Image($r('app.media.arrow_right')).size({ height: 12 })
-        }
+        }.onClick(e=>{
+          router.pushUrl({ url: pageIndex.commentsPage, params: { 'id': this._id } })
+        })
     }
     .margin({ top: 8 })
     .padding({ left: 10, right: 10 })

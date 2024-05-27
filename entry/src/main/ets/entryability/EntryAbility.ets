@@ -1,6 +1,9 @@
 import UIAbility from '@ohos.app.ability.UIAbility';
 import hilog from '@ohos.hilog';
 import window from '@ohos.window';
+import axios from '@ohos/axios';
+import { cookie, globalCookie, User } from '../base/User'
+import { StorageUtils } from '../utils/StorageUtils';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want, launchParam) {
@@ -9,6 +12,28 @@ export default class EntryAbility extends UIAbility {
   }
 
   init() {
+    User.cookie(globalCookie)
+    StorageUtils.put('cookie', globalCookie)
+
+    axios.interceptors.request.use(function (config) {
+      config.headers['cookie'] = cookie
+      console.log('----------request----------',config.url)
+      console.log(JSON.stringify(config))
+      return config;
+    }, function (error) {
+      // 对请求错误做些什么
+      return Promise.reject(error);
+    });
+
+    axios.interceptors.response.use(function (res) {
+      //  接收响应后做些什么
+      console.log('----------response----------',res.config.url)
+      console.log(JSON.stringify(res.data))
+      return res;
+    }, function (err) {
+      //打印错误
+      console.log(err)
+    })
   }
 
   onDestroy() {

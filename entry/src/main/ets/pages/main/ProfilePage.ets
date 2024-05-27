@@ -2,7 +2,7 @@ import axios from '@ohos/axios'
 import { CHECK_LOGIN, LOGIN_PAGE_URL } from '../../base/Api'
 import { ResponseData } from '../../base/BaseModel'
 import { PageState } from '../../base/PageState'
-import { csrf_token, timestampParams } from '../../base/user'
+import { csrf_token, timestampParams, User } from '../../base/User'
 import { PageLoading } from '../../component/PageLoading'
 import { LoginPage } from '../LoginPage'
 

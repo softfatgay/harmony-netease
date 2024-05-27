@@ -1,6 +1,6 @@
 export const baseUrl = 'https://m.you.163.com';
 
-export const LOGIN_PAGE_URL = "https://m.you.163.com/u/login";
+export const LOGIN_PAGE_URL = 'https://m.you.163.com/u/login';
 
 ///首页
 export const URL_HOME_NEW = baseUrl + '/xhr/index.json';
@@ -62,3 +62,5 @@ export const COMMENT_LIST = baseUrl + '/xhr/comment/listByItemByTag.json';
 ///检查登录GET
 export const CHECK_LOGIN = baseUrl + '/xhr/common/checklogin.json';
 
+///购物车
+export const SHOPPING_CART = baseUrl + '/xhr/cart/getCarts.json';

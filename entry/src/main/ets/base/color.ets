@@ -8,6 +8,7 @@ export const backRedLight = $r('app.color.back_red_light')
 export const backBlack = $r('app.color.back_black')
 
 export const textRed = $r('app.color.text_red')
+export const textLightRed = $r('app.color.text_light_red')
 export const textYellow = $r('app.color.text_yellow')
 export const textWhite = Color.White
 export const textGray = $r('app.color.text_gray')

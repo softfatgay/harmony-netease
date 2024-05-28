@@ -36,13 +36,23 @@ export class CartItemListItem {
   canSwitchSpec: boolean
   stepNo: number
   checkExt: Object
-  specArray: Array<SpecListItem>
+  specList: Array<SpecListItem>
   cartItemTips: Array<string>
   timingPromotion: string
   finishTip: string
+  prefix: string
+  showActualPrice: string
+  showRetailPrice: string
   remainTime: number
   warehouseInfo: WarehouseInfo
   appFreshmanBannerVO: AppFreshmanBannerVO
+  bottomTips: Array<BottomTips>
+}
+
+export class BottomTips {
+  key: string
+  value: string
+  picUrl: string
 }
 
 export class SpecListItem {

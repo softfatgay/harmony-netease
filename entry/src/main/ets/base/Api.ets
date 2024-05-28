@@ -64,3 +64,8 @@ export const CHECK_LOGIN = baseUrl + '/xhr/common/checklogin.json';
 
 ///购物车
 export const SHOPPING_CART = baseUrl + '/xhr/cart/getCarts.json';
+
+///购物车
+export const CART_TRADE = baseUrl + '/xhr/front/trade/cart/getCarts';
+
+

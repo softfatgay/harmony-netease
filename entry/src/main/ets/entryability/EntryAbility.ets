@@ -4,6 +4,8 @@ import window from '@ohos.window';
 import axios from '@ohos/axios';
 import { cookie, globalCookie, User } from '../base/User'
 import { StorageUtils } from '../utils/StorageUtils';
+import web_webview from '@ohos.web.webview'
+import { baseUrl } from '../base/Api';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want, launchParam) {
@@ -14,7 +16,7 @@ export default class EntryAbility extends UIAbility {
   init() {
     User.cookie(globalCookie)
     StorageUtils.put('cookie', globalCookie)
-
+    web_webview.WebviewController.initializeWebEngine()
     axios.interceptors.request.use(function (config) {
       config.headers['cookie'] = cookie
       console.log('----------request----------',config.url)

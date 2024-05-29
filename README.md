@@ -21,5 +21,9 @@
 
 ![img10.jpg](screenshot%2Fimg10.jpg)
 
+![img11.jpg](screenshot%2Fimg11.jpg)
+
+![img12.jpg](screenshot%2Fimg12.jpg)
+
 ### attention: 
 1:webview 在模拟器上无法滑动/点击

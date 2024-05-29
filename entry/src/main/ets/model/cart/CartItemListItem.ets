@@ -47,6 +47,12 @@ export class CartItemListItem {
   warehouseInfo: WarehouseInfo
   appFreshmanBannerVO: AppFreshmanBannerVO
   bottomTips: Array<BottomTips>
+  leftTag:LeftTag
+}
+
+export class LeftTag{
+  type:number
+  name:string
 }
 
 export class BottomTips {

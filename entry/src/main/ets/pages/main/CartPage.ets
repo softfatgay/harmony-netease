@@ -23,6 +23,9 @@ import {
   textRed,
   textWhite
 } from '../../base/color'
+import router from '@ohos.router'
+import { pageIndex } from '../../utils/Routers'
+import { GlobalInfoVO } from '../../model/cart/GlobalInfoVO'
 
 @Entry
 @Component
@@ -33,9 +36,11 @@ export struct CartPage {
   //全场换购
   @State _globalList: Array<CartGlobalGroup> = []
   // 有效商品
-  @State _ItemList: Array<CartItemGroup> = []
+  @State _itemList: Array<CartItemGroup> = []
   /// 失效商品
   @State _invalidList: Array<CartItemListItem> = []
+  // 价格信息
+  @State _globalInfo: GlobalInfoVO = null
 
   aboutToAppear() {
     if (csrf_token == '') {
@@ -74,8 +79,9 @@ export struct CartPage {
     }).then(res => {
       let data = res.data.data
       this._globalList = data.cartGlobalGroupList
-      this._ItemList = data.cartItemGroupList
+      this._itemList = data.cartItemGroupList
       this._invalidList = data.invalidItemList
+      this._globalInfo = data.globalInfoVO
       this._cartModel = data
       this._pageState = PageState.Success
     }
@@ -105,6 +111,7 @@ export struct CartPage {
       if (this._cartModel != null)
       Column() {
         this.cartItems()
+        this.priceView()
       }.height('100%')
 
       if (this._pageState == PageState.Loading) PageLoading()
@@ -112,13 +119,152 @@ export struct CartPage {
   }
 
   @Builder
+  priceView() {
+    Row() {
+      Checkbox() {
+
+      }
+      .width(16)
+      .height(16)
+      .selectedColor(backRed)
+      .select(this._globalInfo.allChecked)
+      .onChange((checked) => {
+
+      })
+
+      Text('全选').fontColor(0xFF7F7F7F).fontSize(14).margin({ left: 10 })
+      Column() {
+        Text(this._globalInfo.showActualPrice).fontSize(14).fontColor(textRed).fontWeight(600)
+        Row() {
+          Text(this._globalInfo.showActivityPrice).fontSize(12).fontColor(textGray)
+          Image($r('app.media.arrow_up')).size({ width: 12 }).margin({ left: 3 })
+        }.margin({ top: 4 })
+      }
+      .height('100%')
+      .justifyContent(FlexAlign.Center)
+      .alignItems(HorizontalAlign.End)
+      .layoutWeight(1)
+      .margin({ left: 8, right: 8 })
+
+      Button(`结算(${this._globalInfo.selectedCount})`, { type: ButtonType.Capsule, stateEffect: true })
+        .backgroundColor(this._globalInfo.selectedCount > 0 ? textRed : textLightGray)
+        .enabled(this._globalInfo.selectedCount > 0)
+        .fontSize(14)
+        .width(120)
+    }
+    .height(60)
+    .width('100%')
+    .padding({ left: 12, right: 12 })
+    .backgroundColor(0xFAFAFA)
+  }
+
+  @Builder
   cartItems() {
     Scroll() {
       Column() {
         this.cartGlobalGroupList(this._globalList)
-        this.itemsList(this._ItemList)
+        this.itemsList(this._itemList)
+        this.invalidList(this._invalidList)
       }
+    }.layoutWeight(1)
+  }
+
+  @Builder
+  invalidList(list: Array<CartItemListItem>) {
+    Column() {
+      Text('失效商品')
+        .fontSize(16)
+        .fontWeight(600)
+        .fontColor(textBlack)
+      ForEach(list, (item: CartItemListItem) => {
+        Column() {
+          Row() {
+            Stack() {
+              Image(item.pic)
+                .size({ height: 90, width: 90 })
+                .backgroundColor(0xfff4f4f4)
+                .borderRadius(8)
+                .opacity(0.5)
+              if (item.leftTag != null && item.leftTag.type == 1)
+                Text(item.leftTag.name ?? '')
+                  .size({ height: 70, width: 70 })
+                  .backgroundColor(0x99333333)
+                  .borderRadius(45)
+                  .fontColor(textWhite)
+                  .textAlign(TextAlign.Center)
+            }.alignContent(Alignment.Center)
+
+            Column() {
+              Row() {
+                Text(`${item.prefix ?? ''}`)
+                  .fontSize(14)
+                  .fontColor(textLightRed)
+                  .margin({ right: 4 })
+                  .opacity(0.5)
+                Text(`${item.itemName ?? ''}`)
+                  .fontSize(14)
+                  .fontColor(textBlack)
+                  .layoutWeight(1)
+                  .maxLines(1)
+                  .textOverflow({ overflow: TextOverflow.Ellipsis })
+                  .opacity(0.5)
+              }
+
+              Text(this.getSpecListText(item.specList))
+                .fontSize(12)
+                .fontColor(0xff7f7f7f)
+                .backgroundColor(0xfff4f4f4)
+                .padding({ left: 6, right: 6, top: 3, bottom: 3 })
+                .margin({ top: 4 })
+                .maxLines(1)
+                .textOverflow({ overflow: TextOverflow.Ellipsis })
+                .borderRadius(8)
+                .opacity(0.5)
+
+              Row() {
+                Text('¥').fontSize(14).fontColor(textLightGray).fontWeight(600).opacity(0.5)
+                Text(`${item.actualPrice ?? ''}`)
+                  .fontSize(18)
+                  .fontColor(textLightGray)
+                  .fontWeight(800)
+                  .layoutWeight(1)
+                  .opacity(0.5)
+                Text('x' + item.cnt)
+                  .fontSize(12)
+                  .fontColor(textLightGray)
+                  .fontWeight(800)
+                  .opacity(0.5)
+              }.margin({ top: 6 })
+            }
+            .padding({ left: 10 })
+            .layoutWeight(1)
+            .align(Alignment.Start)
+            .alignItems(HorizontalAlign.Start)
+          }
+          .width('100%')
+          .alignItems(VerticalAlign.Top)
+          .align(Alignment.Start)
+
+          if (item.bottomTips != null && item.bottomTips.length > 0)
+          Row() {
+            Image($r('app.media.info_tips')).size({ width: 10, height: 10 })
+            Text(this.getBottomTipsTv(item.bottomTips)).fontSize(10)
+              .fontColor(textLightGray)
+          }.margin({ top: 6 })
+        }
+        .alignItems(HorizontalAlign.Start)
+        .padding({ top: 12, bottom: 12 })
+        .width('100%')
+        .onClick(e => {
+          this.goDetail(item.itemId)
+        })
+      })
     }
+    .alignItems(HorizontalAlign.Start)
+    .margin(12)
+    .padding(12)
+    .backgroundColor(appWhite)
+    .borderRadius(8)
   }
 
   @Builder
@@ -203,17 +349,17 @@ export struct CartPage {
                       .borderRadius(8)
 
                       Row() {
-                        Text('¥').fontSize(10).fontColor(textRed).fontWeight(600)
+                        Text('¥').fontSize(14).fontColor(textRed).fontWeight(800)
                         Text(`${item.actualPrice ?? ''}`)
-                          .fontSize(16)
+                          .fontSize(18)
                           .fontColor(textRed)
-                          .fontWeight(600)
+                          .fontWeight(800)
                           .layoutWeight(1)
 
                         Counter() {
                           Text(item.cnt + '').fontSize(14).fontColor(textBlack).fontWeight(600)
                         }.onInc(() => {
-                            //
+                          //
                         }).onDec(() => {
 
                         })
@@ -238,6 +384,9 @@ export struct CartPage {
                 .alignItems(HorizontalAlign.Start)
                 .padding({ top: 12, bottom: 12 })
                 .width('100%')
+                .onClick(e => {
+                  this.goDetail(item.itemId)
+                })
               })
             }
           })
@@ -297,6 +446,9 @@ export struct CartPage {
                 .backgroundColor(0xFFFAFAFA)
                 .borderRadius(8)
                 .margin({ right: 10 })
+                .onClick(e => {
+                  this.goDetail(item.itemId)
+                })
               })
               if (item.addBuyPreview.hasMore == true)
                 Text(`${item.addBuyPreview.tip ?? ''}>`)
@@ -330,6 +482,12 @@ export struct CartPage {
       tv += e.value
     })
     return tv
+  }
+
+  goDetail(id: number) {
+    router.pushUrl({ url: pageIndex.detailPage,
+      params: { 'id': `${id}` }
+    })
   }
 }
 

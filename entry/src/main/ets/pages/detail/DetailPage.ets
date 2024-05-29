@@ -181,7 +181,7 @@ struct DetailPage {
           this.featuredSeries(this._goodDetail.featuredSeries)
         }
 
-        if (this._goodDetail.showPrice)
+        if (this._goodDetail.showPrice ?? false)
         ListItem() {
           ///商品价格，showPrice字段控制
           this.promBanner()

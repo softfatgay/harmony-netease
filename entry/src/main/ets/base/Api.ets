@@ -1,4 +1,5 @@
 export const baseUrl = 'https://m.you.163.com';
+export const BASE_URL = 'https://m.you.163.com';
 
 export const LOGIN_PAGE_URL = 'https://m.you.163.com/u/login';
 
@@ -68,4 +69,9 @@ export const SHOPPING_CART = baseUrl + '/xhr/cart/getCarts.json';
 ///购物车
 export const CART_TRADE = baseUrl + '/xhr/front/trade/cart/getCarts';
 
+///用户信息
+export const USER_INFO = baseUrl+ "/xhr/user/checkConfig.json";
+
+///我的信息
+export const USER_INFO_ITEMS = baseUrl+"/xhr/user/myFund.json";
 

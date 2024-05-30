@@ -7,6 +7,11 @@
     "pages/detail/DetailPage",
     "pages/SortListPage",
     "pages/detail/CommentsPage",
-    "pages/detail/BrandPage"
+    "pages/detail/BrandPage",
+    "pages/main/CartPage",
+    "pages/main/HomePage",
+    "pages/main/ProfilePage",
+    "pages/main/SortPage",
+    "pages/main/TopicPage"
   ]
 }

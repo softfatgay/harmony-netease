@@ -69,6 +69,9 @@ export const SHOPPING_CART = baseUrl + '/xhr/cart/getCarts.json';
 ///购物车
 export const CART_TRADE = baseUrl + '/xhr/front/trade/cart/getCarts';
 
+///购物车删除
+export const CART_DELETE = baseUrl + '/xhr/front/trade/cart/delete';
+
 ///用户信息
 export const USER_INFO = baseUrl+ "/xhr/user/checkConfig.json";
 

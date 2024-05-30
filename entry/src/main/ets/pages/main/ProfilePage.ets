@@ -143,22 +143,31 @@ export struct ProfilePage {
           .onClick(e => {
             switch (item.id) {
               case 0: {
+                break
               }
               case 1: {
+                break
               }
               case 2: {
+                break
               }
               case 3: {
+                break
               }
               case 4: {
+                break
               }
               case 6: {
+                break
               }
               case 8: {
+                break
               }
               case 9: {
+                break
               }
               case 11: {
+                break
               }
 
               case 5:
@@ -167,6 +176,7 @@ export struct ProfilePage {
               case 12:
               case 13:
                 goWebView(item.url)
+                break
             }
           })
         }
@@ -285,7 +295,7 @@ export struct ProfilePage {
     {
       "name": "优先购",
       "status": "0",
-      "url": BASE_URL + "/preemption/index.html",
+      "url": BASE_URL + "/preemption/index",
       "id": 5,
       "pic": $r('app.media.mine_item_7'),
     },

@@ -16,10 +16,12 @@ struct WebView {
   @State _title: string = ''
   responseweb: WebResourceResponse = new WebResourceResponse()
 
+  @State reUrl: string = ''
+
   aboutToAppear() {
     let schemeUrl = router.getParams()['schemeUrl'] as string
     this.url = schemeUrl
-    web_view.WebCookieManager.setCookie(baseUrl,'document.cookie ='+cookie)
+    web_view.WebCookieManager.setCookie(baseUrl, 'document.cookie ='+cookie)
 
   }
 
@@ -33,6 +35,7 @@ struct WebView {
         .fileAccess(true)
         .imageAccess(true)
         .onPageBegin(e => {
+          this.controller.loadUrl(this.reUrl,[{headerKey:'Cookie',headerValue:cookie}])
           this.excJS()
         })
         .onPageEnd(e => {
@@ -41,11 +44,12 @@ struct WebView {
         .onUrlLoadIntercept((e) => {
           console.log('==============loadurl', e.data.toString())
           let url: string = e.data as string
+          this.reUrl = url
           if (url.includes('item/detail')) {
             this.goDetail(url)
             return true
           }
-          // this.controller.loadUrl(url, [{ headerKey: 'Cookie', headerValue: cookie }])
+          if(url.match('https://m.you.163.com/u/login')) return true
           return false
         })
     }

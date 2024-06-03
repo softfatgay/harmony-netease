@@ -1,4 +1,7 @@
-# **持续更新中...**
+
+# **鸿蒙仿网易严选WebAPP**
+
+## **持续更新中...**
 
 ## Screenshots:
 
@@ -24,6 +27,3 @@
 ![img11.jpg](screenshot%2Fimg11.jpg)
 
 ![img12.jpg](screenshot%2Fimg12.jpg)
-
-### attention: 
-1:webview 在模拟器上无法滑动/点击
